@@ -1,0 +1,48 @@
+.PadreRC{
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: center;
+}
+
+.ContenedorRC{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin-right: .5em;
+    margin-top: 15%;
+    background-color: rgba(0, 0, 0, 0.575);
+}
+
+.correoRC{
+    padding: .3em .3em .3em .3em;
+    width: 90%;
+    border: none;
+    margin: 1em;
+    background-color: rgba(114, 114, 114, 0.5);
+    border-radius: 7px;
+    
+}
+.correoRC ::placeholder{
+    color: rgb(122, 122, 122);
+}
+
+.BotonRC{
+    font-size: large;
+    margin: 1em;
+    padding: 10px 50px 10px 50px;
+    color: white;
+    background-color: #3366FC;
+    border: none;
+    border-radius: 7px;
+}
+
+.h1RC{
+    padding: 15px;
+    color: white;
+}
+
+.h4RC{
+    color: white;
+}
