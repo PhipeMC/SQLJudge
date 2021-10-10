@@ -8,3 +8,11 @@
     background: url('../img/background.jpg'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     background-size: cover;
 }
+
+#navbarDropdown{
+    color: white;
+}
+
+.dropdown-item {
+    color: white !important;
+}

@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    height: 100vh;
+    background: url('../img/background.jpg'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    background-size: cover;
+}
+
+#navbarDropdown{
+    color: white;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.container-profile{
+    background-color: rgba(0,0,0,0.5);
+    margin: 5em 3em 3em 3em;
+    border-radius: 15px;
+    padding: 2em;
+}
+
+#avatar{
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 2em 0em 0em 0em;
+}
+
+.profile-text{
+    color: white;
+}
+
+.col-sm-1{
+    /*max-width: 5% !important;*/
+}
+
+.col-sm-9 h1{
+    color: white !important;
+}
+
+#username{
+    margin-bottom: 2em;
+}
+
+.group-container{
+    margin-bottom: 2em;
+}
+
+#myChart{
+    width: 100%;
+}
+
