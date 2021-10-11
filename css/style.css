@@ -5,7 +5,7 @@
 
 .background {
     height: 100vh;
-    background: url('../img/background.jpg'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    background: url('../img/4882065.svg'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     background-size: cover;
 }
 
