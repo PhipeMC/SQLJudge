@@ -62,40 +62,26 @@
                             placeholder="Nombre del problema" />
                         </p>
                     </div>
-                    <div>
-                        <p>
-                            Dificultad: <br>
-                            <input type="radio" name="dificultad" value="Baja"> Baja <br>
-                            <input type="radio" name="dificultad"  value="Medio"> Media <br>
-                            <input type="radio" name="dificultad"  value="Alta"> Alta <br>
-                            
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Resueltos: <br>
-                            <input type="radio" name="resuelto" value="menor5"> Menor_10 <br>
-                            <input type="radio" name="resuelto" value="menor25"> Menor_25 <br>
-                            <input type="radio" name="resuelto" value="menor50"> Menor_50 <br>
-                            <input type="radio" name="resuelto" value="menor80"> Menor_80 <br>
-                            <input type="radio" name="resuelto" value="menor100"> Menor_100 <br>
-                            
-                            
-                        </p>
+                    <div class="row justify-content-center m-2">
+                        <form action="" class="col-6 d-grid gap-2">
+                            <button type="button" class="btn btn-primary btn-lg">Buscar</button>
+                        </form>
+                        
                     </div>
                     <div>
                         <p>
                             Ordenar por: <br>
-                            <input type="radio" name="ordenar" value="#"> # <br>
-                            <input type="radio" name="ordenar" value="#"> Nombre <br>
-                            <input type="radio" name="ordenar" value="resultos"> Resueltos <br>
                             <input type="radio" name="ordenar" value="dificultad"> Dificultad <br>
-  
+                            <input type="radio" name="ordenar" value="resultos"> Problemas Resueltos <br>
+                            <input type="radio" name="ordenar" value="nombre"> Nombre <br>
+                            <input type="radio" name="ordenar" value="numero"> Numero de problemas <br>
+                            
                         </p>
                     </div>
+                    
                     <div class="row justify-content-center m-2">
                         <form action="" class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-lg">Filtrar</button>
+                            <button type="button" class="btn btn-primary btn-lg">Ordenar</button>
                         </form>
                         
                     </div>
