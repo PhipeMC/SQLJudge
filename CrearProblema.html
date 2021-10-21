@@ -59,8 +59,8 @@
     </header>
 
     <main class="container">
-        <div class="dark-container card mt-4">
-            <div class="mt-3 mx-3">
+        <div class="dark-container card mt-4 rounded">
+            <div class="dark-div mt-3 mx-3 py-2 px-2">
                 <h2 style="color: snow;"><i class="fas fa-edit" style="color: #0247fe;"></i> <strong>Crear
                         problema</strong></h2>
             </div>
@@ -79,7 +79,7 @@
                             <option>World</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <label for="inputTema" class="form-label">Tema</label>
                         <select id="inputTema" class="form-select" required>
                             <option selected>Elije...</option>
@@ -91,7 +91,7 @@
                             <option>funciones(text, date, numéricas...)</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <label for="inputDificultad" class="form-label">Dificultad</label>
                         <select id="inputDificultad" class="form-select" required>
                             <option selected>Elije...</option>
@@ -100,20 +100,19 @@
                             <option>Avanzado</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label for="inputLenguaje" class="form-label">Lenguaje</label>
                         <input type="text" class="form-control" id="inputLenguaje" disabled placeholder="MySQL">
                     </div>
                     <div class="col-md-6 g-3">
                         <label for="inputDescripcion" class="form-label">Descripción del problema</label>
                         <textarea class="form-control mb-3" id="inputDescripcion" rows="15" onkeyup="run()"></textarea>
-                       
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
                         <textarea class="form-control" id="inputSolucion" rows="15"></textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPrevia" class="form-label">Vista previa del texto</label>
-                        <div class="bg-light text-dark px-3" id="targetDiv"></div>
+                        <div class="dark-div px-3" id="targetDiv" style="height: max-content;"></div>
                         <!-- <textarea class="form-control" id="inputPrevia" rows="10" disabled="true"></textarea> -->
                     </div>
                     <div class="d-flex align-items-center justify-content-center">

@@ -15,3 +15,8 @@
     background-color: #0247fe !important;
     border-color: #0247fe !important;
   }
+
+  .dark-div{
+    background-color: #283044;
+    border-radius: 10px;
+  }
