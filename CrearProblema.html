@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,9 @@
     <title>Creación de Problema</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-problems.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
+        integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script defer src="js/all.js"></script>
@@ -76,7 +79,7 @@
                             <option>World</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="inputTema" class="form-label">Tema</label>
                         <select id="inputTema" class="form-select" required>
                             <option selected>Elije...</option>
@@ -88,26 +91,34 @@
                             <option>funciones(text, date, numéricas...)</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="inputDificultad" class="form-label">Dificultad</label>
+                        <select id="inputDificultad" class="form-select" required>
+                            <option selected>Elije...</option>
+                            <option>Básico</option>
+                            <option>Intermedio</option>
+                            <option>Avanzado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
                         <label for="inputLenguaje" class="form-label">Lenguaje</label>
                         <input type="text" class="form-control" id="inputLenguaje" disabled placeholder="MySQL">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 g-3">
                         <label for="inputDescripcion" class="form-label">Descripción del problema</label>
-                        <textarea class="form-control" id="inputDescripcion" rows="10" onkeyup="run()"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputPrevia" class="form-label">Vista previa del texto</label>
-                        <div id="targetDiv"></div>
-                        <!-- <textarea class="form-control" id="inputPrevia" rows="10" disabled="true"></textarea> -->
-                    </div>
-                    <div class="col-md-12">
+                        <textarea class="form-control mb-3" id="inputDescripcion" rows="15" onkeyup="run()"></textarea>
+                       
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
                         <textarea class="form-control" id="inputSolucion" rows="15"></textarea>
                     </div>
+                    <div class="col-md-6">
+                        <label for="inputPrevia" class="form-label">Vista previa del texto</label>
+                        <div class="bg-light text-dark px-3" id="targetDiv"></div>
+                        <!-- <textarea class="form-control" id="inputPrevia" rows="10" disabled="true"></textarea> -->
+                    </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <button type="submit" class="btn btn-SQL mb-3">Crear problema</button>
-                      </div>
+                    </div>
                 </form>
             </div>
         </div>
