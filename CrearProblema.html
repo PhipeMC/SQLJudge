@@ -65,14 +65,14 @@
                         problema</strong></h2>
             </div>
             <div class="form-container card-body">
-                <form class="form row g-3">
+                <form class="form row g-3" name="formulario" method="post" action="php/InsertarProblema.php">
                     <div class="col-md-6">
                         <label for="inputTitulo" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="inputTitulo" required>
+                        <input type="text" name="nombre" class="form-control" id="inputTitulo" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Base de datos</label>
-                        <select id="inputState" class="form-select" required>
+                        <select id="inputState" name="database" class="form-select" required>
                             <option selected>Elije...</option>
                             <option>Sakila</option>
                             <option>Nwind</option>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-md-5">
                         <label for="inputTema" class="form-label">Tema</label>
-                        <select id="inputTema" class="form-select" required>
+                        <select id="inputTema" name="tema" class="form-select" required>
                             <option selected>Elije...</option>
                             <option>Consultas básicas</option>
                             <option>Consultas de varias tablas</option>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-md-5">
                         <label for="inputDificultad" class="form-label">Dificultad</label>
-                        <select id="inputDificultad" class="form-select" required>
+                        <select id="inputDificultad" name="dificultad" class="form-select" required>
                             <option selected>Elije...</option>
                             <option>Básico</option>
                             <option>Intermedio</option>
@@ -102,13 +102,13 @@
                     </div>
                     <div class="col-md-2">
                         <label for="inputLenguaje" class="form-label">Lenguaje</label>
-                        <input type="text" class="form-control" id="inputLenguaje" disabled placeholder="MySQL">
+                        <input type="text" name="leng" class="form-control" id="inputLenguaje" disabled placeholder="MySQL">
                     </div>
                     <div class="col-md-6 g-3">
                         <label for="inputDescripcion" class="form-label">Descripción del problema</label >
-                        <textarea class="form-control mb-3" id="inputDescripcion" rows="15" onkeyup="run()">Pon tu ejemplo acá</textarea>
+                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15" onkeyup="run()">Pon tu ejemplo acá</textarea>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
-                        <textarea class="form-control" id="inputSolucion" rows="10"></textarea>
+                        <textarea class="form-control" name="consulta" id="inputSolucion" rows="10"></textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPrevia" class="form-label">Vista previa del texto</label>
