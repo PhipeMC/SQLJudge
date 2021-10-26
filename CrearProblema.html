@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación de Problema</title>
+    <link rel="shortcut icon" href="img/favicon2.ico" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-problems.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
@@ -65,10 +66,15 @@
                         problema</strong></h2>
             </div>
             <div class="form-container card-body">
-                <form class="form row g-3" name="formulario" method="post" action="php/InsertarProblema.php">
+                <form class="form row g-3 needs-validation" novalidate name="formulario" method="post"
+                    action="php/InsertarProblema.php">
                     <div class="col-md-6">
                         <label for="inputTitulo" class="form-label">Título</label>
-                        <input type="text" name="nombre" class="form-control" id="inputTitulo" required>
+                        <input type="text" name="nombre" class="form-control" id="inputTitulo" minlength="4"
+                            maxlength="45" required>
+                        <div class="valid-feedback">
+                            Luce bien!
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Base de datos</label>
@@ -78,9 +84,12 @@
                             <option>Nwind</option>
                             <option>World</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Por favor seleccione una base de datos.
+                        </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="inputTema" class="form-label">Tema</label>
+                        <label for="inputTema" class="form-label">Categoría</label>
                         <select id="inputTema" name="tema" class="form-select" required>
                             <option selected>Elije...</option>
                             <option>Consultas básicas</option>
@@ -88,8 +97,11 @@
                             <option>Agrupaciones</option>
                             <option>Subconsultas anidadas</option>
                             <option>Subconsultas correlacionadas</option>
-                            <option>funciones(text, date, numéricas...)</option>
+                            <option>Funciones(text, date, numéricas...)</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Por favor seleccione una categoría.
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <label for="inputDificultad" class="form-label">Dificultad</label>
@@ -99,21 +111,34 @@
                             <option>Intermedio</option>
                             <option>Avanzado</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Por favor seleccione una dificultad.
+                        </div>
                     </div>
                     <div class="col-md-2">
                         <label for="inputLenguaje" class="form-label">Lenguaje</label>
-                        <input type="text" name="leng" class="form-control" id="inputLenguaje" disabled placeholder="MySQL">
+                        <input type="text" name="leng" class="form-control" id="inputLenguaje" disabled
+                            placeholder="MySQL">
                     </div>
                     <div class="col-md-6 g-3">
-                        <label for="inputDescripcion" class="form-label">Descripción del problema</label >
-                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15" onkeyup="run()">Pon tu ejemplo acá</textarea>
+                        <label for="inputDescripcion" class="form-label">Descripción del problema</label>
+                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15"
+                            onkeyup="run()" required>Escribe tu ejemplo aquí</textarea>
+                        <div class="invalid-feedback">
+                            Por favor añada una descripción.
+                        </div>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
-                        <textarea class="form-control" name="consulta" id="inputSolucion" rows="10"></textarea>
+                        <textarea class="form-control" name="consulta" id="inputSolucion" rows="15" required></textarea>
+                        <div class="invalid-feedback">
+                            Por favor añada la consulta de solución.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPrevia" class="form-label">Vista previa del texto</label>
-                        <div class="dark-div px-3 py-3" id="targetDiv" style="height: 96%;">Pon el ejemplo acá</div> 
-                        <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> --> 
+                        <div class="dark-div px-3 py-3" id="targetDiv" style="height: 96.3%;">Escribe tu ejemplo aquí
+                        </div>
+
+                        <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> -->
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <button type="submit" class="btn btn-SQL mb-3">Crear problema</button>
