@@ -86,7 +86,7 @@ INSERT INTO `docente` (`idDocente`, `UsuarioD`, `ContrasenaD`, `Nombre`, `Apelli
 --
 
 CREATE TABLE `envio` (
-  `Estado` enum('TLE','PR','EE','F') NOT NULL,
+  `Estado` enum('CD','RT','NR','NC','WA','AC') NOT NULL,
   `NumeroIntento` int(11) NOT NULL,
   `CodigoAlumno` longtext NOT NULL,
   `ALUMNO_idAlumno` int(11) NOT NULL,
