@@ -118,7 +118,8 @@ CREATE TABLE `problema` (
   `DOCENTE_idUsuario` int(11) NOT NULL,
   `Solucion` longtext NOT NULL,
   `CATEGORIA_idCATEGORIA` int(11) NOT NULL,
-  `dificultad` enum('Basico','Intermedio','Avanzado','') DEFAULT NULL
+  `dificultad` enum('Basico','Intermedio','Avanzado','') DEFAULT NULL;
+  `BaseDatos` enum('World', 'Sakila', 'Nwind') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
