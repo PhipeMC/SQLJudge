@@ -1,0 +1,1 @@
+http://127.0.0.1/prue/algoritmo.php?strSQL=SELECT * FROM City where ID = 1;&strSolucion=SELECT * FROM City ORDER BY ID LIMIT 1;&EvaluaOrden=1&NumeroColumnas=1&BD=world
