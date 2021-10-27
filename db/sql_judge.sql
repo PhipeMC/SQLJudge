@@ -35,6 +35,10 @@ CREATE TABLE `alumno` (
   `Apellidos` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `alumno` (`idAlumno`, `UsuarioA`, `ContrasenaA`, `Nombre`, `Apellidos`) VALUES
+(1, 'Alu1', 'root1', 'Nahuel', 'Cruz'),
+(2, 'Alu2', 'root1', 'Daniel', 'Garcia'),
+(3, 'Alu3', 'root1', 'Cesar', 'Domunguez');
 -- --------------------------------------------------------
 
 --
@@ -93,6 +97,12 @@ CREATE TABLE `envio` (
   `PROBLEMA_idPROBLEMA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO envio (`Estado`, `NumeroIntento`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
+('AC', 10, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10),
+('AC', 2, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
+('WA', 3, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
+('AC', 4, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
+('WA', 1, 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18);
 -- --------------------------------------------------------
 
 --
@@ -118,8 +128,8 @@ CREATE TABLE `problema` (
   `DOCENTE_idUsuario` int(11) NOT NULL,
   `Solucion` longtext NOT NULL,
   `CATEGORIA_idCATEGORIA` int(11) NOT NULL,
-  `dificultad` enum('Basico','Intermedio','Avanzado','') DEFAULT NULL;
-  `BaseDatos` enum('World', 'Sakila', 'Nwind') NOT NULL
+  `dificultad` enum('Basico','Intermedio','Avanzado') NOT NULL,
+  `NombreBaseDatos` enum('World', 'Sakila', 'Nwind') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
