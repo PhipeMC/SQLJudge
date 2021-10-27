@@ -4,8 +4,8 @@
 
 		$servername = "localhost";  //Servidor
 		$database = "sql_judge";	//Base de datos
-		$username = "user123";		//Usuario
-		$password = "root";			//Contraseña
+		$username = "root";		//Usuario
+		$password = "";			//Contraseña
 
 		// Crear conexión
 
