@@ -17,22 +17,23 @@
 	$resultado = mysqli_query($conexion, sprintf("SELECT idCATEGORIA from categoria where NombreCategoria='%s';",$tema));
 	$categoria = mysqli_fetch_array($resultado);
 
-	echo $nombre; echo "<br>";
-	echo $db; echo "<br>";
-	echo $tema; echo "<br>";
-	echo $descripcion; echo "<br>";
-	echo $consulta; echo "<br>";
-	echo $dificultad; echo "<br>";
-	echo $categoria[0]; echo "<br>";;
+	//echo $nombre; echo "<br>";
+	//echo $db; echo "<br>";
+	//echo $tema; echo "<br>";
+	//echo $descripcion; echo "<br>";
+	//echo $consulta; echo "<br>";
+	//echo $dificultad; echo "<br>";
+	//echo $categoria[0]; echo "<br>";;
 
 	if($conexion){
-		echo "Conexion exitosa <br>";
+		//echo "Conexion exitosa <br>";
 
-		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad) VALUES ('%s', '%s', 1, '%s', %d, '%s');";
-		$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad);
+		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, BaseDatos) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s');";
+		$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
 
 		if(mysqli_query($conexion, $sql)){
-			echo "Elemento agregado";
+			//echo "Elemento agregado";
+			header('Location:' . getenv('HTTP_REFERER'));
 		}else{
 			echo "Algo salió mal";
 		}
