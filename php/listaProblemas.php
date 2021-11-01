@@ -13,7 +13,9 @@
     <title>Listado de problemas</title>
     <link rel="shortcut icon" href="img/favicon2.ico"/>
     <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">  
+
     <link rel="stylesheet" href="../css/styleListadoProblemas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -58,59 +60,22 @@
                 </div>
             </div>
         </nav>
-
-    
         <div class="container mt-3">
-            <div class="row align-items-start">
-                <div class="col-sm-4">
-                    <h1>Filtro</h1>
-                    <div>
-                        <p>
-                            Nombre: <input type="Buscador" name="problema" 
-                            placeholder="Nombre del problema" />
-                        </p>
-                    </div>
-                    <div class="row justify-content-center m-2">
-                        <form action="" class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-lg">Buscar</button>
-                        </form>
-                        
-                    </div>
-                    <div>
-                        <p>
-                            Ordenar por: <br>
-                            <input type="radio" name="ordenar" value="dificultad"> Dificultad <br>
-                            <input type="radio" name="ordenar" value="resultos"> Problemas Resueltos <br>
-                            <input type="radio" name="ordenar" value="nombre"> Nombre <br>
-                            <input type="radio" name="ordenar" value="numero"> Numero de problemas <br>
-                            
-                        </p>
-                    </div>
-                    
-                    <div class="row justify-content-center m-2">
-                        <form action="" class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-lg">Ordenar</button>
-                        </form>
-                        
-                    </div>
-                    
-                     
-                </div>
-
-                    <div class="col mb-5 p-2">
-                        <h1>## LISTA DE PROBLEMAS ##</h1>
-                        <table class="table table-dark table-hover">
-                            <thead>
-                              <tr >
-                                <th scope="col" >#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Dicultad</th>
-                                <th scope="col">Resuelto</th>
-                              </tr>
-                            </thead>
+                <h1>## LISTA DE PROBLEMAS ##</h1>
+                <table id="tablasLista" class="table table-dark table-hover" style="width:100%">
+                        <thead>
+                            <tr >
+                            <th scope="col" >#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Dicultad</th>
+                            <th scope="col">Resuelto</th>
+                            </tr>
+                        </thead>
+                            <tbody>
                             <?php
                                 $sql="select P.idPROBLEMA,P.titulo,P.dificultad,
                                 (
+
                                     select count(E.ALUMNO_idAlumno) from envio E where E.Estado= 'AC' AND E.PROBLEMA_idPROBLEMA = P.idPROBLEMA
                                 )as Resueltos
                                 from PROBLEMA P ;";
@@ -118,8 +83,7 @@
 
                                 while($mostra=mysqli_fetch_array($resultado)){
                             ?>
-                            
-                            <tbody>
+
                               <tr>
                                 <th><?php echo $mostra['idPROBLEMA'] ?></th>
                                 <td><?php echo $mostra['titulo'] ?></td>
@@ -131,12 +95,19 @@
                             ?>
                             </tbody>
                         </table>
-                     </div>
-            </div>
+                    
+            
         </div>
     </div>
-</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $('#tablasLista').DataTable();
+
+</script>
+</body>
 </html>
