@@ -28,7 +28,7 @@
 	if($conexion){
 		//echo "Conexion exitosa <br>";
 
-		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, BaseDatos) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s');";
+		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s');";
 		$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
 
 		if(mysqli_query($conexion, $sql)){
