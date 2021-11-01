@@ -69,11 +69,13 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Dicultad</th>
                             <th scope="col">Resuelto</th>
-                            <tr>
-                            </thead>
+                            </tr>
+                        </thead>
+                            <tbody>
                             <?php
                                 $sql="select P.idPROBLEMA,P.titulo,P.dificultad,
                                 (
+
                                     select count(E.ALUMNO_idAlumno) from envio E where E.Estado= 'AC' AND E.PROBLEMA_idPROBLEMA = P.idPROBLEMA
                                 )as Resueltos
                                 from PROBLEMA P ;";
@@ -81,8 +83,7 @@
 
                                 while($mostra=mysqli_fetch_array($resultado)){
                             ?>
-                            
-                            <tbody>
+
                               <tr>
                                 <th><?php echo $mostra['idPROBLEMA'] ?></th>
                                 <td><?php echo $mostra['titulo'] ?></td>
@@ -103,7 +104,6 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
 crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
 <script>
 
     $('#tablasLista').DataTable();
