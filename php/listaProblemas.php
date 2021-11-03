@@ -10,22 +10,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de problemas</title>
+    <title>SQLJudge - Lista de problemas</title>
     <link rel="shortcut icon" href="img/favicon2.ico"/>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">  
 
-    <link rel="stylesheet" href="../css/styleListadoProblemas.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script defer src="js/all.js"></script>
+    <link rel="stylesheet" href="../css/styleListadoProblemas.css">
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo"><i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
+                <a class="navbar-brand" href="../index.html" id="logo"><i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,39 +39,40 @@
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="listaProblemas.html">Lista de problemas</a></li>
-                                <li><a class="dropdown-item" href="profile.html">Ranking</a></li>
+                                <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
+                                <li><a class="dropdown-item" href="">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="../profile.html">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a class="btn btn-sm btn-outline-secondary" href="login.html">Iniciar sesion</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="../login.html">Iniciar sesion</a>
                     </form>
                 </div>
             </div>
         </nav>
+
         <div class="container mt-3">
-                <h1>## LISTA DE PROBLEMAS ##</h1>
+            <h1> Problemas </h1>
                 <table id="tablasLista" class="table table-dark table-hover" style="width:100%">
                         <thead>
                             <tr >
-                            <th scope="col" >#</th>
+                            <th scope="col" >ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Dicultad</th>
                             <th scope="col">Resuelto</th>
                             </tr>
                         </thead>
-                            <tbody>
+                        <tbody>
                             <?php
                                 $sql="select P.idPROBLEMA,P.titulo,P.dificultad,
                                 (
@@ -93,21 +94,19 @@
                             <?php
                                 }
                             ?>
-                            </tbody>
-                        </table>
-                    
-            
+                        </tbody>
+                </table>
         </div>
     </div>
+</body>
+
+<script defer src="js/all.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
-
     $('#tablasLista').DataTable();
-
 </script>
-</body>
 </html>
