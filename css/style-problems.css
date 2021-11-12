@@ -20,3 +20,10 @@
     background-color: #283044;
     border-radius: 10px;
   }
+
+  .abs-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
