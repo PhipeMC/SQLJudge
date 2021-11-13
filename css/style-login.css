@@ -144,7 +144,7 @@ button:hover{
 }
 
 #txtUsuario{
-    background-image: url(../img/user-solid.svg);
+    background-image: url(../img/envelope-solid.svg);
     background-repeat: no-repeat;
     background-size: 1.4em;
     color: #fff;
