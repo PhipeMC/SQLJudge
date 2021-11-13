@@ -21,6 +21,8 @@
     $con = conectarPorBD($BD); 
 
     echo ejecutar($strSQL,$strSolucion,$EvaluaOrden,$NumeroColumnas,$con);
+     // CIERRA LA CONEXION A LA BASE DE DATOS
+     mysqli_close($con);     
 
     function CadenaOrderBy($columnas)
     {
@@ -42,54 +44,56 @@
             {
                 $strSQL = "select * from ( " + $strSQL + ") as Consulta " + CadenaOrderBy($NumeroColumnas);
             }
-            try
-            {
+           
                 $sql1 = $strSQL;                                           
                 $resultadosAlumno = mysqli_query($con, $sql1);    
-            }
-            catch (Exception $e)
-            {
-                echo $e->getCode();
-                if ($e->getCode() == 1060)
-                {
-                   
-                    return "CD"; 
-                   
-                    // "Columnas Duplicadas"
-                }
-                else
-                {
-                    return "RE";
-                
-                    // "Runtime Error"
-                }
-            }
+            
+                if($resultadosAlumno==false){
+                    
+                    if (mysqli_errno($con)== 1060)
+                    {                           
+                        // "Columnas Duplicadas"                  
+                        return "CD";
+                    }
+                    else
+                    {                    
+                        // Runtime Error
+                        return "RE";
+                    }
+                }                            
             $sql2= $strSolucion;
             $resultadosDocente = mysqli_query($con,$sql2);
             $row_cnt1 = mysqli_num_rows($resultadosAlumno);
             $row_cnt2 = mysqli_num_rows($resultadosDocente);
-            echo $row_cnt1;
-            echo "<br>";
-            echo $row_cnt2;
-            echo "<br>";
+            // echo $row_cnt1;
+            // echo "<br>";
+            // echo $row_cnt2;
+            // echo "<br>";
             $clm_cnt1 = mysqli_num_fields($resultadosAlumno);
             $clm_cnt2 = mysqli_num_fields($resultadosDocente);
-            echo $clm_cnt1;
-            echo "<br>";
-            echo $clm_cnt2;
-            echo "<br>";
+            // echo $clm_cnt1;
+            // echo "<br>";
+            // echo $clm_cnt2;
+            // echo "<br>";
             if($row_cnt1!=$row_cnt2){
+                //Libera los resultados
+                mysqli_free_result($resultadosDocente);
+                mysqli_free_result($resultadosAlumno);
+                // Número de renglones no coincide
                 return "NR";            
             }
             if($clm_cnt1!=$clm_cnt2){
+                //Libera los resultados
+                mysqli_free_result($resultadosDocente);
+                mysqli_free_result($resultadosAlumno);
+                // Número de columnas no coincide
                 return "NC";
             }
             $resultado = true;
             $arreglo1 = mysqli_fetch_array($resultadosAlumno,MYSQLI_NUM);
-            var_dump($arreglo1);
-            echo "division";
+            //var_dump($arreglo1);
             $arreglo2 = mysqli_fetch_array($resultadosDocente,MYSQLI_NUM);
-            var_dump($arreglo2);
+            //var_dump($arreglo2);
             for ($i = 0; $i <= $clm_cnt1 - 1; $i++)
             {                
                 if ($arreglo1[$i]!==$arreglo2[$i])
@@ -100,19 +104,19 @@
             
             if ($resultado == true)
             {
-                return "AC";
+                //Libera los resultados
+                mysqli_free_result($resultadosDocente);
+                mysqli_free_result($resultadosAlumno);
                 // "ACEPTADO"
+                return "AC";                 
             }
             else
             {
-                return "WA";
+                //Libera los resultados
+                mysqli_free_result($resultadosDocente);
+                mysqli_free_result($resultadosAlumno);
                 // "RESPUESTA INCORRECTA"
-            }
-            //Libera los resultados
-            mysqli_free_result($resultadosDocente);
-            mysqli_free_result($resultadosAlumno);
-            // CIERRA LA CONEXION A LA BASE DE DATOS
-            mysqli_close($con);            
+                return "WA";                                
+            }                             
     }
-    
         ?>
