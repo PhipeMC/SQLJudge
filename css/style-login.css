@@ -54,6 +54,24 @@ body {
     height: 35px;
 }
 
+#selectUser{
+    background-color: rgba(255, 250, 250, 0.63)!important;
+    font-size: 1rem!important;
+    color: black!important;
+    width: 100%!important;
+    display: inline-block!important;
+    padding: .3em .5em!important;
+    border: none!important;
+    border-radius: 10px!important;
+    height: 35px!important;
+    background-image: url(../img/lock-solid.svg)!important;
+    background-repeat: no-repeat!important;
+    background-size: 1.4em!important;
+    color: #fff!important;
+    padding: 0.5em 0.5em 0.5em 2.5em!important;
+    background-position: 0.5em!important;
+}
+
 .formRegistro{
     width: 30%;
     height: auto;
@@ -144,7 +162,7 @@ button:hover{
 }
 
 #txtUsuario{
-    background-image: url(../img/user-solid.svg);
+    background-image: url(../img/envelope-solid.svg);
     background-repeat: no-repeat;
     background-size: 1.4em;
     color: #fff;

@@ -52,7 +52,7 @@
         </nav>
 
         <div class="forms-login">
-            <form action="" class="datoFila">
+            <form action="php/login.php" class="datoFila" method="POST">
                 <div>
                     <p id="instruccion">
                         ¿Ya tienes una cuenta?
@@ -63,12 +63,19 @@
                     </p>
                 </div>
                 <div>
-                    <input type="text" id="txtUsuario" placeholder="Usuario">
+                    <input type="text" id="txtUsuario" name="correo" placeholder="Correo">
                 </div>
                 <div>
-                    <input type="password" id="txtContrasenia" placeholder="Contraseña">
+                    <input type="password" id="txtContrasenia" name="contrasenia" placeholder="Contraseña">
                 </div>
-                 <label  id="instruccion"><input type="checkbox" style="display: none;"> </label>
+                <div>
+                    <select id="selectUser" name="tipoUser" class="form-select" required>
+                        <option selected>¿Erés?...</option>
+                        <option value="alumno">Alumno</option>
+                        <option value="docente">Maestro</option>
+                    </select>
+                </div>
+                <label  id="instruccion"><input type="checkbox" style="display: none;"> </label>
                 <button id="btnIniciarSesion"> Iniciar Sesión</button>
                 <a href="Recuperar.html" id="olvidasteContraseña">¿Olvidaste tu contraseña?</a>
             </form>
