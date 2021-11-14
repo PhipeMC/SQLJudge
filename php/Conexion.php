@@ -13,6 +13,7 @@
 
 		return $conexion;
 	}
+	
 	function conectarPorBD($BD){
 
 		$servername = "localhost";  //Servidor

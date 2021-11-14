@@ -55,7 +55,7 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a class="btn btn-sm btn-outline-secondary" href="../login.html">Iniciar sesion</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="logout.php">Cerrar sesion</a>
                     </form>
                 </div>
             </div>
