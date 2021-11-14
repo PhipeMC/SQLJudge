@@ -1,4 +1,4 @@
-#navbarDropdown{
+#navbarDropdown {
     color: white;
 }
 
@@ -6,41 +6,75 @@
     color: white !important;
 }
 
-.container-profile{
+.container-profile {
     background-color: #1F2533 !important;
-    margin: 5em 3em 3em 3em;
+    margin: 3em 1.5em 3em;
     border-radius: 15px;
     padding: 2em;
+    width: auto !important;
+    height: auto !important;
 }
 
-#avatar{
+#avatar {
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    margin: 2em 0em 0em 0em;
+    width: 160px;
+    height: 160px;
+    margin: 2em 0em 1em;
 }
 
-.profile-text{
+.profile-text {
     color: white;
 }
 
-.col-sm-1{
-    /*max-width: 5% !important;*/
-}
-
-.col-sm-9 h1{
+.col-sm-9 h1 {
     color: white !important;
 }
 
-#username{
+.group-container {
     margin-bottom: 2em;
 }
 
-.group-container{
-    margin-bottom: 2em;
-}
-
-#myChart{
+#myChart {
     width: 100%;
 }
 
+
+.editButton {
+    margin-bottom: 1em !important;
+    margin-top: 1em;
+}
+
+.modal-title{
+    color: black;
+}
+
+.col-profile{
+    width: 300px !important;
+    margin-right: 10em;
+    height: auto;
+}
+
+.card-stats{
+    height: auto !important;
+    padding: 1em;
+}
+
+#myChart{
+    height: auto !important;
+}
+
+.card h5{
+    font-size: x-large;
+}
+
+.card p{
+    font-size: large;
+}
+
+.card button{
+    margin: 1em 0 1em;
+}
+
+.modal-body .card{
+    margin: 1em 0 1em;
+}
