@@ -30,14 +30,14 @@ Create database sql_judge;
 use sql_judge;
 CREATE TABLE `alumno` (
   `idAlumno` int(11) NOT NULL,
-  `UsuarioA` varchar(45) NOT NULL,
+  `Usuario` varchar(45) NOT NULL,
   `Email` varchar(80) NOT NULL,
-  `ContrasenaA` varchar(150) NOT NULL,
+  `Contrasena` varchar(150) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
   `Apellidos` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `alumno` (`idAlumno`, `UsuarioA`, `Email`, `ContrasenaA`, `Nombre`, `Apellidos`) VALUES
+INSERT INTO `alumno` (`idAlumno`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
 (1, 'Alu1', 'root1@gmail.com', 'root1', 'Nahuel', 'Cruz'),
 (2, 'Alu2', 'root2@gmail.com', 'root1', 'Daniel', 'Garcia'),
 (3, 'Alu3', 'root3@gmail.com', 'root1',  'Cesar', 'Domunguez');
@@ -72,9 +72,9 @@ INSERT INTO `categoria` (`idCATEGORIA`, `NombreCategoria`) VALUES
 
 CREATE TABLE `docente` (
   `idDocente` int(11) NOT NULL,
-  `UsuarioD` varchar(45) NOT NULL,
+  `Usuario` varchar(45) NOT NULL,
   `Email` varchar(80) NOT NULL,
-  `ContrasenaD` varchar(150) NOT NULL,
+  `Contrasena` varchar(150) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
   `Apellidos` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -83,7 +83,7 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`idDocente`, `UsuarioD`, `Email`, `ContrasenaD`, `Nombre`, `Apellidos`) VALUES
+INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
 (1, 'prof1', 'root@gmail.com', 'root', 'Felipe', 'Calderon');
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ INSERT INTO `problema` (`idPROBLEMA`, `Titulo`, `Descripcion`, `DOCENTE_idUsuari
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`idAlumno`),
-  ADD UNIQUE KEY `UsuarioA_UNIQUE` (`UsuarioA`),
+  ADD UNIQUE KEY `UsuarioA_UNIQUE` (`Usuario`),
   ADD UNIQUE KEY `Email_UNIQUE` (`Email`);
 
 --
@@ -166,7 +166,7 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `docente`
   ADD PRIMARY KEY (`idDocente`),
-  ADD UNIQUE KEY `UsuarioA_UNIQUE` (`UsuarioD`),
+  ADD UNIQUE KEY `UsuarioA_UNIQUE` (`Usuario`),
    ADD UNIQUE KEY `Email_UNIQUE` (`Email`);
 
 --

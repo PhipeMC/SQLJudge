@@ -13,20 +13,7 @@ body {
     background-color: #1f2533 !important;
     width: 100% !important;
     border-radius: 20px !important;
-    margin-top: 12%;
 }
-/*
-.dark-container input[type="text"],
-.dark-container input[type="password"]{
-    background-color: rgba(255, 250, 250, 0.911);
-    font-size: 1rem;
-    width: 100%;
-    display: inline-block;
-    padding: .3em .5em;
-    border: none;
-    border-radius: 8px;
-    height: 35px;
-}*/
 
 #txtUsuario{
     background-image: url(../img/envelope-solid.svg);
@@ -82,4 +69,21 @@ button{
 button:hover{
     background-color: #346AFE;
     cursor: pointer;
+}
+
+
+#navbarDropdown{
+    color: white;
+}
+
+#navbarDropdown:hover{
+    color: #0247fe;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:hover{
+    color: #0247fe !important;
 }

@@ -7,7 +7,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
     color: snow!important;
-  }
+}
 
 .blue-container{
     background-color: #0e2e87;
@@ -22,5 +22,22 @@ body {
 }
 
 .btn-SQL{
-    border-radius: 13px;
+    border-radius: 10px!important;
 }
+
+#navbarDropdown{
+    color: white;
+}
+
+#navbarDropdown:hover{
+    color: #0247fe;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:hover{
+    color: #0247fe !important;
+}
+
