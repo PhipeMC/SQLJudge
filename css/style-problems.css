@@ -1,29 +1,45 @@
- .form-label{
-    color: snow!important;
-  }
+.form-label {
+  color: snow !important;
+}
 
-  .dark-container{
-    background-color: #1F2533 !important;
-  }
+.dark-container {
+  background-color: #1f2533 !important;
+}
 
-  .footer-color{
-    background-color: #1a1f2c;
-  }
+.footer-color {
+  background-color: #1a1f2c;
+}
 
-  .btn-SQL{
-    color: #fff !important;
-    background-color: #0247fe !important;
-    border-color: #0247fe !important;
-  }
+.btn-SQL {
+  color: #fff !important;
+  background-color: #0247fe !important;
+  border-color: #0247fe !important;
+}
 
-  .dark-div{
-    background-color: #283044;
-    border-radius: 10px;
-  }
+.dark-div {
+  background-color: #283044;
+  border-radius: 10px;
+}
 
-  .abs-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-  }
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+#navbarDropdown {
+  color: white;
+}
+
+#navbarDropdown:hover {
+  color: #0247fe;
+}
+
+.dropdown-item {
+  color: white !important;
+}
+
+.dropdown-item:hover {
+  color: #0247fe !important;
+}

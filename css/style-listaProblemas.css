@@ -18,21 +18,14 @@ body {
     color: white;
 }
 
+#navbarDropdown:hover{
+    color: #0247fe;
+}
+
 .dropdown-item {
     color: white !important;
 }
-#navbarDropdown{
-  color: white;
-}
-
-#navbarDropdown:hover{
-  color: #0247fe;
-}
-
-.dropdown-item {
-  color: white !important;
-}
 
 .dropdown-item:hover{
-  color: #0247fe !important;
+    color: #0247fe !important;
 }

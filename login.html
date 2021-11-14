@@ -41,9 +41,6 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="profile.html">Perfil</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
                     </ul>
@@ -52,7 +49,8 @@
         </nav>
     </header>
     <main class="container d-flex flex-row justify-content-center">
-        <div class="dark-container"  style="margin-left: 8%; margin-right: .4%;">
+        <div class="dark-container" style="margin-left: 8%; margin-right: .4%;
+        margin-top: 11%;">
             <form action="php/login.php" class="py-4 px-4" method="POST">
                 <div class="row g-3 px-1">
                     <div class="col-12">
@@ -63,17 +61,17 @@
                         </h1>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="txtUsuario" name="correo" placeholder="Correo">
+                        <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" required>
                     </div>
                     <div class="col-12">
                         <input type="password" class="form-control" id="txtContrasenia" name="contrasenia"
-                            placeholder="Contraseña">
+                            placeholder="Contraseña" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>
                             <option selected>¿Tipo de usuario?...</option>
                             <option value="alumno">Alumno</option>
-                            <option value="docente">Maestro</option>
+                            <option value="docente">Docente</option>
                         </select>
                     </div>
                     <div class="col-12 text-center">
@@ -86,8 +84,9 @@
                 </div>
             </form>
         </div>
-        <div class="dark-container" style="margin-right: 8%; margin-left: .4%;">
-            <form  class="py-4 px-4" >
+        <div class="dark-container" style="margin-right: 8%; margin-left: .4%;
+        margin-top: 11%;">
+            <form class="py-4 px-4">
                 <div class="row g-3 px-1">
                     <div class="col-12">
                         <h5 class="text-center text-white">¿Aún no tienes cuenta?</h5>
@@ -103,7 +102,8 @@
                         <input type="password" id="txtContraseniaR" class="form-control" placeholder="Contraseña">
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtConfirmarContrasenia" placeholder="Confirmar contraseña">
+                        <input type="password" class="form-control" id="txtConfirmarContrasenia"
+                            placeholder="Confirmar contraseña">
                     </div>
                     <div class="col-12">
                         <button id="btnRegistrar">Registrate</button>
