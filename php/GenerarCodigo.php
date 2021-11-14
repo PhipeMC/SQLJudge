@@ -28,7 +28,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo">
+                <a class="navbar-brand" href="../index.html" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -48,7 +48,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -84,21 +84,21 @@
             <div class="dark-container card mt-4 rounded ">
                 <form method="post"  action="ObtenerCodigo.php" id="frmGenerarClave" class="form-inline justify-content-center">
                         <div class="modal fade " id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header bg-primary">
-                                <h5 class="modal-title" id="staticBackdropLabel">Confirmar cambio de código</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Confirmar cambio de código</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-black fs-4 text-center">
+                                    ¿Está seguro que desea cambiar el código del grupo <label for="" class="fw-bold" id="gAgregar"></label> ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" onclick="return aceptar();" class="btn btn-primary">Confirmar</button>
+                                </div>
+                                </div>
                             </div>
-                            <div class="modal-body text-black fs-4 text-center">
-                                ¿Está seguro que desea cambiar el código del grupo? <strong id="code"></strong>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" onclick="return aceptar();" class="btn btn-primary">Confirmar</button>
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     <div class="row mt-4 mx-2 text-center">
                         <h1>Genera un código de registro</h1>
@@ -108,7 +108,7 @@
                             <label for="" class="form-label fs-4 mb-4">Selecciona un grupo</label>
                             <div class="col">
                                 <div class="input-group input-group-lg">
-                                <select class="form-select" name="grupo" id="txtGrupo">
+                                <select class="form-select" onchange="return getGrupo();" name="grupo" id="txtGrupo">
                                     <option value="default" selected>Seleccione una opción</option>
                                     <?php
                                         $sentencia = "select idGrupo from grupo where DOCENTE_idDocente1 = 1 order by idGrupo;";
@@ -129,6 +129,31 @@
                     <div class="row mb-4 mx-5">
                         <div class="col" style="display: flex; justify-content: center;">
                             <button type="button"   id="btnAgregar" class="btn btn-primary btn-lg ">Generar nueva clave</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="eliminarCodigo.php" method="post">
+                    <div class="modal fade " id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Confirmar eliminar la clave</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-black fs-4 text-center">
+                                    ¿Está seguro que desea eliminar el código del grupo <strong id="gEliminar"></strong> ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" onclick="return confirmarEliminar();" class="btn btn-danger">Confirmar</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                <input type="text" id="inputGrupo" name="inputGrupo" style="display: none;">
+                <div class="row mb-4 mx-5">
+                        <div class="col" style="display: flex; justify-content: center;">
+                            <button type="button" onclick="eliminar();"  id="btnEliminar" class="btn btn-danger btn-lg ">Eliminar clave seleccionada</button>
                         </div>
                     </div>
                 </form>
@@ -218,11 +243,13 @@
         </ul>
     </footer>
 <script>
-    window.onload=function(){
+window.onload=function(){
   
     document.querySelector("#btnAgregar").addEventListener('click', function(){
-        
+        debugger;
+        var et = document.getElementById("gAgregar");
         var grupo = document.getElementById("txtGrupo").value;
+        et.innerHTML = grupo;
         if(grupo=="default"){
             var modalError = new bootstrap.Modal(document.getElementById('error'), {
                 keyboard: false
@@ -238,19 +265,37 @@
             //etiqueta.value= grupo;
         }
     });
+}
 
-    function aceptar() {
-        
-        //alert("aceptar");
-        return true;
-    }
-
-    function eliminar(){
-        alert("asasasa");
-        return false;
-    }
+function getGrupo(){
+    var grupo = document.getElementById("txtGrupo").value;
+    var inputGrupo=document.getElementById("inputGrupo");
+    inputGrupo.value=grupo;  
 
 }
+
+function eliminar(){
+    
+    var et = document.getElementById("gEliminar");
+    var inputGrupo=document.getElementById("inputGrupo");
+    et.innerHTML = inputGrupo.value;
+    if(inputGrupo.value==""){
+        var modalError = new bootstrap.Modal(document.getElementById('error'), {
+            keyboard: false
+        });
+        modalError.show();
+    }else{
+        var modalEliminar = new bootstrap.Modal(document.getElementById('modalEliminar'), {
+            keyboard: false
+        });
+        modalEliminar.show();
+    }
+}
+
+function confirmarEliminar(){
+    return true;
+}
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
