@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2021 a las 02:52:23
+-- Tiempo de generación: 15-11-2021 a las 03:28:50
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -26,8 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `alumno`
 --
-Create database sql_judge;
-use sql_judge;
+
 CREATE TABLE `alumno` (
   `idAlumno` int(11) NOT NULL,
   `Usuario` varchar(45) NOT NULL,
@@ -37,10 +36,15 @@ CREATE TABLE `alumno` (
   `Apellidos` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `alumno`
+--
+
 INSERT INTO `alumno` (`idAlumno`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
 (1, 'Alu1', 'root1@gmail.com', 'root1', 'Nahuel', 'Cruz'),
 (2, 'Alu2', 'root2@gmail.com', 'root1', 'Daniel', 'Garcia'),
-(3, 'Alu3', 'root3@gmail.com', 'root1',  'Cesar', 'Domunguez');
+(3, 'Alu3', 'root3@gmail.com', 'root1', 'Cesar', 'Domunguez');
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +89,7 @@ CREATE TABLE `docente` (
 
 INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
 (1, 'prof1', 'root@gmail.com', 'root', 'Felipe', 'Calderon');
+
 -- --------------------------------------------------------
 
 --
@@ -99,12 +104,17 @@ CREATE TABLE `envio` (
   `PROBLEMA_idPROBLEMA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO envio (`Estado`, `NumeroIntento`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
-('AC', 10, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10),
+--
+-- Volcado de datos para la tabla `envio`
+--
+
+INSERT INTO `envio` (`Estado`, `NumeroIntento`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
+('WA', 1, 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18),
 ('AC', 2, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
 ('WA', 3, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
 ('AC', 4, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
-('WA', 1, 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18);
+('AC', 10, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -116,6 +126,15 @@ CREATE TABLE `grupo` (
   `DOCENTE_idDocente1` int(11) NOT NULL,
   `idGrupo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`CodigoGrupo`, `DOCENTE_idDocente1`, `idGrupo`) VALUES
+('CWK6F7S46A', 1, 'S46A'),
+('', 1, 'S62B'),
+('Ck6tFyS65A', 1, 'S65A');
 
 -- --------------------------------------------------------
 
@@ -131,16 +150,16 @@ CREATE TABLE `problema` (
   `Solucion` longtext NOT NULL,
   `CATEGORIA_idCATEGORIA` int(11) NOT NULL,
   `dificultad` enum('Basico','Intermedio','Avanzado') NOT NULL,
-  `NombreBaseDatos` enum('World', 'Sakila', 'Nwind') NOT NULL
+  `NombreBaseDatos` enum('World','Sakila','Nwind') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `problema`
 --
 
-INSERT INTO `problema` (`idPROBLEMA`, `Titulo`, `Descripcion`, `DOCENTE_idUsuario`, `Solucion`, `CATEGORIA_idCATEGORIA`, `dificultad`) VALUES
-(10, 'Select dificil', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 1, 'Basico'),
-(18, 'Seleccion basica', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 3, 'Basico');
+INSERT INTO `problema` (`idPROBLEMA`, `Titulo`, `Descripcion`, `DOCENTE_idUsuario`, `Solucion`, `CATEGORIA_idCATEGORIA`, `dificultad`, `NombreBaseDatos`) VALUES
+(10, 'Select dificil', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 1, 'Basico', 'World'),
+(18, 'Seleccion basica', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 3, 'Basico', 'World');
 
 --
 -- Índices para tablas volcadas
@@ -167,7 +186,7 @@ ALTER TABLE `categoria`
 ALTER TABLE `docente`
   ADD PRIMARY KEY (`idDocente`),
   ADD UNIQUE KEY `UsuarioA_UNIQUE` (`Usuario`),
-   ADD UNIQUE KEY `Email_UNIQUE` (`Email`);
+  ADD UNIQUE KEY `Email_UNIQUE` (`Email`);
 
 --
 -- Indices de la tabla `envio`
@@ -182,8 +201,8 @@ ALTER TABLE `envio`
 --
 ALTER TABLE `grupo`
   ADD PRIMARY KEY (`idGrupo`),
-  ADD UNIQUE KEY `CodigoGrupo_UNIQUE` (`CodigoGrupo`),
   ADD KEY `fk_GRUPO_DOCENTE1_idx` (`DOCENTE_idDocente1`);
+ALTER TABLE `grupo` ADD FULLTEXT KEY `CodigoGrupo` (`CodigoGrupo`);
 
 --
 -- Indices de la tabla `problema`
@@ -202,7 +221,7 @@ ALTER TABLE `problema`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -220,7 +239,7 @@ ALTER TABLE `docente`
 -- AUTO_INCREMENT de la tabla `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `NumeroIntento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `NumeroIntento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `problema`

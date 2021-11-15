@@ -1,6 +1,9 @@
 <?php
+    session_start();
     include("Conexion.php");
 	$conexion = conectar();
+    $id=$_SESSION['id'];
+    echo $id;
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creación de Problema</title>
+    <title>Generar Codigos</title>
     <link rel="shortcut icon" href="../img/favicon2.ico" />
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../css/style-problems.css">
@@ -111,15 +114,18 @@
                                 <select class="form-select" onchange="return getGrupo();" name="grupo" id="txtGrupo">
                                     <option value="default" selected>Seleccione una opción</option>
                                     <?php
-                                        $sentencia = "select idGrupo from grupo where DOCENTE_idDocente1 = 1 order by idGrupo;";
+                                        $sentencia = sprintf("select idGrupo from grupo where DOCENTE_idDocente1 = %d;",$id);
                                         $resultado = mysqli_query($conexion,$sentencia);
+                                        if($resultado){
+                                        
                                         while($rows=mysqli_fetch_array($resultado)){
+                                            echo $rows['idGrupo'];
                                     ?>
 
                                     <option value="<?php echo $rows['idGrupo']; ?>">Grupo <?php echo $rows['idGrupo']; ?></option>
 
                                     <?php
-                                        }
+                                        }}
                                     ?>
                                 </select>
                                 </div>
@@ -170,8 +176,9 @@
                             <tbody>
                                 
                                     <?php
-                                        $sql = "select idGrupo,CodigoGrupo  from grupo where DOCENTE_idDocente1 = 1 order by idGrupo;";
+                                        $sql = sprintf("select idGrupo, CodigoGrupo from grupo where DOCENTE_idDocente1 = %d;",$id);
                                         $res = mysqli_query($conexion,$sql);
+                                        if($res){
                                         while($rowsTable=mysqli_fetch_array($res)){
                                     ?>
                                     <tr>
@@ -189,7 +196,7 @@
                                     
                                     </tr>
                                     <?php
-                                        }
+                                        }}
                                     ?>
                                 
                             </tbody>
