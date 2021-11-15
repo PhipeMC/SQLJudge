@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +8,10 @@
     <title>Listado de problemas</title>
     <link rel="shortcut icon" href="img/favicon2.ico"/>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styleListadoProblemas.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">  
+
+    <link rel="stylesheet" href="css/style-ProblemList.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script defer src="js/all.js"></script>
@@ -30,16 +34,16 @@
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../SQLJudge/php/listaProblemas.php">Lista de problemas</a></li>
-                                <li><a class="dropdown-item" href="">Ranking</a></li>
+                                <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
+                                <li><a class="dropdown-item" href="../profile.html">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="../profile.html">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
@@ -51,125 +55,105 @@
                 </div>
             </div>
         </nav>
-
-    
         <div class="container mt-3">
-            <div class="row align-items-start">
-                <div class="col-sm-4">
-                    <h1>Filtro</h1>
-                    <div>
-                        <p>
-                            Nombre: <input type="Buscador" name="problema" 
-                            placeholder="Nombre del problema" />
-                        </p>
-                    </div>
-                    <div class="row justify-content-center m-2">
-                        <form action="" class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-lg">Buscar</button>
-                        </form>
-                        
-                    </div>
-                    <div>
-                        <p>
-                            Ordenar por: <br>
-                            <input type="radio" name="ordenar" value="dificultad"> Dificultad <br>
-                            <input type="radio" name="ordenar" value="resultos"> Problemas Resueltos <br>
-                            <input type="radio" name="ordenar" value="nombre"> Nombre <br>
-                            <input type="radio" name="ordenar" value="numero"> Numero de problemas <br>
-                            
-                        </p>
-                    </div>
-                    
-                    <div class="row justify-content-center m-2">
-                        <form action="" class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-lg">Ordenar</button>
-                        </form>
-                        
-                    </div>
-                    
-                     
-                </div>
-
-                    <div class="col mb-5 p-2">
-                        <h1>## LISTA DE PROBLEMAS ##</h1>
-                        <table class="table table-dark table-hover">
-                            <thead>
-                              <tr >
+                <h1>## LISTA DE PROBLEMAS ##</h1>
+                <table id="tablasLista" class="table table-dark table-hover" style="width:100%">
+                        <thead>
+                            <tr >
                                 <th scope="col" >#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Resuelto</th>
                                 <th scope="col">Dicultad</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">001</th>
-                                <td>Basic Select</td>
-                                <td>100</td>
-                                <td>Baja</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">002</th>
-                                <td>Customer Address</td>
-                                <td>99</td>
-                                <td>Media</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">003</th>
-                                <td>Under 10 or Greater Than 100</td>
+                                <th scope="col">Resuelto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <th scope="row">001</th>
+                              <td>Basic Select</td>
+                              <td>100</td>
+                              <td>Baja</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">002</th>
+                              <td>Customer Address</td>
+                              <td>99</td>
+                              <td>Media</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">003</th>
+                              <td>Under 10 or Greater Than 100</td>
+                              <td>55</td>
+                              <td>Baja</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">004</th>
+                              <td>Executive Representatives</td>
+                              <td>5</td>
+                              <td>Alta</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">005</th>
+                              <td>Categories</td>
+                              <td>15</td>
+                              <td>Alta</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">006</th>
+                              <td>Providers' City in Alphabetical Order</td>
+                              <td>93</td>
+                              <td>Baja</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">007</th>
+                              <td>Higher and Lower Price</td>
+                              <td>32</td>
+                              <td>Media</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">008</th>
+                              <td>Products by Categories</td>
+                              <td>45</td>
+                              <td>Media</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">009</th>
+                              <td>Average Value of Products</td>
+                              <td>80</td>
+                              <td>Baja</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">010</th>
+                              <td>Action Movies</td>
+                              <td>15</td>
+                              <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">011</th>
+                                <td>Contest</td>
                                 <td>55</td>
-                                <td>Baja</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">004</th>
-                                <td>Executive Representatives</td>
-                                <td>5</td>
-                                <td>Alta</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">005</th>
-                                <td>Categories</td>
-                                <td>15</td>
-                                <td>Alta</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">006</th>
-                                <td>Providers' City in Alphabetical Order</td>
-                                <td>93</td>
-                                <td>Baja</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">007</th>
-                                <td>Higher and Lower Price</td>
-                                <td>32</td>
                                 <td>Media</td>
                               </tr>
                               <tr>
-                                <th scope="row">008</th>
-                                <td>Products by Categories</td>
-                                <td>45</td>
-                                <td>Media</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">009</th>
-                                <td>Average Value of Products</td>
-                                <td>80</td>
-                                <td>Baja</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">010</th>
-                                <td>Action Movies</td>
-                                <td>15</td>
+                                <th scope="row">012</th>
+                                <td>Lawyers</td>
+                                <td>8</td>
                                 <td>Alta</td>
                               </tr>
-                            </tbody>
+                          </tbody>
                         </table>
-                     </div>
-            </div>
+                    
+            
         </div>
     </div>
-</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $('#tablasLista').DataTable();
+
+</script>
+</body>
 </html>
