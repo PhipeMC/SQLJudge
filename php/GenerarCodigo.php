@@ -3,7 +3,7 @@
     include("Conexion.php");
 	$conexion = conectar();
     $id=$_SESSION['id'];
-    echo $id;
+    //echo $id;
 ?>
 
 <!DOCTYPE html>
