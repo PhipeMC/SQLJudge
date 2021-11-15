@@ -27,6 +27,8 @@ if (mysqli_num_rows($validarLogin) > 0) {
     $_SESSION['pass'] = $validarArr['3'];
     $_SESSION['nombres'] = $validarArr['4'];
     $_SESSION['apellidos'] = $validarArr['5'];
+    $_SESSION['escuela'] = $validarArr['6']; 
+    $_SESSION['genero'] = $validarArr['7'];
 
     if($tipo == "alumno"){
         $_SESSION['tipo'] ="alumno";
@@ -45,4 +47,3 @@ if (mysqli_num_rows($validarLogin) > 0) {
             ';
     exit;
 }
-?>

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLJudge - Login</title>
     <link rel="shortcut icon" href="img/favicon2.ico" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style-access.css">
 </head>
 
@@ -17,13 +18,16 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -33,7 +37,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="CrearProblema.php">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -47,7 +51,7 @@
     <main class="container d-flex flex-row justify-content-center">
         <div class="dark-container" style="margin-left: 8%; margin-right: .4%;
         margin-top: 11%;">
-            <form action="php/login.php" class="py-4 px-4" method="POST">
+            <form action="php/login.php" class="py-4 px-4" method="post">
                 <div class="row g-3 px-1">
                     <div class="col-12">
                         <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5>
@@ -60,7 +64,8 @@
                         <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña" required>
+                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia"
+                            placeholder="Contraseña" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>
@@ -73,9 +78,8 @@
                         <a href="Recuperar.html" id="olvidasteContraseña">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div class="col-12 pb-3">
-                        <button id="btnIniciarSesion"> Iniciar Sesión</button>
+                        <button type="submit" id="btnIniciarSesion">Iniciar Sesión</button>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -97,7 +101,8 @@
                         <input type="password" id="txtContraseniaR" class="form-control" placeholder="Contraseña">
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtConfirmarContrasenia" placeholder="Confirmar contraseña">
+                        <input type="password" class="form-control" id="txtConfirmarContrasenia"
+                            placeholder="Confirmar contraseña">
                     </div>
                     <div class="col-12">
                         <button id="btnRegistrar">Registrate</button>
@@ -110,6 +115,8 @@
 </body>
 
 <script defer src="js/all.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
 
 </html>
