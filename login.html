@@ -48,9 +48,9 @@
         <div class="dark-container" style="margin-left: 8%; margin-right: .4%;
         margin-top: 11%;">
             <form action="php/login.php" class="py-4 px-4" method="POST">
-                <div class="row g-3 px-1">
+                <div class="row g-5 px-1">
                     <div class="col-12">
-                        <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5>
+                        <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5><br>
                         <h1 class="text-center text-white">
                             <i class="fas fa-sign-in-alt" style="color: #3366FF;"></i>
                             <strong> Inicia sesión aquí</strong>
@@ -91,13 +91,29 @@
                         </h1>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="txtUsuarioR" name="correo" placeholder="Correo">
+                        <input type="text" class="form-control" id="txtNombreR" name="nombreR" placeholder="Nombre" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" id="txtContraseniaR" class="form-control" placeholder="Contraseña">
+                        <input type="text" class="form-control" id="txtApellidoR" name="ApellidoR" placeholder="Apellido" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtConfirmarContrasenia" placeholder="Confirmar contraseña">
+                        <input type="text" class="form-control" id="txtUsuarioR" name="UsuarioR" placeholder="Usuario" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" class="form-control" id="txtCorreoR" name="correoR" placeholder="Correo" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="password" class="form-control" id="txtContraseniaR" name="contraseniaR" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="password" class="form-control" id="txtConfirmarContraseniaR" name="contraseniaR" placeholder="Confirmar Contraseña" required>
+                    </div>  
+                    <div class="col-12">
+                        <select id="selectUserR" name="tipoUserR" class="form-select" required>
+                            <option selected>¿Tipo de usuario?...</option>
+                            <option value="alumno">Alumno</option>
+                            <option value="docente">Docente</option>
+                        </select>
                     </div>
                     <div class="col-12">
                         <button id="btnRegistrar">Registrate</button>

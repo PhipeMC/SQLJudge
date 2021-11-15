@@ -23,7 +23,7 @@ body {
     background-position: 0.5em;
 }
 
-#txtUsuarioR{
+#txtCorreoR{
     background-image: url(../img/envelope-solid.svg);
     background-repeat: no-repeat;
     background-size: 1.4em;
@@ -47,8 +47,15 @@ body {
     padding: 0.5em 0.5em 0.5em 2.5em;
     background-position: 0.5em;
 }
-#txtContraseniaR, #txtConfirmarContrasenia{
+#txtContraseniaR, #txtConfirmarContraseniaR{
     background-image: url(../img/lock-solid.svg);
+    background-repeat: no-repeat;
+    background-size: 1.4em;
+    padding: 0.5em 0.5em 0.5em 2.5em;
+    background-position: 0.5em;
+}
+#selectUserR, #txtNombreR, #txtApellidoR, #txtUsuarioR{
+    background-image: url(../img/user-solid.svg);
     background-repeat: no-repeat;
     background-size: 1.4em;
     padding: 0.5em 0.5em 0.5em 2.5em;
