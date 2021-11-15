@@ -8,6 +8,7 @@ if(isset($_SESSION['tipo'])){
 }
     include("Conexion.php");
 	$conexion = conectar();
+    $id=$_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -118,15 +119,18 @@ if(isset($_SESSION['tipo'])){
                                 <select class="form-select" onchange="return getGrupo();" name="grupo" id="txtGrupo">
                                     <option value="default" selected>Seleccione una opción</option>
                                     <?php
-                                        $sentencia = "select idGrupo from grupo where DOCENTE_idDocente1 = 1 order by idGrupo;";
+                                        $sentencia = sprintf("select idGrupo from grupo where DOCENTE_idDocente1 = %d;",$id);
                                         $resultado = mysqli_query($conexion,$sentencia);
+                                        if($resultado){
+                                        
                                         while($rows=mysqli_fetch_array($resultado)){
+                                            echo $rows['idGrupo'];
                                     ?>
 
                                     <option value="<?php echo $rows['idGrupo']; ?>">Grupo <?php echo $rows['idGrupo']; ?></option>
 
                                     <?php
-                                        }
+                                        }}
                                     ?>
                                 </select>
                                 </div>
@@ -177,8 +181,9 @@ if(isset($_SESSION['tipo'])){
                             <tbody>
                                 
                                     <?php
-                                        $sql = "select idGrupo,CodigoGrupo  from grupo where DOCENTE_idDocente1 = 1 order by idGrupo;";
+                                        $sql = sprintf("select idGrupo, CodigoGrupo from grupo where DOCENTE_idDocente1 = %d;",$id);
                                         $res = mysqli_query($conexion,$sql);
+                                        if($res){
                                         while($rowsTable=mysqli_fetch_array($res)){
                                     ?>
                                     <tr>
@@ -196,7 +201,7 @@ if(isset($_SESSION['tipo'])){
                                     
                                     </tr>
                                     <?php
-                                        }
+                                        }}
                                     ?>
                                 
                             </tbody>
