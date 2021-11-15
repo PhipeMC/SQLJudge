@@ -1,7 +1,6 @@
 <?php
 include("Conexion.php");
 $conexion = conectar();
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +41,7 @@ session_start();
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

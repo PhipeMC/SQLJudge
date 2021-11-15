@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Montserrat:wght@700&family=Space+Mono:ital,wght@0,700;1,400&display=swap");
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    padding: 10px 0 0 10px;
+}
+
+h1 {
+    font-family: "Inconsolata", monospace;
+    font-weight: 700;
+    font-size: 2.4rem;
+}
+
+main {
+    width: 100%;
+    height: auto;
+}
+
+.scarecrown {
+    width: 30rem;
+    height: 30rem;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 5rem;
+    background-image: url("../img/Scarecrow.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.section-text {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.section-text h2 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    font-family: "Space Mono", monospace;
+    color: #333333;
+    padding-left: 10px;
+}
+
+.section-text p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: "Space Mono", monospace;
+    color: #333333;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+
+.section-text a {
+    display: flex;
+    width: 200px;
+    height: 60px;
+    background-color: #333333;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 12px;
+    color: white;
+    text-decoration: none;
+    line-height: 2.1rem;
+}
+
+footer {
+    margin-top: 100px;
+    width: 100%;
+    height: 40px;
+}
+
+footer p {
+    text-align: center;
+    font-family: "Montserrat" monospace;
+    color: #bdbdbd;
+    font-size: 1.2rem;
+}

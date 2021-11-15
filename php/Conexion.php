@@ -1,11 +1,10 @@
 <?php
-	
 	function conectar(){
 
 		$servername = "localhost";  //Servidor
 		$database = "sql_judge";	//Base de datos
 		$username = "root";		//Usuario
-		$password = "";			//Contraseña
+		$password = "Tulumbas500*";			//Contraseña
 
 		// Crear conexión
 

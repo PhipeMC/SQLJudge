@@ -1,0 +1,32 @@
+main {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.section-img {
+  width: 50%;
+  height: 470px;
+  justify-content: center;
+  align-items: center;
+}
+.scarecrown {
+width: 400px;
+height: 400px;
+}
+
+.section-text {
+  width: 50%;
+  height: 470px;
+  justify-content: center;
+  align-items: center;
+}
+.section-text h2 {
+  margin-top: 90px;
+  width: 70%;
+  
+}
+
+.section-text p {
+  width: 50%;
+}

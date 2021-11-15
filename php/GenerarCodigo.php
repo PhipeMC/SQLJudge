@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(isset($_SESSION['tipo'])){
+    $usuario= $_SESSION['tipo'];
+    if($usuario=="alumno"){
+        header("location: 404.php");
+    }
+}
     include("Conexion.php");
 	$conexion = conectar();
 ?>
@@ -48,7 +55,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
