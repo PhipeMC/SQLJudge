@@ -45,3 +45,4 @@ if (mysqli_num_rows($validarLogin) > 0) {
             ';
     exit;
 }
+?>

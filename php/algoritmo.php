@@ -1,8 +1,14 @@
         <?php
         // put your code here
-
+    session_start();
+    if(isset($_SESSION['tipo'])){
+        $usuario= $_SESSION['tipo'];
+        if($usuario=="alumno"){
+            header("location: 404.php");
+        }
+    }
     include_once("Conexion.php");
-
+    
     //Sentencia ingresada por el usuario
     $strSQL = $_GET['strSQL'];
   
