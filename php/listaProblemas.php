@@ -13,13 +13,13 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLJudge - Lista de problemas</title>
     <link rel="shortcut icon" href="../img/favicon.ico" />
-    <link rel="stylesheet" href="../css/style-listaProblemas.css">
+    <link rel="stylesheet" href="../css/style-ProblemList.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styleListadoProblemas.css">
+
 </head>
 
 <body>
@@ -69,8 +69,8 @@ session_start();
             </div>
         </nav>
 
-        <div class="container mt-4">
-            <div class="dark-div mt-1 mx-1 mb-4 py-2 px-2">
+        <div class="container mt-4 pt-2 px-4">
+            <div class="dark-div mt-3 mb-4 py-2 px-2">
                 <h2 style="color: snow;"><i class="far fa-list-alt" style="color: #0247fe;"></i> <strong>Lista de problemas</strong></h2>
             </div>
             <table id="tablasLista" class="table table-dark table-hover" style="width:100%">

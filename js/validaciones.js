@@ -1,33 +1,52 @@
+function startSession() {
+    if (validation()) {
+        alert("Funciona");
+    } else {
+        alert("No funciona");
+    }
+}
+
 function validationLogin() {
-    var nombre = document.querySelector("#txtNombre").value;
-    var standarPrice = document.querySelector("#standarPrice").value;
-    var timeContract = document.querySelector("#timeContract").value;
-    var discount = document.querySelector("#discount").value;
+    var correo = document.querySelector("#txtUsuario").value;
+    var contra = document.querySelector("#txtContrasenia").value;
+    var tipo = document.querySelector("#selectUser").value;
 
     limpiarValidacionForm();
 
     let datosValidos = true;
 
-    if (nombre.trim().length >= 8 && nombre.trim().length < 46) {
-        document.querySelector("#txtNombre").classList.add("is-valid");
+    if (correo.trim().length >= 8 && correo.trim().length < 81) {
+        document.querySelector("#txtUsuario").classList.add("is-valid");
     } else {
-        document.querySelector("#txtNombre").classList.add("is-invalid");
+        document.querySelector("#txtUsuario").classList.add("is-invalid");
         datosValidos = false;
     }
 
-    if (standarPrice != "0") {
-        document.querySelector("#standarPrice").classList.add("is-valid");
+    if (contra.trim().length >= 8 && contra.trim().length < 21) {
+        document.querySelector("#txtContrasenia").classList.add("is-valid");
     } else {
-        document.querySelector("#standarPrice").classList.add("is-invalid");
+        document.querySelector("#txtContrasenia").classList.add("is-invalid");
         datosValidos = false;
     }
 
-    if (timeContract != "Elija...") {
-        document.querySelector("#timeContract").classList.add("is-valid");
+    if (tipo != "¿Tipo de usuario?...") {
+        document.querySelector("#selectUser").classList.add("is-valid");
     } else {
-        document.querySelector("#timeContract").classList.add("is-invalid");
+        document.querySelector("#selectUser").classList.add("is-invalid");
         datosValidos = false;
     }
 
     return datosValidos;
+}
+
+function limpiarValidacionForm() {
+    document.querySelectorAll(`#frmLogin input`).forEach(function (element) {
+        element.classList.remove("is-valid");
+        element.classList.remove("is-invalid");
+    });
+
+    document.querySelectorAll(`#frmLogin select`).forEach(function (element) {
+        element.classList.remove("is-valid");
+        element.classList.remove("is-invalid");
+    });
 }
