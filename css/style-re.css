@@ -15,9 +15,16 @@
     background-color: rgba(0, 0, 0, 0.575);
 }
 
+.FormR{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
 .correoRC{
     padding: .3em .3em .3em .3em;
-    width: 90%;
+    width: 100%;
     border: none;
     margin: 1em;
     background-color: rgba(114, 114, 114, 0.5);
