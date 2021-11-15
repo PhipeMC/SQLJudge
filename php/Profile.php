@@ -1,3 +1,9 @@
+<?php
+include("Conexion.php");
+$conexion = conectar();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,9 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLJudge - Perfil</title>
-    <link rel="shortcut icon" href="img/favicon2.ico" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style-profile.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-profile.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script defer src="js/all.js"></script>
@@ -19,8 +24,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo"><i class="fas fa-terminal"
-                        style="color: #0247fe;"></i> SQL Code Judge</a>
+                <a class="navbar-brand" href="../index.html" id="logo"><i class="fas fa-terminal"></i>SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +48,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="../php/Profile.php">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
@@ -56,7 +60,7 @@
                                 <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../profile.html">Perfil</a></li>
+                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
                                 <li>
                                     <strong>
                                         <hr class="dropdown-divider text-primary">
@@ -75,31 +79,38 @@
                 <div class="card bg-dark col-profile text-center">
                     <div class="card-header">
                         <img src="img/9112c6afae8e9088ce9c407acdb22563.png" class="img-thumbnail" alt="..." id="avatar">
-                        <h5 id="username"><strong>%user%</strong></h5>
+                        <h5 id="username"><strong><?php echo $_SESSION['user']?></strong></h5>
                     </div>
                     <div class="card-body col profile-text">
                         <div class="group-container">
-                            <h5><strong>%name%</strong></h5>
+                            <h5><strong><?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?></strong></h5>
                             <p>Nombre</p>
                         </div>
                         <div class="group-container overflow-hidden">
-                            <h5><strong>123456789012345678901234567890123456789012345</strong></h5>
+                            <h5><strong>
+                            <?php 
+                                $id = $_SESSION['id'];
+                                $count = mysqli_query($conexion, "SELECT COUNT(*) FROM envio WHERE ALUMNO_idAlumno = '$id'");
+                                $array = mysqli_fetch_array($count);
+                                echo $array['0'];
+                            ?>
+                            </strong></h5>
                             <p>Problemas resueltos</p>
                         </div>
                         <div class="group-container">
-                            <h5><strong>%school%</strong></h5>
+                            <h5><strong><?php echo $_SESSION['escuela'] ?></strong></h5>
                             <p>Institución educativa</p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-primary editButton" id="editProfile" data-bs-toggle="modal"
+                        <button type="subbmit" class="btn btn-primary editButton" id="editProfile" data-bs-toggle="modal"
                             data-bs-target="#editData">Editar perfil</button>
                     </div>
                 </div>
                 <div class="card col bg-dark text-center card-stats">
                     <h1>Estadisticas</h1>
                     <canvas id="myChart"></canvas>
-                    <script src="js/charts.js"></script>
+                    <script src="../js/charts.js"></script>
                 </div>
             </div>
         </div>
@@ -116,35 +127,33 @@
                         <div class="card">
                             <h5 class="card-header">Edita tu perfil</h5>
                             <div class="card-body">
-                                <form method="post" action="php/profile change.php">
+                                <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="txtUsuario" class="form-label">Correo electrónico</label>
-                                        <input type="email" name="email" id="txtEmail" class="form-control" required>
+                                        <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="" class="form-label">Nombre</label>
-                                        <input type="text" name="name" id="txtName" class="form-control" required>
+                                        <input type="text" name="name" id="txtName" class="form-control" value="<?php echo $_SESSION['nombres'] ?>" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="" class="form-label">Apellidos</label>
-                                        <input type="text" name="lastName" id="txtLastName" class="form-control"
-                                            required>
+                                        <input type="text" name="lastName" id="txtLastName" class="form-control" value="<?php echo $_SESSION['apellidos'] ?>" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="txtSchool" class="form-label">Escuela</label>
-                                        <input type="text" name="school" id="txtSchool" class="form-control" required>
+                                        <input type="text" name="school" id="txtSchool" class="form-control" value="<?php echo $_SESSION['escuela'] ?>" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="selGender" class="form-label">Género</label>
-                                        <select class="form-select form-select-sm" id="selGender" name="gender"
-                                            required>
+                                        <select class="form-select form-select-sm" id="selGender" name="gender" required>
                                             <option selected>Prefiero no responder</option>
-                                            <option value="1">Masculino</option>
-                                            <option value="2">Femenino</option>
-                                            <option value="3">Otro</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                            <option value="Otro">Otro</option>
                                         </select>
                                     </div>
-                                    <input type="text" name="username" value="Alu3" style="visibility: hidden;">
+                                    <input type="text" name="username" value="<?php echo $_SESSION['user'] ?>" style="visibility: hidden;">
                                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                 </form>
                             </div>
@@ -153,7 +162,7 @@
                         <div class="card">
                             <h5 class="card-header">Cambiar contraseña</h5>
                             <div class="card-body">
-                                <form action="">
+                                <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="txtPasswordOld">Contraseña anterior</label>
                                         <input type="password" name="" id="txtPasswordOld" class="form-control" required>
@@ -164,8 +173,7 @@
                                     </div>
                                     <div class="group-input">
                                         <label for="txtPasswordRpt">Repite la contraseña</label>
-                                        <input type="password" name="" id="txtPasswordRpt" class="form-control"
-                                            required>
+                                        <input type="password" name="" id="txtPasswordRpt" class="form-control" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                 </form>
@@ -175,15 +183,14 @@
                         <div class="card">
                             <h5 class="card-header">Cambiar imagen de perfil</h5>
                             <div class="card-body">
-                                <form action="">
-                                    <div class="group-input">
-                                        <label for="" class="form-label"></label>
-                                        <input type="file" class="form-control disabled" aria-label="file example"
-                                            accept="image/png, image/jpeg" name="imgProfile" id="fileProfile" required>
-                                        <div class="invalid-feedback">Archivo invalido</div>
-                                    </div>
-                                    <button type="button" class="btn btn-primary">Guardar cambios</button>
-                                </form>
+                                <form action=""></form>
+                                <div class="group-input">
+                                    <label for="" class="form-label"></label>
+                                    <input type="file" class="form-control" aria-label="file example"
+                                        accept="image/png, image/jpeg" name="imgProfile" id="fileProfile" required>
+                                    <div class="invalid-feedback">Archivo invalido</div>
+                                </div>
+                                <button type="button" class="btn btn-primary">Guardar cambios</button>
                             </div>
                         </div>
                     </div>
@@ -195,5 +202,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-
 </html>

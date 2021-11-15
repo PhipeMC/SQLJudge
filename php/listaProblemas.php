@@ -1,6 +1,7 @@
 <?php
 include("Conexion.php");
 $conexion = conectar();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ $conexion = conectar();
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.html">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -54,7 +55,7 @@ $conexion = conectar();
                                 <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../profile.html">Perfil</a></li>
+                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
                                 <li>
                                     <strong>
                                         <hr class="dropdown-divider text-primary">
