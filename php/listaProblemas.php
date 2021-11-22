@@ -80,6 +80,7 @@ session_start();
                         <th scope="col">Nombre</th>
                         <th scope="col">Dicultad</th>
                         <th scope="col">Resuelto</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,6 +101,9 @@ session_start();
                             <td><?php echo $mostra['titulo'] ?></td>
                             <td><?php echo $mostra['dificultad'] ?></td>
                             <td><?php echo $mostra['Resueltos'] ?></td>
+                            <form action="Problema.php">
+                            <td><button type="submit" class="btn btn-primary btn-sm rounded-3" name="id" value="<?php echo $mostra['idPROBLEMA'] ?>">Ver</button></td>
+                            </form>
                         </tr>
                     <?php
                     }
