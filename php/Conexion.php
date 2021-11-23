@@ -18,7 +18,7 @@
 		$servername = "localhost";  //Servidor
 		$database = $BD;	//Base de datos
 		$username = "root";		//Usuario
-		$password = "Tulumbas500*";			//Contraseña
+		$password = "";			//Contraseña
 
 		// Crear conexión
 
