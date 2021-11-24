@@ -6,7 +6,6 @@
 -- Tiempo de generación: 24-11-2021 a las 00:36:45
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -23,6 +22,8 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE DATABASE sql_judge;
+USE sql_judge;
 --
 -- Estructura de tabla para la tabla `alumno`
 --
