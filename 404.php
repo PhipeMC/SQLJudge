@@ -21,7 +21,7 @@
         <section class="section-text">
             <h2>I have bad news for you</h2>
             <p>The page you are looking for might be removed or is temporarily unavailable</p>
-            <a href="#">BACK TO HOMEPAGE</a>
+            <a href="../SQLJudge/index.php">BACK TO HOMEPAGE</a>
         </section>
     </main>
     <footer>

@@ -27,7 +27,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html" id="logo"><i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
+                <a class="navbar-brand" href="../index.php" id="logo"><i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
                                         <hr class="dropdown-divider text-primary">
                                     </strong>
                                 </li>
-                                <li><a class="dropdown-item" href="../php/logout.php">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="../data/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -2,7 +2,7 @@
 session_start();
 // Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
 if (isset($_SESSION['id'])) {
-    header("Location: profile.html");
+    header("Location: ../SQLJudge/php/listaProblemas.php");
 }
 ?>
 
@@ -17,14 +17,14 @@ if (isset($_SESSION['id'])) {
     <title>SQLJudge - Login</title>
     <link rel="shortcut icon" href="img/favicon2.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style-access.css">
+    <link rel="stylesheet" href="../SQLJudge/css/style-main.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo">
+                <a class="navbar-brand" href="index.php" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@ if (isset($_SESSION['id'])) {
     <main class="container d-flex flex-row justify-content-center">
 
         <div class="dark-container-login">
-            <form action="data/login.php" class="py-4 px-4" method="POST">
+            <form action="data/login.php" class="py-4 px-4 d-flex align-items-center" method="POST">
                 <div class="row g-3 px-1">
                     <div class="col-12">
                         <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5>
@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])) {
                         <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" maxlength="80" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña"  maxlength="20" required>
+                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña" maxlength="20" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>
@@ -124,6 +124,22 @@ if (isset($_SESSION['id'])) {
         </div>
     </main>
 </body>
+<footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3">
+    <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
+
+    <a href="index.html" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
+        <li class="nav-item">
+            <a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
+                <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
+        </li>
+    </ul>
+</footer>
 
 <script defer src="js/all.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

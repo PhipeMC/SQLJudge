@@ -15,8 +15,7 @@ if (isset($_SESSION['tipo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación de Problema</title>
     <link rel="shortcut icon" href="img/favicon2.ico" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style-problems.css">
+    <link rel="stylesheet" href="css/style-main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -26,7 +25,7 @@ if (isset($_SESSION['tipo'])) {
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo">
+                <a class="navbar-brand" href="index.php" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,7 +64,7 @@ if (isset($_SESSION['tipo'])) {
                                         <hr class="dropdown-divider text-primary">
                                     </strong>
                                 </li>
-                                <li><a class="dropdown-item" href="../data/logout.php">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="../SQLJudge/data/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -75,7 +74,7 @@ if (isset($_SESSION['tipo'])) {
     </header>
 
     <main class="container">
-        <div class="dark-container card mt-4 rounded">
+        <div class="dark-container card mt-4">
             <div class="dark-div mt-3 mx-3 py-2 px-2">
                 <h2 style="color: snow;"><i class="fas fa-edit" style="color: #0247fe;"></i> <strong>Crear
                         problema</strong></h2>
