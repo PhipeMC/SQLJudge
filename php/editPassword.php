@@ -1,5 +1,5 @@
 <?php 
-    include("Conexion.php");
+    include_once("../data/conexion.php");
     $conexion = conectar();
 
     /*$oldPassword = $_POST[''];

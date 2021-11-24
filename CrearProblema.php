@@ -5,6 +5,8 @@ if (isset($_SESSION['tipo'])) {
     if ($usuario == "alumno") {
         header("location: 404.php");
     }
+}else{
+    header("location: 404.php");
 } ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +39,7 @@ if (isset($_SESSION['tipo'])) {
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="listaProblemas.html">Lista de problemas</a></li>
+                                <li><a class="dropdown-item " href="php/listaProblemas.php">Lista de problemas</a></li>
                                 <li><a class="dropdown-item" href="">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -46,7 +48,7 @@ if (isset($_SESSION['tipo'])) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="../SQLJudge/php/Profile.php">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
@@ -58,7 +60,7 @@ if (isset($_SESSION['tipo'])) {
                                 <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
+                                <li><a class="dropdown-item " href="php/Profile.php">Perfil</a></li>
                                 <li>
                                     <strong>
                                         <hr class="dropdown-divider text-primary">

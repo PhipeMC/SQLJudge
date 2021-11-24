@@ -5,6 +5,8 @@ if (isset($_SESSION['tipo'])) {
     if ($usuario == "alumno") {
         header("location: 404.php");
     }
+}else{
+    header("location: 404.php");
 } ?>
 <!DOCTYPE html>
 <html lang="es">

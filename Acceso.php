@@ -2,7 +2,7 @@
 session_start();
 // Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
 if (isset($_SESSION['id'])) {
-    header("Location: ../SQLJudge/php/listaProblemas.php");
+    header("Location: php/listaProblemas.php");
 }
 ?>
 
