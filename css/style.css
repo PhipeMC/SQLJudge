@@ -36,3 +36,7 @@ body {
 .dropdown-item:hover {
   color: #0247fe !important;
 }
+
+.footer-color {
+  background-color: #1a1f2c;
+}

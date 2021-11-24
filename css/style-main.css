@@ -1,43 +1,212 @@
+/*  ---TODOS---   */
+
 body {
-    height: 100%;
-    background-image: url('../img/4882065.svg');
-    background-size: cover;
-    background-size: 150%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    color: snow!important;
+  height: 100%;
+  background-image: url("../img/4882065.svg");
+  background-size: cover;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: snow !important;
 }
 
-.blue-container{
-    background-color: #0e2e87;
+.dark-container {
+  background-color: #1f2533 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 20px !important;
 }
 
-.dark-container{
-    background-color: #1F2533;
+.dark-div {
+  background-color: #283044 !important;
+  border-radius: 10px !important;
 }
 
-.img{
-    background-color: #1F2533;
+button {
+  font-size: 1rem;
+  background-color: #0247fe;
+  color: snow;
+  border: 1px solid;
+  border-radius: 13px;
+  height: 160%;
+  border: none;
+  width: 100%;
 }
 
-.btn-SQL{
-    border-radius: 10px!important;
+button:hover {
+  background-color: #346afe;
+  cursor: pointer;
 }
 
-#navbarDropdown{
-    color: white;
+#navbarDropdown {
+  color: white;
 }
 
-#navbarDropdown:hover{
-    color: #0247fe;
+#navbarDropdown:hover {
+  color: #0247fe;
 }
 
 .dropdown-item {
-    color: white !important;
+  color: white !important;
 }
 
-.dropdown-item:hover{
-    color: #0247fe !important;
+.dropdown-item:hover {
+  color: #0247fe !important;
 }
 
+.footer-color {
+  background-color: #1a1f2c;
+}
+
+/*  ---INDEX---   */
+.blue-container {
+  background-color: #0e2e87;
+}
+
+
+.img {
+  background-color: #1f2533;
+}
+
+.btn-SQL {
+  border-radius: 10px !important;
+}
+
+/*  ---ACCESS---   */
+.dark-container-sign {
+  background-color: #1f2533 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 20px !important;
+  margin-right: 8%;
+  margin-left: 0.4%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.dark-container-login {
+  background-color: #1f2533 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 20px !important;
+  margin-left: 8%;
+  margin-right: 0.4%;
+  margin-top: 5%;
+}
+
+#txtUsuario {
+  background-image: url(../img/envelope-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+#txtUsuarioR {
+  background-image: url(../img/envelope-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+#selectUser {
+  background-image: url(../img/user-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+#txtContrasenia {
+  background-image: url(../img/lock-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+#txtContraseniaR,
+#txtConfirmarContrasenia {
+  background-image: url(../img/lock-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+
+/*  ---RECUPERAR CONTRASEÑA---   */
+.PadreRC {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  justify-content: center;
+}
+
+.ContenedorRC {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin-right: 0.5em;
+  margin-top: 15%;
+  background-color: rgba(0, 0, 0, 0.575);
+}
+
+.FormR {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.correoRC {
+  padding: 0.3em 0.3em 0.3em 0.3em;
+  width: 100%;
+  border: none;
+  margin: 1em;
+  background-color: rgba(114, 114, 114, 0.5);
+  border-radius: 7px;
+}
+.correoRC ::placeholder {
+  color: rgb(122, 122, 122);
+}
+
+.BotonRC {
+  font-size: large;
+  margin: 1em;
+  padding: 10px 50px 10px 50px;
+  color: white;
+  background-color: #3366fc;
+  border: none;
+  border-radius: 7px;
+}
+
+.h1RC {
+  padding: 15px;
+  color: white;
+}
+
+.h4RC {
+  color: white;
+}
+
+
+/*  ---CREACION DE PROBLEMA---   */
+.form-label {
+  color: snow !important;
+}
+
+.btn-SQL {
+  color: #fff !important;
+  background-color: #0247fe !important;
+  border-color: #0247fe !important;
+}
+
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
