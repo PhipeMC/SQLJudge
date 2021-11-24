@@ -1,3 +1,12 @@
+<?php
+session_start();
+// Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
+if (isset($_SESSION['id'])) {
+    header("Location:index.html");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,8 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLJudge - Login</title>
     <link rel="shortcut icon" href="img/favicon2.ico" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style-access.css">
 </head>
 
@@ -18,16 +26,13 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -49,8 +54,9 @@
         </nav>
     </header>
     <main class="container d-flex flex-row justify-content-center">
+
         <div class="dark-container-login">
-            <form action="php/login.php" class="py-4 px-4" method="post">
+            <form action="data/login.php" class="py-4 px-4" method="POST">
                 <div class="row g-3 px-1">
                     <div class="col-12">
                         <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5>
@@ -59,13 +65,18 @@
                             <strong> Inicia sesión aquí</strong>
                         </h1>
                     </div>
+                    <?php
+                    if (!empty($_GET['error'])) {
+                    ?>
+                        <div class="invalid-feedback">
+                            Usuario o contraseña no válidos, por favor intenta de nuevo.
+                        </div>
+                    <?php } ?>
                     <div class="col-12">
-                        <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo"
-                            required>
+                        <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" maxlength="80" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia"
-                            placeholder="Contraseña" required>
+                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña" minlength="8" maxlength="20" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>
@@ -83,6 +94,7 @@
                 </div>
             </form>
         </div>
+
         <div class="dark-container-sign">
             <form action="php/RegistroUsuario.php" class="py-4 px-4" method="POST">
                 <div class="row g-3 px-1">
@@ -94,28 +106,22 @@
                         </h1>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="txtNombreR" name="nombreR" placeholder="Nombre"
-                            required>
+                        <input type="text" class="form-control" id="txtNombreR" name="nombreR" placeholder="Nombre" required>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="txtApellidoR" name="ApellidoR"
-                            placeholder="Apellido" required>
+                        <input type="text" class="form-control" id="txtApellidoR" name="ApellidoR" placeholder="Apellido" required>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="txtUsuarioR" name="UsuarioR" placeholder="Usuario"
-                            required>
+                        <input type="text" class="form-control" id="txtUsuarioR" name="UsuarioR" placeholder="Usuario" required>
                     </div>
                     <div class="col-12">
-                        <input type="email" class="form-control" id="txtCorreoR" name="correoR" placeholder="Correo"
-                            required>
+                        <input type="email" class="form-control" id="txtCorreoR" name="correoR" placeholder="Correo" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtContraseniaR" name="contraseniaR"
-                            placeholder="Contraseña" required>
+                        <input type="password" class="form-control" id="txtContraseniaR" name="contraseniaR" placeholder="Contraseña" minlength="8" maxlength="20" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtConfirmarContraseniaR"
-                            name="confcontraseniaR" placeholder="Confirmar Contraseña" required>
+                        <input type="password" class="form-control" id="txtConfirmarContraseniaR" name="confcontraseniaR" placeholder="Confirmar Contraseña" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUserR" name="tipoUserR" class="form-select" required>
@@ -134,8 +140,6 @@
 </body>
 
 <script defer src="js/all.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 </html>
