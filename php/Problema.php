@@ -1,6 +1,11 @@
 <?php
 session_start();
-include("Conexion.php");
+if (isset($_SESSION['tipo'])) {
+    
+}else{
+    header("location: ../404.php");
+}
+include_once("../data/conexion.php");
 $conexion = conectar();
 $idAlumno = $_SESSION["id"];
 $id = $_GET["id"];
@@ -43,8 +48,8 @@ $rows = mysqli_fetch_array($res);
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../listaProblemas.html">Lista de problemas</a></li>
-                                <li><a class="dropdown-item" href="../profile.html">Ranking</a></li>
+                                <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
+                                <li><a class="dropdown-item" href="#">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -61,7 +66,7 @@ $rows = mysqli_fetch_array($res);
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="Profile.php">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
@@ -73,7 +78,7 @@ $rows = mysqli_fetch_array($res);
                                 <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
+                                <li><a class="dropdown-item " href="Profile.php">Perfil</a></li>
                                 <li>
                                     <strong>
                                         <hr class="dropdown-divider text-primary">

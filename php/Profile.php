@@ -1,9 +1,17 @@
 <?php
+    session_start();
+if (isset($_SESSION['tipo'])) {
+    $usuario = $_SESSION['tipo'];
+    if ($usuario == "docente") {
+        header("location: ../404.php");
+    }
+}else{
+    header("location: ../404.php");
+}
     require_once '../data/usuarioDAO.php';
     include("../data/conexion.php");
     $conexion = conectar();
     $dao = new usuarioDao($conexion);
-    session_start();
 ?>
 
 <!DOCTYPE html>
