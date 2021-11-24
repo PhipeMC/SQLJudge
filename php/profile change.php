@@ -1,18 +1,16 @@
 <?php
-    include("Conexion.php");
+    require_once '../data/usuarioDAO.php';
+    include("../data/conexion.php");
     $conexion = conectar();
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $lastname = $_POST['lastName'];
-    $school = $_POST['school'];
-    $gender = $_POST['gender'];
+    $dao = new usuarioDao($conexion);
 
     if($gender == "Prefiero no responder"){
-        $result = mysqli_query($conexion, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school' WHERE Usuario = '$username'");
+        $result = $dao -> editarUsuario(0, $_POST['email'], $_POST['name'], $_POST['lastName'], 
+        $_POST['school'], null, $_POST['username']);
     }else{
-        $result = mysqli_query($conexion, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school', Genero = '$gender' WHERE Usuario = '$username'");
+        $result = $dao -> editarUsuario(1, $_POST['email'], $_POST['name'], $_POST['lastName'], 
+        $_POST['school'], $_POST['gender'], $_POST['username']);
     }
 
     header("location: ../php/Profile.php");

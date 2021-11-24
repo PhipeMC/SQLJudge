@@ -1,7 +1,9 @@
 <?php
-include("Conexion.php");
-$conexion = conectar();
-session_start();
+    require_once '../data/usuarioDAO.php';
+    include("../data/conexion.php");
+    $conexion = conectar();
+    $dao = new usuarioDao($conexion);
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +14,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLJudge - Perfil</title>
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style-profile.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,7 +27,11 @@ session_start();
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
+<<<<<<< HEAD
                 <a class="navbar-brand" href="../index.php" id="logo"><i class="fas fa-terminal"></i>SQL Code Judge</a>
+=======
+            <a class="navbar-brand" href="../index.html" id="logo"><i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
+>>>>>>> 088ce909bf5f5fafb1f6a4fdd084320f722badee
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -38,20 +45,16 @@ session_start();
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../SQLJudge/php/listaProblemas.php">Lista de
-                                        problemas</a></li>
+                                <li><a class="dropdown-item " href="../php/listaProblemas.php">Lista de problemas</a></li>
                                 <li><a class="dropdown-item" href="">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
+                                <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../php/Profile.php">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
+                            <a class="nav-link active" aria-current="page" href="">Ayuda</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav  mb-2 mb-lg-0">
@@ -78,28 +81,25 @@ session_start();
             <div class="row">
                 <div class="card bg-dark col-profile text-center">
                     <div class="card-header">
-                        <img src="img/9112c6afae8e9088ce9c407acdb22563.png" class="img-thumbnail" alt="..." id="avatar">
+                        <img src="../img/default profile.jpg" class="img-thumbnail" alt="..." id="avatar">
                         <h5 id="username"><strong><?php echo $_SESSION['user']?></strong></h5>
                     </div>
                     <div class="card-body col profile-text">
                         <div class="group-container">
-                            <h5><strong><?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?></strong></h5>
                             <p>Nombre</p>
+                            <h5><strong><?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?></strong></h5>
                         </div>
                         <div class="group-container overflow-hidden">
+                            <p>Problemas resueltos</p>
                             <h5><strong>
                             <?php 
-                                $id = $_SESSION['id'];
-                                $count = mysqli_query($conexion, "SELECT COUNT(*) FROM envio WHERE ALUMNO_idAlumno = '$id'");
-                                $array = mysqli_fetch_array($count);
-                                echo $array['0'];
+                                echo $dao -> proResueltosUser($_SESSION['id']);
                             ?>
                             </strong></h5>
-                            <p>Problemas resueltos</p>
                         </div>
                         <div class="group-container">
-                            <h5><strong><?php echo $_SESSION['escuela'] ?></strong></h5>
                             <p>Institución educativa</p>
+                            <h5><strong><?php echo $_SESSION['escuela'] ?></strong></h5>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -153,8 +153,8 @@ session_start();
                                             <option value="Otro">Otro</option>
                                         </select>
                                     </div>
-                                    <input type="text" name="username" value="<?php echo $_SESSION['user'] ?>" style="visibility: hidden;">
-                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    <button type="submit" class="btn btn-primary">Guardar cambios</button> 
+                                    <input type="text" name="username" value="<?php echo $_SESSION['user'] ?>" style="visibility: hidden; width: 0; height: 0;">
                                 </form>
                             </div>
                         </div>
@@ -175,7 +175,7 @@ session_start();
                                         <label for="txtPasswordRpt">Repite la contraseña</label>
                                         <input type="password" name="" id="txtPasswordRpt" class="form-control" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    <button type="submit" class="btn btn-primary disabled">Guardar cambios</button>
                                 </form>
                             </div>
                         </div>
@@ -190,7 +190,7 @@ session_start();
                                         accept="image/png, image/jpeg" name="imgProfile" id="fileProfile" required>
                                     <div class="invalid-feedback">Archivo invalido</div>
                                 </div>
-                                <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                <button type="button" class="btn btn-primary disabled">Guardar cambios</button>
                             </div>
                         </div>
                     </div>
@@ -199,6 +199,7 @@ session_start();
         </div>
     </div>
 </body>
+<script defer src="../js/all.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>

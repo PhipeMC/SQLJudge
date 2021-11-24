@@ -102,4 +102,22 @@ class usuarioDao
 
         return $user;
     }
+
+    
+    public function editarUsuario($action, $email, $name, $lastname, $school, $gender, $username){
+        if($action == 0){
+            $update = mysqli_query($this -> mysqli, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school' WHERE Usuario = '$username'");
+        }else{
+            $update = mysqli_query($this -> mysqli, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school', Genero = '$gender' WHERE Usuario = '$username'");
+        }
+
+        return $update;
+    }
+
+    public function proResueltosUser($id){
+        $count = mysqli_query($this -> mysqli, "SELECT COUNT(*) FROM envio WHERE ALUMNO_idAlumno = '$id'");
+        $row = mysqli_fetch_array($count);
+        
+        return $row[0];
+    }
 }
