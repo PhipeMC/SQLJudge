@@ -92,8 +92,8 @@ if (isset($_SESSION['id'])) {
                         <img src="img/imgGroup.jpg" alt="" width="500px"">
                     </div>
                 </div>
-                <div class=" dark-container d-flex flex-column justify-content-center me-md-4 py-3 px-3 py-md-3 px-md-4 text-center text-white">
-                        <div class="my-3 py-3 px-md-5" style="background-color: #0247fe; ">
+                <div class=" dark-container d-flex flex-column justify-content-center rounded-0 me-md-4 py-3 px-3 py-md-3 px-md-4 text-center text-white">
+                        <div class="my-3 py-3 px-md-5 " style="background-color: #0247fe; ">
                             <h1><strong> <i class="fas fa-terminal"></i> SQL CODE JUDGE</strong></h1>
                         </div>
                         <div class="my-4 pt-5 pb-3">

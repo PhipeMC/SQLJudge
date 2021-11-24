@@ -20,7 +20,7 @@ if ($dao->comprobarUsuario($_POST['correo'], $_POST['contrasenia'], $_POST['tipo
     $_SESSION['pass'] = $user->contrasenia;
     $_SESSION['nombres'] = $user->nombre;
     $_SESSION['apellidos'] = $user->apellidos;
-    $_SESSION['escuela'] = $user->escuela; 
+    $_SESSION['escuela'] = $user->escuela;
     $_SESSION['genero'] = $user->genero;
     $_SESSION['tipo'] = $user->tipo;
 

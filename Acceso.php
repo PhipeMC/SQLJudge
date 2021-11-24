@@ -75,7 +75,7 @@ if (isset($_SESSION['id'])) {
                         <a href="Recuperar.html" id="olvidasteContraseña">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div class="col-12 pb-3">
-                        <button type="submit" id="btnIniciarSesion">Iniciar Sesión</button>
+                        <button class="button-access" type="submit" id="btnIniciarSesion">Iniciar Sesión</button>
                     </div>
                 </div>
             </form>
@@ -117,7 +117,7 @@ if (isset($_SESSION['id'])) {
                         </select>
                     </div>
                     <div class="col-12 pb-3">
-                        <button id="btnRegistrar">Registrate</button>
+                        <button class="button-access" id="btnRegistrar">Registrate</button>
                     </div>
                 </div>
             </form>

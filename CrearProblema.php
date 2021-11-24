@@ -5,7 +5,7 @@ if (isset($_SESSION['tipo'])) {
     if ($usuario == "alumno") {
         header("location: 404.php");
     }
-}else{
+} else {
     header("location: 404.php");
 } ?>
 <!DOCTYPE html>
@@ -20,6 +20,11 @@ if (isset($_SESSION['tipo'])) {
     <link rel="stylesheet" href="css/style-main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../SQLJudge/pluggin/codemirror/lib/codemirror.css">
+    <script src="../SQLJudge/pluggin/codemirror/lib/codemirror.js"></script>
+    <script src="../SQLJudge/pluggin/codemirror/mode/sql/sql.js"></script>
+
 
 </head>
 
@@ -140,9 +145,11 @@ if (isset($_SESSION['tipo'])) {
                             Por favor añada una descripción.
                         </div>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
-                        <textarea class="form-control" name="consulta" id="inputSolucion" rows="15" required></textarea>
-                        <div class="invalid-feedback">
-                            Por favor añada la consulta de solución.
+                        <div class="form-control" id="solution">
+                            <textarea class="form-control" name="consulta" id="inputSolucion" rows="15" required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor añada la consulta de solución.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -153,7 +160,7 @@ if (isset($_SESSION['tipo'])) {
                         <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> -->
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
-                        <button type="submit" class="btn btn-SQL mb-3">Crear problema</button>
+                        <button type="submit" class="btn btn-primary mb-3">Crear problema</button>
                     </div>
                 </form>
             </div>
@@ -180,8 +187,13 @@ if (isset($_SESSION['tipo'])) {
     </ul>
 </footer>
 
+
+
+
+
 <script defer src="js/all.js"></script>
 <script src="js/markdown.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 </html>
