@@ -52,18 +52,42 @@
                     </ul>
                     <ul class="navbar-nav  mb-2 mb-lg-0">
                         <li class="nav-item dropdown mx-5">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user" style="color: #0247fe;"></i>
+                                <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../profile.html">Perfil</a></li>
+                                <li><a class="dropdown-item " href="/profile.html">Perfil</a></li>
                                 <li>
                                     <strong>
                                         <hr class="dropdown-divider text-primary">
                                     </strong>
                                 </li>
-                                <li><a class="dropdown-item" href="../php/logout.php">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="/data/logout.php">Cerrar sesión</a></li>
                             </ul>
+
+                            <!--
+
+                                SI CAMBIAS A PHP LA CLASE
+                                <ul class="navbar-nav  mb-2 mb-lg-0">
+                        <li class="nav-item dropdown mx-5">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
+                            </a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
+                                <li>
+                                    <strong>
+                                        <hr class="dropdown-divider text-primary">
+                                    </strong>
+                                </li>
+                                <li><a class="dropdown-item" href="../data/logout.php">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                            -->
                         </li>
                     </ul>
                 </div>
@@ -156,7 +180,8 @@
                                 <form action="">
                                     <div class="group-input">
                                         <label for="txtPasswordOld">Contraseña anterior</label>
-                                        <input type="password" name="" id="txtPasswordOld" class="form-control" required>
+                                        <input type="password" name="" id="txtPasswordOld" class="form-control"
+                                            required>
                                     </div>
                                     <div class="group-input">
                                         <label for="txtPassword" class="form-label">Contraseña nueva</label>

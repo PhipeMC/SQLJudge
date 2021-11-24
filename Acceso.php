@@ -2,7 +2,7 @@
 session_start();
 // Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
 if (isset($_SESSION['id'])) {
-    header("Location:index.html");
+    header("Location: profile.html");
 }
 ?>
 
@@ -31,20 +31,6 @@ if (isset($_SESSION['id'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Problemas
-                            </a>
-                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../SQLJudge/php/listaProblemas.php">Lista de
-                                        problemas</a></li>
-                                <li><a class="dropdown-item" href="">Ranking</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="CrearProblema.html">Crear problema</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
@@ -76,7 +62,7 @@ if (isset($_SESSION['id'])) {
                         <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" maxlength="80" required>
                     </div>
                     <div class="col-12">
-                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña" minlength="8" maxlength="20" required>
+                        <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña"  maxlength="20" required>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>

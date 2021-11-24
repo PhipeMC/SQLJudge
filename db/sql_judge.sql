@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `alumno`
 --
 
+CREATE DATABASE sql_judge;
+USE sql_judge;
 CREATE TABLE `alumno` (
   `idAlumno` int(11) NOT NULL,
   `Usuario` varchar(45) NOT NULL,
