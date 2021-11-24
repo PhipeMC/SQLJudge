@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `alumno`
 --
-
+create database sql_jugde;
+use sql_jugde;
 CREATE TABLE `alumno` (
   `idAlumno` int(11) NOT NULL,
   `Usuario` varchar(45) NOT NULL,
@@ -38,16 +39,7 @@ CREATE TABLE `alumno` (
   `Genero` enum('Masculino','Femenino','Otro') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `alumno`
---
 
-INSERT INTO `alumno` (`idAlumno`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`, `Escuela`, `Genero`) VALUES
-(1, 'Alu1', 'root1@gmail.com', 'root1', 'Nahuel', 'Cruz', 'ITSUR', 'Masculino'),
-(2, 'Alu2', 'root2@gmail.com', 'root1', 'Daniel', 'Garcia', NULL, NULL),
-(3, 'Alu3', 'root3@gmail.com', 'root1', 'Cesar', 'Domunguez', NULL, NULL);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categoria`
@@ -58,19 +50,6 @@ CREATE TABLE `categoria` (
   `NombreCategoria` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`idCATEGORIA`, `NombreCategoria`) VALUES
-(3, 'Agrupaciones'),
-(1, 'Consultas Básicas'),
-(2, 'Consultas de varias tablas'),
-(6, 'funciones(text, date, numéricas...)'),
-(4, 'Subconsultas anidadas'),
-(5, 'Subconsultas correlacionadas');
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `docente`
@@ -85,20 +64,14 @@ CREATE TABLE `docente` (
   `Apellidos` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `docente`
---
 
-INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
-(1, 'prof1', 'root@gmail.com', 'root', 'Felipe', 'Calderon');
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `envio`
 --
 
 CREATE TABLE `envio` (
+  `idEnvio` int(11) not null,
   `Estado` enum('CD','RT','NR','NC','WA','AC') NOT NULL,
  -- `NumeroIntento` int(11) NOT NULL,
   `CodigoAlumno` longtext NOT NULL,
@@ -106,18 +79,7 @@ CREATE TABLE `envio` (
   `PROBLEMA_idPROBLEMA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `envio`
---
 
-INSERT INTO `envio` (`Estado`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
-('WA', 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18),
-('AC', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
-('WA', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
-('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
-('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `grupo`
@@ -146,13 +108,6 @@ CREATE TABLE `problema` (
   `NombreBaseDatos` enum('World','Sakila','Nwind') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `problema`
---
-
-INSERT INTO `problema` (`idPROBLEMA`, `Titulo`, `Descripcion`, `DOCENTE_idUsuario`, `Solucion`, `CATEGORIA_idCATEGORIA`, `dificultad`, `NombreBaseDatos`) VALUES
-(10, 'Select dificil', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 1, 'Basico', 'World'),
-(18, 'Seleccion basica', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 3, 'Basico', 'World');
 
 --
 -- Índices para tablas volcadas
@@ -185,7 +140,7 @@ ALTER TABLE `docente`
 -- Indices de la tabla `envio`
 --
 ALTER TABLE `envio`
-  ADD PRIMARY KEY (`NumeroIntento`),
+  ADD PRIMARY KEY (`idEnvio`),
   ADD KEY `fk_ALUMNO_PROBLEMA_ALUMNO1_idx` (`ALUMNO_idAlumno`),
   ADD KEY `fk_ALUMNO_PROBLEMA_PROBLEMA1_idx` (`PROBLEMA_idPROBLEMA`);
 
@@ -232,7 +187,7 @@ ALTER TABLE `docente`
 -- AUTO_INCREMENT de la tabla `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `NumeroIntento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idEnvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `problema`
@@ -265,6 +220,64 @@ ALTER TABLE `problema`
   ADD CONSTRAINT `fk_PROBLEMA_DOCENTE1` FOREIGN KEY (`DOCENTE_idUsuario`) REFERENCES `docente` (`idDocente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
+--
+-- Volcado de datos para la tabla `alumno`
+--
+
+INSERT INTO `alumno` (`idAlumno`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`, `Escuela`, `Genero`) VALUES
+(1, 'Alu1', 'root1@gmail.com', 'root1', 'Nahuel', 'Cruz', 'ITSUR', 'Masculino'),
+(2, 'Alu2', 'root2@gmail.com', 'root1', 'Daniel', 'Garcia', NULL, NULL),
+(3, 'Alu3', 'root3@gmail.com', 'root1', 'Cesar', 'Domunguez', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`idCATEGORIA`, `NombreCategoria`) VALUES
+(3, 'Agrupaciones'),
+(1, 'Consultas Básicas'),
+(2, 'Consultas de varias tablas'),
+(6, 'funciones(text, date, numéricas...)'),
+(4, 'Subconsultas anidadas'),
+(5, 'Subconsultas correlacionadas');
+
+-- --------------------------------------------------------
+
+--
+-- Volcado de datos para la tabla `docente`
+--
+
+INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, `Apellidos`) VALUES
+(1, 'prof1', 'root@gmail.com', 'root', 'Felipe', 'Calderon');
+
+-- --------------------------------------------------------
+
+--
+-- Volcado de datos para la tabla `problema`
+--
+
+INSERT INTO `problema` (`idPROBLEMA`, `Titulo`, `Descripcion`, `DOCENTE_idUsuario`, `Solucion`, `CATEGORIA_idCATEGORIA`, `dificultad`, `NombreBaseDatos`) VALUES
+(10, 'Select dificil', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 1, 'Basico', 'World'),
+(18, 'Seleccion basica', 'asdsasdsadsadsadasd', 1, 'sadsadsadsadsadsads', 3, 'Basico', 'World');
+
+--
+-- Volcado de datos para la tabla `envio`
+--
+
+INSERT INTO `envio` (`Estado`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
+('WA', 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18),
+('AC', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
+('WA', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
+('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
+('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10);
+
+-- --------------------------------------------------------
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
