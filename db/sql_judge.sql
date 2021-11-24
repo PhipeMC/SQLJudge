@@ -100,7 +100,7 @@ INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, 
 
 CREATE TABLE `envio` (
   `Estado` enum('CD','RT','NR','NC','WA','AC') NOT NULL,
-  `NumeroIntento` int(11) NOT NULL,
+ -- `NumeroIntento` int(11) NOT NULL,
   `CodigoAlumno` longtext NOT NULL,
   `ALUMNO_idAlumno` int(11) NOT NULL,
   `PROBLEMA_idPROBLEMA` int(11) NOT NULL
@@ -110,12 +110,12 @@ CREATE TABLE `envio` (
 -- Volcado de datos para la tabla `envio`
 --
 
-INSERT INTO `envio` (`Estado`, `NumeroIntento`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
-('WA', 1, 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18),
-('AC', 2, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
-('WA', 3, 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
-('AC', 4, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
-('AC', 10, 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10);
+INSERT INTO `envio` (`Estado`, `CodigoAlumno`, `ALUMNO_idAlumno`, `PROBLEMA_idPROBLEMA`) VALUES
+('WA', 'fesifvifsevyfeufvufjbavhjavggzczgcvwyudtavydi', 3, 18),
+('AC', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 2, 10),
+('WA', 'fefshfgjvfvsefhkafeaknfeafbaefbeaifafiabpfibpafi', 3, 10),
+('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 18),
+('AC', 'fsjfsebjfeapfipefbipsfbefibesfbisebifseibfise', 1, 10);
 
 -- --------------------------------------------------------
 
