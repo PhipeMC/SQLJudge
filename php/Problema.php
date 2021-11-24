@@ -56,6 +56,12 @@ $rows = mysqli_fetch_array($res);
                                 <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
+                        <?php
+                            if (isset($_SESSION['tipo'])) {
+                                $usuario = $_SESSION['tipo'];
+                                if ($usuario != "alumno") {
+                            
+                        ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 Grupos
@@ -65,6 +71,12 @@ $rows = mysqli_fetch_array($res);
                                 <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
                             </ul>
                         </li>
+
+                        <?php
+                                    
+                                }
+                            }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Profile.php">Perfil</a>
                         </li>
@@ -94,8 +106,8 @@ $rows = mysqli_fetch_array($res);
     </header>
 
     <body>
-        <div class="container mt-5">
-            <div class="row align-items-start">
+        <div class="container mt-5 rounded">
+            <div class="dark-container row align-items-start rounded">
 
                 <div class="col mb-5 p-2">
                     <h1><?php
@@ -126,27 +138,29 @@ $rows = mysqli_fetch_array($res);
                                     echo '../img/sakila.png';
                                 }
                                 ?>" alt="" class="rounded-3 mx-auto d-block mb-4 mt-3" style="width: -webkit-fill-available;">
-                    <table class="table table-dark table-hover mb-4">
+                    <table class="table table-dark mb-4">
                         <thead>
                             <tr>
 
                                 <th scope="col">ID de envío</th>
                                 <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
                                 <th scope="col"></th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sentencia = "SELECT NumeroIntento, Estado from envio 
+                            $sentencia = "SELECT idEnvio, Estado, fechaEnvio from envio 
                                 WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
                             $resultado = mysqli_query($conexion, $sentencia);
                             while ($listaEnvios = mysqli_fetch_array($resultado)) {
                             ?>
 
                                 <tr>
-                                    <th scope="row"><?php echo $listaEnvios['NumeroIntento']   ?></th>
+                                    <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
                                     <td><?php echo $listaEnvios['Estado']   ?></td>
+                                    <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
                                     <td><button type="button" class="btn btn-primary btn-sm rounded-3">Ver</button></td>
                                 </tr>
                             <?php

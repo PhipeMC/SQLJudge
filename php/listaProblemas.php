@@ -42,6 +42,27 @@ session_start();
                                 <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
+                        <?php
+                            if (isset($_SESSION['tipo'])) {
+                                $usuario = $_SESSION['tipo'];
+                                if ($usuario != "alumno") {
+                            
+                        ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                Grupos
+                            </a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
+                                <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
+                            </ul>
+                        </li>
+
+                        <?php
+                                    
+                                }
+                            }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
