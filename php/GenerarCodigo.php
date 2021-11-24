@@ -53,8 +53,8 @@ include_once("../data/conexion.php");
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="../listaProblemas.html">Lista de problemas</a></li>
-                                <li><a class="dropdown-item" href="../profile.html">Ranking</a></li>
+                                <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
+                                <li><a class="dropdown-item" href="">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -66,20 +66,33 @@ include_once("../data/conexion.php");
                                 Grupos
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
+                                <li><a class="dropdown-item" href="../404.php">Crear Grupo</a></li>
                                 <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../profile.html">Perfil</a>
+                            <a class="nav-link active" aria-current="page" href="Profile.php">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <a class="btn btn-sm btn-outline-secondary" href="../login.html">Iniciar sesion</a>
-                    </form>
+                    <ul class="navbar-nav  mb-2 mb-lg-0">
+                        <li class="nav-item dropdown mx-5">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user" style="color: #0247fe;"></i> <?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?>
+                            </a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item " href="../php/Profile.php">Perfil</a></li>
+                                <li>
+                                    <strong>
+                                        <hr class="dropdown-divider text-primary">
+                                    </strong>
+                                </li>
+                                <li><a class="dropdown-item" href="../data/logout.php">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
