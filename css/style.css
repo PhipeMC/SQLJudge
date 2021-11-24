@@ -1,31 +1,31 @@
 body {
-    height: 100%;
-    background-image: url('../img/4882065.svg');
-    background-size: cover;
-    background-size: 150%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    color: snow!important;
-  }
-
-  .dark-div{
-    background-color: #283044!important;
-    border-radius: 10px!important;
-  }
-
-#navbarDropdown{
-    color: white;
+  height: 100%;
+  background-image: url("../img/4882065.svg");
+  background-size: cover;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: snow !important;
 }
 
-.dropdown-item {
-    color: white !important;
+.dark-div {
+  background-color: #283044 !important;
+  border-radius: 10px !important;
 }
-#navbarDropdown{
+
+#navbarDropdown {
   color: white;
 }
 
-#navbarDropdown:hover{
+.dropdown-item {
+  color: white !important;
+}
+#navbarDropdown {
+  color: white;
+}
+
+#navbarDropdown:hover {
   color: #0247fe;
 }
 
@@ -33,6 +33,6 @@ body {
   color: white !important;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   color: #0247fe !important;
 }

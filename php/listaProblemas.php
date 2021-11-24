@@ -61,7 +61,7 @@ session_start();
                                         <hr class="dropdown-divider text-primary">
                                     </strong>
                                 </li>
-                                <li><a class="dropdown-item" href="../php/logout.php">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="../data/logout.php">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -102,7 +102,7 @@ session_start();
                             <td><?php echo $mostra['dificultad'] ?></td>
                             <td><?php echo $mostra['Resueltos'] ?></td>
                             <form action="Problema.php">
-                            <td><button type="submit" class="btn btn-primary btn-sm rounded-3" name="id" value="<?php echo $mostra['idPROBLEMA'] ?>">Ver</button></td>
+                                <td><button type="submit" class="btn btn-primary btn-sm rounded-3" name="id" value="<?php echo $mostra['idPROBLEMA'] ?>">Ver</button></td>
                             </form>
                         </tr>
                     <?php
