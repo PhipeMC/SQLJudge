@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream:login.html
+=======
+<?php
+session_start();
+// Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
+if (isset($_SESSION['tipo'])) {
+        header("location: php/listaProblemas.php");
+    }else{
+    
+}
+?>
+
+
+>>>>>>> Stashed changes:Acceso.php
 <!DOCTYPE html>
 <html lang="es">
 

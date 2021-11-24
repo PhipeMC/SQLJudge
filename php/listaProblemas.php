@@ -1,5 +1,15 @@
 <?php
+<<<<<<< Updated upstream
 include("Conexion.php");
+=======
+session_start();
+if(isset($_SESSION['tipo'])){
+}else{
+	header("location: 404.php");
+}
+include_once("../data/conexion.php");
+
+>>>>>>> Stashed changes
 $conexion = conectar();
 ?>
 
@@ -36,7 +46,7 @@ $conexion = conectar();
                                 Problemas
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
+                                <li><a class="dropdown-item " href="">Lista de problemas</a></li>
                                 <li><a class="dropdown-item" href="">Ranking</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

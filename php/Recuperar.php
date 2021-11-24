@@ -1,5 +1,6 @@
 <?php
-include("Conexion.php");
+    include_once("../data/conexion.php");
+
 
     $conexion = conectar();
     $Sesion = $_POST['TipoSesion'];

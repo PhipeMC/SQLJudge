@@ -1,12 +1,6 @@
 <?php
-session_start();
-if(isset($_SESSION['tipo'])){
-	$usuario= $_SESSION['tipo'];
-	if($usuario=="alumno"){
-		header("location: 404.php");
-	}
-}
-	include("Conexion.php");
+
+include_once("../data/conexion.php");
 
 	$conexion = conectar();
 	$nombre = $_POST['nombre'];

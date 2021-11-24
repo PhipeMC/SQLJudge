@@ -1,11 +1,22 @@
 <?php
 session_start();
+<<<<<<< Updated upstream
         if (isset($_SESSION['tipo'])) {
             $usuario = $_SESSION['tipo'];
             if ($usuario == "alumno") {
                 header("location: 404.php");
             }
         } ?>
+=======
+if (isset($_SESSION['tipo'])) {
+    $usuario = $_SESSION['tipo'];
+    if ($usuario == "alumno") {
+        header("location: 404.php");
+    }
+}else{
+    header("location: 404.php");
+} ?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="es">
 

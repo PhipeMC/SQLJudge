@@ -1,11 +1,22 @@
 <?php
 session_start();
+<<<<<<< Updated upstream
         if (isset($_SESSION['tipo'])) {
             $usuario = $_SESSION['tipo'];
             if ($usuario == "alumno") {
                 header("location: 404.php");
             }
         } ?>
+=======
+if (isset($_SESSION['tipo'])) {
+    $usuario = $_SESSION['tipo'];
+    if ($usuario == "alumno") {
+        header("location: 404.php");
+    }
+}else{
+    header("location: 404.php");
+} ?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,15 +28,6 @@ session_start();
     <link rel="shortcut icon" href="img/favicon2.ico" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-problems.css">
-    <script language=”php”>
-        session_start();
-        if (isset($_SESSION['tipo'])) {
-            $usuario = $_SESSION['tipo'];
-            if ($usuario == "alumno") {
-                header("location: 404.php");
-            }
-        }
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script defer src="js/all.js"></script>
