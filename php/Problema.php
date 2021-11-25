@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['tipo'])) {
-    
-}else{
+} else {
     header("location: ../404.php");
 }
 include_once("../data/problemaDAO.php");
@@ -12,7 +11,7 @@ $idAlumno = $_SESSION["id"];
 $id = $_GET["id"];
 $conexion = conectar();
 $operaciones = new problemaDAO($conexion);
-$problema = $operaciones -> obtenerProblemaPorID($id);
+$problema = $operaciones->obtenerProblemaPorID($id);
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +21,19 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creación de Problema</title>
+    <title>SQL Judge - Problema</title>
     <link rel="shortcut icon" href="../img/favicon2.ico" />
     <link rel="stylesheet" href="../css/style-problems.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="../pluggin/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../pluggin/codemirror/theme/material-palenight.css">
     <script src="../pluggin/codemirror/lib/codemirror.js"></script>
     <script src="../pluggin/codemirror/mode/sql/sql.js"></script>
-    
+    <script src="../pluggin/codemirror/mode/xml/xml.js"></script>
+
 
 </head>
 
@@ -61,27 +62,27 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
                             </ul>
                         </li>
                         <?php
-                            if (isset($_SESSION['tipo'])) {
-                                $usuario = $_SESSION['tipo'];
-                                if ($usuario != "alumno") {
-                            
+                        if (isset($_SESSION['tipo'])) {
+                            $usuario = $_SESSION['tipo'];
+                            if ($usuario != "alumno") {
+
                         ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                Grupos
-                            </a>
-                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
-                                <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
-                            </ul>
-                        </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Grupos
+                                    </a>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
+                                        <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
+                                    </ul>
+                                </li>
 
                         <?php
-                                    
-                                }
+
                             }
+                        }
                         ?>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
@@ -109,29 +110,77 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
 
     <body>
         <div class="container mt-5 rounded">
-            <div class="dark-container row align-items-start rounded">
+            <div class="dark-container row align-items-start">
 
-                <div class="col mb-5 p-2 fs-6">
-                    <div class="fs-1">
-                        <h1><?php
-                            echo "#" . $problema->idProblema . "- " . $problema->Titulo;
-                        ?></h1>
+                <div class="col-6">
+                    <div class="dark-div mt-3 mx-2 py-2 px-2">
+                        <h2>
+                            <strong>
+                                <?php
+                                echo "<i class='fas fa-scroll' style='color: #3366FF;'></i>  #" . $problema->idProblema . " - " . $problema->Titulo;
+                                ?>
+                            </strong>
+                        </h2>
+
                     </div>
-                    <h3>Descripción</h3>
-                    <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15"  style="display: none;"><?php echo $problema->Descripcion; ?></textarea>
-                    <p style="text-align: justify;" id="targetDiv"></p>
-
+                    <div class="card-body">
+                        <h4 class="text-center">Descripción</h4>
+                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15" style="display: none;"><?php echo $problema->Descripcion; ?></textarea>
+                        <p style="text-align: justify;" id="targetDiv"></p>
+                    </div>
                 </div>
-                <div class="col-6 mb-3 p-3">
-                    <h4>Base de datos <?php
+                <div class="col-6 card-body">
+                    <div class="my-3 mx-2 ">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>
+                                    <strong>
+                                        <?php
                                         echo $problema->nombreBaseDatos;
                                         ?>
-                    </h4>
-                    <img src="<?php
-                                
-                                    echo '../img/' . $problema->nombreBaseDatos . '.png';
-                                
-                                ?>" alt="" class="rounded-3 mx-auto d-block mb-4 mt-3" style="width: -webkit-fill-available;">
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary btn-sm w-100">Descargar Base de Datos</button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <img src="<?php
+                                        echo '../img/' . $problema->nombreBaseDatos . '.png';
+                                        ?>" alt="" class="rounded-3 mx-auto d-block mb-4 mt-3" style="width: -webkit-fill-available;">
+
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div>
+                                <h5>
+                                    <strong>
+                                        Escribe tu solución
+                                    </strong>
+                                </h5>
+                            </div>
+                            <div class="col-12 justify-content-center">
+                                <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
+                                    <div class="form-control" id="solution">
+                                        <textarea class="form-control" name="solucion" id="envProblema" rows="15" required></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor añada la consulta de solución.
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $rows['idProblema']; ?>">Enviar solución</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dark-div col-12 card-body">
+                    <div>
+                        <h5>
+                            <strong>
+                                Envios
+                            </strong>
+                        </h5>
+                    </div>
                     <table class="table table-dark mb-4">
                         <thead>
                             <tr>
@@ -145,39 +194,25 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
                         </thead>
                         <tbody>
                             <?php
-                            if($_SESSION['tipo']=="alumno"){
+                            if ($_SESSION['tipo'] == "alumno") {
                                 $sentencia = "SELECT idEnvio, Estado, fechaEnvio from envio 
                                     WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
                                 $resultado = mysqli_query($conexion, $sentencia);
                                 while ($listaEnvios = mysqli_fetch_array($resultado)) {
                             ?>
 
-                                <tr>
-                                    <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
-                                    <td><?php echo $listaEnvios['Estado']   ?></td>
-                                    <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
-                                    <td><button type="button" class="btn btn-primary btn-sm rounded-3">Ver</button></td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
+                                        <td><?php echo $listaEnvios['Estado']   ?></td>
+                                        <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
+                                        <td><button type="button" class="btn btn-primary btn-sm rounded-3">Ver</button></td>
+                                    </tr>
                             <?php
                                 }
                             }
                             ?>
                         </tbody>
                     </table>
-                    <div class="">
-                        <div class="row justify-content-center m-2">
-                            <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
-                                <button type="button" class="btn btn-primary btn-lg">Descargar Base de datos</button>
-                                <div class="form-control" id="solution">
-                                    <textarea class="form-control" name="solucion" id="inputSolucion" rows="15" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Por favor añada la consulta de solución.
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $rows['idProblema']; ?>">Enviar solución</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -202,13 +237,13 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
         </ul>
     </footer>
 
-    </body>
+</body>
 
-    <script defer src="../js/all.js"></script>
-    <script src="../js/markdown.js"></script>
-    <script src="../js/problemaMarkDownImport.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script defer src="../js/all.js"></script>
+<script src="../js/problema.js"></script>
+<script src="../js/problemaMarkDownImport.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 
 </html>
