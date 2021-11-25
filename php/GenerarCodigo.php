@@ -38,7 +38,7 @@ include_once("../data/conexion.php");
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html" id="logo">
+                <a class="navbar-brand" href="../index.php" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -62,7 +62,7 @@ include_once("../data/conexion.php");
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 Grupos
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -70,9 +70,7 @@ include_once("../data/conexion.php");
                                 <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Profile.php">Perfil</a>
-                        </li>
+                       
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>

@@ -49,7 +49,7 @@ session_start();
                             
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 Grupos
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">

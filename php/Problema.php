@@ -5,13 +5,14 @@ if (isset($_SESSION['tipo'])) {
 }else{
     header("location: ../404.php");
 }
+include_once("../data/problemaDAO.php");
+include_once("../model/Problem.php");
 include_once("../data/conexion.php");
-$conexion = conectar();
 $idAlumno = $_SESSION["id"];
 $id = $_GET["id"];
-$sql = "SELECT idProblema,Titulo,descripcion,NombreBaseDatos FROM problema where idProblema=$id;";
-$res = mysqli_query($conexion, $sql);
-$rows = mysqli_fetch_array($res);
+$conexion = conectar();
+$operaciones = new problemaDAO($conexion);
+$problema = $operaciones -> obtenerProblemaPorID($id);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ $rows = mysqli_fetch_array($res);
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html" id="logo">
+                <a class="navbar-brand" href="../index.php" id="logo">
                     <i class="fas fa-terminal" style="color: #0247fe;"></i> SQL Code Judge</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -63,7 +64,7 @@ $rows = mysqli_fetch_array($res);
                             
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 Grupos
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -77,9 +78,7 @@ $rows = mysqli_fetch_array($res);
                                 }
                             }
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Profile.php">Perfil</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
@@ -109,34 +108,26 @@ $rows = mysqli_fetch_array($res);
         <div class="container mt-5 rounded">
             <div class="dark-container row align-items-start rounded">
 
-                <div class="col mb-5 p-2">
-                    <h1><?php
-                        echo "#" . $rows['idProblema'] . "-" . $rows['Titulo'];
+                <div class="col mb-5 p-2 fs-6">
+                    <div class="fs-1">
+                        <h1><?php
+                            echo "#" . $problema->idProblema . "- " . $problema->Titulo;
                         ?></h1>
-
+                    </div>
                     <h3>Descripción</h3>
-                    <p style="text-align: justify;">
-                        <?php
-                        echo $rows['descripcion'];
-                        ?>
-                    </p>
+                    <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15"  style="display: none;"><?php echo $problema->Descripcion; ?></textarea>
+                    <p style="text-align: justify;" id="targetDiv"></p>
 
                 </div>
                 <div class="col-6 mb-3 p-3">
                     <h4>Base de datos <?php
-                                        echo $rows['NombreBaseDatos'];
+                                        echo $problema->nombreBaseDatos;
                                         ?>
                     </h4>
                     <img src="<?php
-                                if ($rows['NombreBaseDatos'] == 'Nwind') {
-                                    echo '../img/nwind.jpg';
-                                }
-                                if ($rows['NombreBaseDatos'] == 'World') {
-                                    echo '../img/world.png';
-                                }
-                                if ($rows['NombreBaseDatos'] == 'Sakila') {
-                                    echo '../img/sakila.png';
-                                }
+                                
+                                    echo '../img/' . $problema->nombreBaseDatos . '.png';
+                                
                                 ?>" alt="" class="rounded-3 mx-auto d-block mb-4 mt-3" style="width: -webkit-fill-available;">
                     <table class="table table-dark mb-4">
                         <thead>
@@ -151,10 +142,11 @@ $rows = mysqli_fetch_array($res);
                         </thead>
                         <tbody>
                             <?php
-                            $sentencia = "SELECT idEnvio, Estado, fechaEnvio from envio 
-                                WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
-                            $resultado = mysqli_query($conexion, $sentencia);
-                            while ($listaEnvios = mysqli_fetch_array($resultado)) {
+                            if($_SESSION['tipo']=="alumno"){
+                                $sentencia = "SELECT idEnvio, Estado, fechaEnvio from envio 
+                                    WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
+                                $resultado = mysqli_query($conexion, $sentencia);
+                                while ($listaEnvios = mysqli_fetch_array($resultado)) {
                             ?>
 
                                 <tr>
@@ -164,6 +156,7 @@ $rows = mysqli_fetch_array($res);
                                     <td><button type="button" class="btn btn-primary btn-sm rounded-3">Ver</button></td>
                                 </tr>
                             <?php
+                                }
                             }
                             ?>
                         </tbody>
@@ -202,6 +195,7 @@ $rows = mysqli_fetch_array($res);
         </ul>
     </footer>
 
+    <script src="../js/problemaMarkDownImport.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
