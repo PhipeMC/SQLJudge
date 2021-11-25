@@ -70,7 +70,6 @@ include_once("../data/conexion.php");
                                 <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
                             </ul>
                         </li>
-                       
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li>
