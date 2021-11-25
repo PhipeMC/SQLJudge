@@ -45,11 +45,10 @@
                 $sql = sprintf($sentencia,$usuario,$email,$pass_hash,$Nombre,$apellidos);
     
                 if(mysqli_query($conexion, $sql)){
-                     echo "Elemento agregado";
+                    echo "Elemento agregado";
                 }else{
-                     echo "Algo salió mal";
+                    echo "Algo salió mal";
                 }
-                   
             }
         }else{
             echo "Conexión Fallida";
@@ -64,4 +63,3 @@
         
 
     }*/
-?>

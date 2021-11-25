@@ -53,5 +53,6 @@ CodeMirror.fromTextArea(document.querySelector('#inputSolucion'),{
   tabSize: 16,
   value: 'SELECT * FROM WORLD;',
   mode: 'sql',
+  theme: "material",
   lineWrapping: true
 });
