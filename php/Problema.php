@@ -163,11 +163,13 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
                     </table>
                     <div class="">
                         <div class="row justify-content-center m-2">
-                            <form action="" class="col-6 d-grid gap-2">
-                                <button type="button" class="btn btn-primary btn-lg">Nuevo Envío</button>
-                            </form>
-                            <form action="" class="col-6 d-grid gap-2">
+                            <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
                                 <button type="button" class="btn btn-primary btn-lg">Descargar Base de datos</button>
+                                <textarea class="form-control  mb-3" name="solucion" id="inputDescripcion" placeholder="Escribe tu solución aquí" rows="15" onkeyup="run()" required></textarea>
+                                <div class="invalid-feedback">
+                                    Por favor añada una solución.
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $rows['idProblema']; ?>">Enviar solución</button>
                             </form>
                         </div>
                     </div>

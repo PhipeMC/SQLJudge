@@ -137,61 +137,74 @@ body {
 
 
 /*  ---RECUPERAR CONTRASEÑA---   */
-.PadreRC {
+.PadreRC{
   display: flex;
   width: 100%;
   height: 70%;
   justify-content: center;
 }
 
-.ContenedorRC {
+.ContenedorRC{
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
-  margin-right: 0.5em;
+  border-radius: 20px;
+  margin-right: .5em;
   margin-top: 15%;
-  background-color: rgba(0, 0, 0, 0.575);
+  background-color: #1f2533 !important;
 }
 
-.FormR {
+.FormR{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80%;
 }
 
-.correoRC {
-  padding: 0.3em 0.3em 0.3em 0.3em;
+.correoRC{
+  padding: .3em .3em .3em .3em;
   width: 100%;
   border: none;
   margin: 1em;
-  background-color: rgba(114, 114, 114, 0.5);
+  background-color: snow;
   border-radius: 7px;
-}
-.correoRC ::placeholder {
-  color: rgb(122, 122, 122);
+  
 }
 
-.BotonRC {
+.BotonRC{
   font-size: large;
   margin: 1em;
   padding: 10px 50px 10px 50px;
   color: white;
-  background-color: #3366fc;
+  background-color: #0247fe;
   border: none;
   border-radius: 7px;
 }
 
-.h1RC {
+.h1RC{
   padding: 15px;
   color: white;
 }
 
-.h4RC {
+.h4RC{
   color: white;
 }
 
+#EmailID{
+  background-image: url(../img/envelope-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+#TipoID{
+  background-image: url(../img/user-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
 
 /*  ---CREACION DE PROBLEMA---   */
 .form-label {
