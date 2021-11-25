@@ -24,12 +24,15 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación de Problema</title>
     <link rel="shortcut icon" href="../img/favicon2.ico" />
-    <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../css/style-problems.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script defer src="../js/all.js"></script>
+    
+    <link rel="stylesheet" href="../pluggin/codemirror/lib/codemirror.css">
+    <script src="../pluggin/codemirror/lib/codemirror.js"></script>
+    <script src="../pluggin/codemirror/mode/sql/sql.js"></script>
+    
 
 </head>
 
@@ -165,9 +168,11 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
                         <div class="row justify-content-center m-2">
                             <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
                                 <button type="button" class="btn btn-primary btn-lg">Descargar Base de datos</button>
-                                <textarea class="form-control  mb-3" name="solucion" id="inputDescripcion" placeholder="Escribe tu solución aquí" rows="15" onkeyup="run()" required></textarea>
-                                <div class="invalid-feedback">
-                                    Por favor añada una solución.
+                                <div class="form-control" id="solution">
+                                    <textarea class="form-control" name="solucion" id="inputSolucion" rows="15" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor añada la consulta de solución.
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $rows['idProblema']; ?>">Enviar solución</button>
                             </form>
@@ -197,8 +202,13 @@ $problema = $operaciones -> obtenerProblemaPorID($id);
         </ul>
     </footer>
 
+    </body>
+
+    <script defer src="../js/all.js"></script>
+    <script src="../js/markdown.js"></script>
     <script src="../js/problemaMarkDownImport.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-</body>
+
 
 </html>
