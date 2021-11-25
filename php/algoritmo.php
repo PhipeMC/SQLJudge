@@ -1,7 +1,7 @@
         <?php
         // put your code here
     
-        include_once("../data/conexion.php");
+        /* include_once("../data/conexion.php");
     
     //Sentencia ingresada por el usuario
     $strSQL = $_GET['strSQL'];
@@ -19,10 +19,10 @@
     $BD = $_GET['BD'];
     
     $con = conectarPorBD($BD); 
-
-    echo ejecutar($strSQL,$strSolucion,$EvaluaOrden,$NumeroColumnas,$con);
+ */
+    //echo ejecutar($strSQL,$strSolucion,$EvaluaOrden,$NumeroColumnas,$con);
      // CIERRA LA CONEXION A LA BASE DE DATOS
-     mysqli_close($con);     
+    //  mysqli_close($con);     
 
     function CadenaOrderBy($columnas)
     {

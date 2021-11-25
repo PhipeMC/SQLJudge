@@ -102,7 +102,7 @@ INSERT INTO `docente` (`idDocente`, `Usuario`, `Email`, `Contrasena`, `Nombre`, 
 
 CREATE TABLE `envio` (
   `idEnvio` int(11) NOT NULL,
-  `Estado` enum('CD','RT','NR','NC','WA','AC') NOT NULL,
+  `Estado` enum('CD','RE','NR','NC','WA','AC') NOT NULL,
   `CodigoAlumno` longtext NOT NULL,
   `ALUMNO_idAlumno` int(11) NOT NULL,
   `PROBLEMA_idPROBLEMA` int(11) NOT NULL,
