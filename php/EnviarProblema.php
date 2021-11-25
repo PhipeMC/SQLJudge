@@ -7,10 +7,10 @@ session_start();
     $idProblema = $_POST["idProblema"];
     $fecha = strval(date("Y-m-d H:i:s"));
 
-    //echo $solucion;
-    //echo $idAlumno;
-    //echo $idProblema;
-    //echo $fecha;
+    echo $solucion;
+    echo $idAlumno;
+    echo $idProblema;
+    echo $fecha;
 
     if($conexion){
 		//echo "Conexion exitosa <br>";
