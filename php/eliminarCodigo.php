@@ -1,12 +1,13 @@
 <?php
 
 include_once("../data/conexion.php");
+    session_start();
     $conexion = conectar();
     $grupo =  $_POST['inputGrupo'];
     $idProfesor = $_SESSION['id'];
     $sql = sprintf(
     "UPDATE grupo 
-    SET CodigoGrupo ='' 
+    SET CodigoGrupo = '' 
     WHERE idgrupo='%s'
     AND DOCENTE_idDocente1=%d;",$grupo, $idProfesor);
     if(mysqli_query($conexion, $sql)){
