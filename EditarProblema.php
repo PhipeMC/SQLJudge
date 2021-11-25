@@ -152,8 +152,8 @@ if (isset($_SESSION['tipo'])) {
                             Por favor añada una descripción.
                         </div>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
-                        <div class="form-control" id="solution">
-                            <textarea class="form-control" name="consulta" id="inputSolucion" rows="15" required></textarea>
+                        <div>
+                            <textarea class="form-control" name="consulta" id="" rows="15" required></textarea>
                             <div class="invalid-feedback">
                                 Por favor añada la consulta de solución.
                             </div>
