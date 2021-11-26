@@ -8,6 +8,13 @@ include_once("../data/conexion.php");
 	$descripcion = $_POST['description'];
 	$consulta = $_POST['consulta'];
 	$dificultad = $_POST['dificultad'];
+	$juanpice;
+
+	if(isset($_POST['revisionOrden'])){
+		$juanpice = '1';
+	}else{
+		$juanpice = '0';
+	}
 
 	
 	if($dificultad=='Básico'){
@@ -28,7 +35,7 @@ include_once("../data/conexion.php");
 	if($conexion){
 		//echo "Conexion exitosa <br>";
 
-		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s');";
+		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos, OrdenFilas) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s', '$juanpice');";
 		$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
 
 		if(mysqli_query($conexion, $sql)){

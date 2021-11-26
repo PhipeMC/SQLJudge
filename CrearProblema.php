@@ -159,6 +159,10 @@ if (isset($_SESSION['tipo'])) {
 
                         <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> -->
                     </div>
+                    <div class="form-check form-switch d-flex align-items-center justify-content-center mt-4">
+                        <input class="form-check-input" type="checkbox" id="switchRevision" name="revisionOrden">
+                        <label class="form-check-label px-2" for="flexSwitchCheckDefault">Evaluar orden de filas</label>
+                    </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <button type="submit" class="btn btn-primary mb-3">Crear problema</button>
                     </div>
