@@ -1,29 +1,4 @@
-        <?php
-        // put your code here
-
-        include_once("../data/conexion.php");
-
-        //Sentencia ingresada por el usuario
-        $strSQL = $_GET['strSQL'];
-
-        //Solucion del problema planteado
-        $strSolucion = $_GET['strSolucion'];
-
-        //Orden de Evaluación
-        $EvaluaOrden = $_GET['EvaluaOrden'];
-
-        //Número de columnas correctas
-        $NumeroColumnas = $_GET['NumeroColumnas'];
-
-        //BD con la que se va a conectar
-        $BD = $_GET['BD'];
-
-        $con = conectarPorBD($BD);
-
-        echo ejecutar($strSQL, $strSolucion, $EvaluaOrden, $NumeroColumnas, $con);
-        // CIERRA LA CONEXION A LA BASE DE DATOS
-        mysqli_close($con);
-
+<?php
         function CadenaOrderBy($columnas)
         {
             $strCadenaOrderBy = " order by 1";
