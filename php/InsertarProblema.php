@@ -52,5 +52,5 @@ include_once("../data/conexion.php");
 		
 	}
 
-	$conexion->close();
+	//$conexion->close();
 

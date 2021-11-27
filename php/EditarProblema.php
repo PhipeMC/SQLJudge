@@ -8,8 +8,9 @@ include_once("../data/conexion.php");
 	$descripcion = $_POST['description'];
 	$consulta = $_POST['consulta'];
 	$dificultad = $_POST['dificultad'];
-    $id = mysqli_fetch_array(mysqli_query($conexion, sprintf("SELECT idPROBLEMA from problema where Titulo='%s';",$nombre)));
-
+    $id = $_POST['idProblema'];
+	echo $id;
+	echo $nombre;
 	
 
 	
@@ -32,14 +33,16 @@ include_once("../data/conexion.php");
 	if($conexion){
 		//echo "Conexion exitosa <br>";
 
-		$sentencia = "UPDATE problema SET Titulo='$nombre', Descripcion='$descripcion', DOCENTE_idUsuario='1', Solucion='$consulta', CATEGORIA_idCATEGORIA='$categoria[0]', dificultad='$dificultad', NombreBaseDatos='$db' WHERE idPROBLEMA='$id[0]';";
+		$sentencia = "UPDATE problema SET Titulo='$nombre', Descripcion='$descripcion', DOCENTE_idUsuario='1', Solucion='$consulta', CATEGORIA_idCATEGORIA='$categoria[0]', dificultad='$dificultad', NombreBaseDatos='$db' WHERE idPROBLEMA='$id';";
 		//$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
 
 		if(mysqli_query($conexion, $sentencia)){
 			//echo "Elemento editado";
-			header('Location:' . getenv('HTTP_REFERER'));
+			$conexion -> close();
+			header('Location:../index.php');
 		}else{
 			echo "Algo salió mal";
+			$conexion -> close();
 		}
 
 	}else{

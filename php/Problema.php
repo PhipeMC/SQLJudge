@@ -104,7 +104,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
         </nav>
     </header>
 
-    <body>
+    
     <!-- <div class="modal fade " id="error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -193,24 +193,42 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                         ?>" alt="" class="rounded-3 mx-auto d-block mb-4 mt-3" style="width: -webkit-fill-available;">
 
                         </div>
-                        <div class="col-12 mb-4">
-                            <div>
-                                <h5>
-                                    <strong>
-                                        Escribe tu solución
-                                    </strong>
-                                </h5>
+                        <?php
+                            if($_SESSION['tipo']=="alumno"){
+                        ?>
+                            <div class="col-12 mb-4">
+                                <div>
+                                    <h5>
+                                        <strong>
+                                            Escribe tu solución
+                                        </strong>
+                                    </h5>
+                                </div>
+                                <div class="col-12 justify-content-center">
+                                    <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
+                                            <textarea class="form-control" name="solucion" id="" rows="15" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Por favor añada la consulta de solución.
+                                            </div>
+                                        <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $problema->idProblema; ?>">Enviar solución</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-12 justify-content-center">
-                                <form action="EnviarProblema.php" class="d-grid gap-2" Method="post">
-                                        <textarea class="form-control" name="solucion" id="" rows="15" required></textarea>
-                                        <div class="invalid-feedback">
-                                            Por favor añada la consulta de solución.
-                                        </div>
-                                    <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $problema->idProblema; ?>">Enviar solución</button>
-                                </form>
+                        <?php
+                            }else{
+                        ?>
+                            <div class="col-12 mb-4">
+                            
+                                <div class="col-12 justify-content-center">
+                                    <form action="../EditarProblema.php" class="d-grid gap-2" method="post">
+                                        <input type="text" style="display: none;" name="problemaID" id="" value="<?php echo $problema->idProblema; ?>">
+                                        <button type="submit" class="btn btn-primary btn-lg" name="" value="<?php echo $problema->idProblema; ?>">Editar Problema</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="dark-div col-12 p-4">
@@ -285,22 +303,8 @@ $problema = $operaciones->obtenerProblemaPorID($id);
             </div>
         </div>
 
-    </body>
-    <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
-        <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
-
-        <a href="../index.html" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
-        </a>
-
-        <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
-            <li class="nav-item"><a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
-                    <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
-            </li>
-        </ul>
-    </footer>
+    
+    
     <!-- <script>
         window.onload = function() {
 
@@ -313,6 +317,21 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
  -->
 </body>
+<footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
+        <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
+
+        <a href="../index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
+            <li class="nav-item"><a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
+                    <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
+            </li>
+        </ul>
+    </footer>
 
 <script defer src="../js/all.js"></script>
 <script src="../js/Problemas.js"></script>
