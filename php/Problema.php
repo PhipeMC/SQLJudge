@@ -27,6 +27,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     <link rel="stylesheet" href="../css/style-main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script defer src="../js/all.js"></script>
 
 
 
@@ -104,6 +105,41 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     </header>
 
     <body>
+    <!-- <div class="modal fade " id="error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-danger">
+                                <h5 class="modal-title" id="staticBackdropLabel">Respuesta incorrecta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-black  fs-4 text-center">
+                                Tienes un error de tipo: <strong> <?php
+                                                    echo $_SESSION['statusProblem'];
+                                                ?></strong>.
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" data-bs-dismiss="modal" class="btn btn-danger">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="modal fade " id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-success">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Respuesta correcta</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-black fs-4 text-center">
+                                        Tu envío ha sido aceptado <strong> ¡Felicidades!</strong>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
         <div class="container mt-5 rounded">
             <div class="dark-container row align-items-start">
 
@@ -192,12 +228,19 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                     WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
                                 $resultado = mysqli_query($conexion, $sentencia);
                                 while ($listaEnvios = mysqli_fetch_array($resultado)) {
+                                    if($listaEnvios['Estado']=="AC"){
+                                           $color = "primary";
+                                           $calor = "#0d6efd";
+                                    }else{
+                                         $color = "danger";
+                                         $calor = "red";
+                                    }
                             ?>
                                     <tr>
                                         <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
-                                        <td><?php echo $listaEnvios['Estado'] ?></td>
+                                        <td style="color: <?php echo $calor?>"><strong><?php echo $listaEnvios['Estado'] ?></strong></td>
                                         <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
-                                        <td><button type="button" class="btn btn-primary btn-sm rounded-3 w-100"
+                                        <td><button type="button" class="btn btn-<?php echo $color?> btn-sm rounded-3 w-100"
                                             onclick="verCodigo('<?php echo $listaEnvios['idEnvio']  ?>','<?php echo $listaEnvios['CodigoAlumno']  ?>');">Ver</button></td>
                                     </tr>
                             <?php
@@ -247,7 +290,17 @@ $problema = $operaciones->obtenerProblemaPorID($id);
             </li>
         </ul>
     </footer>
+    <!-- <script>
+        window.onload = function() {
 
+                    var modalAgregar = new bootstrap.Modal(document.getElementById('error'), {
+                        keyboard: false
+                    });
+                    modalAgregar.show();
+                };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+ -->
 </body>
 
 <script defer src="../js/all.js"></script>
