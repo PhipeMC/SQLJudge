@@ -1,6 +1,7 @@
 <?php
 include_once("../data/conexion.php");
-
+	session_start();
+	$idProfesor=$_SESSION['id'];
 	$conexion = conectar();
 	$nombre = $_POST['nombre'];
 	$db = $_POST['database'];
@@ -35,8 +36,8 @@ include_once("../data/conexion.php");
 	if($conexion){
 		//echo "Conexion exitosa <br>";
 
-		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos, OrdenFilas) VALUES ('%s', '%s', 1, '%s', %d, '%s', '%s', '$juanpice');";
-		$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
+		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos, OrdenFilas) VALUES ('%s', '%s', %d, '%s', %d, '%s', '%s', '$juanpice');";
+		$sql = sprintf($sentencia, $nombre, $descripcion, $idProfesor,$consulta, $categoria[0] , $dificultad, $db);
 
 		if(mysqli_query($conexion, $sql)){
 			//echo "Elemento agregado";
