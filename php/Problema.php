@@ -28,11 +28,6 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../pluggin/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="../pluggin/codemirror/theme/material-palenight.css">
-    <script src="../pluggin/codemirror/lib/codemirror.js"></script>
-    <script src="../pluggin/codemirror/mode/sql/sql.js"></script>
-    <script src="../pluggin/codemirror/mode/xml/xml.js"></script>
 
 
 </head>
@@ -171,7 +166,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                         </div>
                     </div>
                 </div>
-                <div class="dark-div col-12 card-body">
+                <div class="dark-div col-12 p-4">
                     <div>
                         <h5>
                             <strong>
@@ -193,17 +188,17 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                         <tbody>
                             <?php
                             if ($_SESSION['tipo'] == "alumno") {
-                                $sentencia = "SELECT idEnvio, Estado, fechaEnvio from envio 
+                                $sentencia = "SELECT idEnvio, Estado, fechaEnvio, CodigoAlumno from envio 
                                     WHERE ALUMNO_idAlumno='$idAlumno' AND PROBLEMA_idProblema=$id;";
                                 $resultado = mysqli_query($conexion, $sentencia);
                                 while ($listaEnvios = mysqli_fetch_array($resultado)) {
                             ?>
-
                                     <tr>
                                         <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
-                                        <td><?php echo $listaEnvios['Estado']   ?></td>
+                                        <td><?php echo $listaEnvios['Estado'] ?></td>
                                         <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
-                                        <td><button type="button" class="btn btn-primary btn-sm rounded-3">Ver</button></td>
+                                        <td><button type="button" class="btn btn-primary btn-sm rounded-3 w-100"
+                                            onclick="verCodigo('<?php echo $listaEnvios['idEnvio']  ?>','<?php echo $listaEnvios['CodigoAlumno']  ?>');">Ver</button></td>
                                     </tr>
                             <?php
                                 }
@@ -216,6 +211,24 @@ $problema = $operaciones->obtenerProblemaPorID($id);
             </div>
 
         </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #1f2533;">
+                        <h5 class="modal-title" id="tituloEnvio"></h5>
+                        <button type="button" class="btn-close bg-primary" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalContent">
+                        <div class="h-100">
+                            <textarea class="form-control h-100" name="" id="problemo" rows="25" readonly>HOLA</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </body>
@@ -238,7 +251,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 </body>
 
 <script defer src="../js/all.js"></script>
-<script src="../js/problema.js"></script>
+<script src="../js/Problemas.js"></script>
 <script src="../js/problemaMarkDownImport.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

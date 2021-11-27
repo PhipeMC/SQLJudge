@@ -120,4 +120,22 @@ class usuarioDao
         
         return $row[0];
     }
+
+    public function existeEnvio($idProblema){
+        $validarEnvio = mysqli_query($this->mysqli , "SELECT * FROM envio where idEnvio = '$idProblema'");
+        if (mysqli_num_rows($validarEnvio) > 0) {
+            //$result->free();
+            return true;
+        } else {
+            //$result->free();
+            return false;
+        }
+    }
+
+    public function obtenerEnvio($idProblema){
+        $validarEnvio = mysqli_query($this->mysqli , "SELECT * FROM envio where idEnvio = '$idProblema'");
+        $row = mysqli_fetch_array($validarEnvio);
+        return $row;
+    }
+
 }

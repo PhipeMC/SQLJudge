@@ -40,14 +40,17 @@ include_once("../data/conexion.php");
 
 		if(mysqli_query($conexion, $sql)){
 			//echo "Elemento agregado";
+			$conexion->close();
 			header('Location:' . getenv('HTTP_REFERER'));
 		}else{
+			$conexion->close();
 			echo "Algo salió mal";
 		}
 
 	}else{
 		echo "Conexión Fallida";
+		
 	}
 
+	$conexion->close();
 
-?>

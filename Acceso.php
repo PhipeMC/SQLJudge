@@ -52,7 +52,7 @@ if (isset($_SESSION['id'])) {
                         </h1>
                     </div>
                     <?php
-                    if (!empty($_GET['error'])) {
+                    if (!isset($_GET['error'])) {
                     ?>
                         <div class="invalid-feedback">
                             Usuario o contraseña no válidos, por favor intenta de nuevo.

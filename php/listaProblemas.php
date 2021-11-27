@@ -14,9 +14,12 @@ session_start();
     <title>SQLJudge - Lista de problemas</title>
     <link rel="shortcut icon" href="../img/favicon.ico" />
     <link rel="stylesheet" href="../css/style-main.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.7/css/autoFill.bootstrap5.min.css">
+
 </head>
 
 <body>
@@ -43,25 +46,25 @@ session_start();
                             </ul>
                         </li>
                         <?php
-                            if (isset($_SESSION['tipo'])) {
-                                $usuario = $_SESSION['tipo'];
-                                if ($usuario != "alumno") {
-                            
+                        if (isset($_SESSION['tipo'])) {
+                            $usuario = $_SESSION['tipo'];
+                            if ($usuario != "alumno") {
+
                         ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                Grupos
-                            </a>
-                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
-                                <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
-                            </ul>
-                        </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Grupos
+                                    </a>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Crear Grupo</a></li>
+                                        <li><a class="dropdown-item" href="GenerarCodigo.php">Generar claves</a></li>
+                                    </ul>
+                                </li>
 
                         <?php
-                                    
-                                }
+
                             }
+                        }
                         ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
@@ -87,7 +90,7 @@ session_start();
             </div>
         </nav>
 
-        <div class="dark-container container mt-4">
+        <div class="dark-container container card-body mt-4 p-4">
             <div class="dark-div mt-1 mx-1 mb-4 py-2 px-2">
                 <h2 style="color: snow;"><i class="far fa-list-alt" style="color: #0247fe;"></i> <strong>Lista de problemas</strong></h2>
             </div>
@@ -106,21 +109,20 @@ session_start();
                     $sql = "select P.idPROBLEMA,P.titulo,P.dificultad,
                                 (
 
-                                    select count(E.ALUMNO_idAlumno) from envio E where E.Estado= 'AC' AND E.PROBLEMA_idPROBLEMA = P.idPROBLEMA
+                                    select count(distinct E.ALUMNO_idAlumno) from envio E where E.Estado= 'AC' AND E.PROBLEMA_idPROBLEMA = P.idPROBLEMA
                                 )as Resueltos
                                 from PROBLEMA P ;";
                     $resultado = mysqli_query($conexion, $sql);
 
                     while ($mostra = mysqli_fetch_array($resultado)) {
                     ?>
-
                         <tr>
                             <th><?php echo $mostra['idPROBLEMA'] ?></th>
                             <td><?php echo $mostra['titulo'] ?></td>
                             <td><?php echo $mostra['dificultad'] ?></td>
                             <td><?php echo $mostra['Resueltos'] ?></td>
                             <form action="Problema.php">
-                                <td><button type="submit" class="btn btn-primary btn-sm rounded-3" name="id" value="<?php echo $mostra['idPROBLEMA'] ?>">Ver</button></td>
+                                <td><button type="submit" class="btn btn-primary btn-sm w-100 rounded-3" name="id" value="<?php echo $mostra['idPROBLEMA'] ?>">Ver</button></td>
                             </form>
                         </tr>
                     <?php
@@ -150,9 +152,26 @@ session_start();
 <script defer src="../js/all.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+
 <script>
-    $('#tablasLista').DataTable();
+
+    $(document).ready(function() {
+        var table = $('#tablasLista').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+            },
+        });
+    });
 </script>
 
 </html>
