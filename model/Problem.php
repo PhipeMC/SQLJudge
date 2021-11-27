@@ -8,5 +8,6 @@
         public $CATEGORIA_idCATEGORIA;
         public $dificultad;
         public $nombreBaseDatos;
+        public $OrdenFilas;
     }
 ?>

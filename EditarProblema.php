@@ -7,7 +7,16 @@ if (isset($_SESSION['tipo'])) {
     }
 }else{
     header("location: 404.php");
-} ?>
+} 
+include_once("data/problemaDAO.php");
+include_once("model/Problem.php");
+include_once("data/conexion.php");
+$id = intval($_POST['problemaID']);
+$conexion = conectar();
+$operaciones = new problemaDAO($conexion);
+$problema = $operaciones->obtenerProblemaCompleto($id);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -97,7 +106,7 @@ if (isset($_SESSION['tipo'])) {
                 <form class="form row g-3 needs-validation" novalidate name="formulario" method="post" action="php/EditarProblema.php">
                     <div class="col-md-6">
                         <label for="inputTitulo" class="form-label">Título</label>
-                        <input type="text" name="nombre" class="form-control" id="nombreID" value="Prueba pepe" minlength="4" maxlength="45" required>
+                        <input type="text" name="nombre" class="form-control" id="nombreID" value="<?php echo $problema->Titulo  ?>" minlength="4" maxlength="45" required>
                         <div class="valid-feedback">
                             Luce bien!
                         </div>
@@ -105,10 +114,9 @@ if (isset($_SESSION['tipo'])) {
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Base de datos</label>
                         <select id="inputState" name="database" id="databaseID" class="form-select" required>
-                            <option>Elije...</option>
-                            <option>Sakila</option>
-                            <option>Nwind</option>
-                            <option selected>World</option>
+                            <option value="Sakila"<?php if($problema -> nombreBaseDatos == "Sakila") echo "selected" ?>>Sakila</option>
+                            <option value = "Nwind" <?php if($problema -> nombreBaseDatos == "Nwind") echo "selected" ?>>Nwind</option>
+                            <option value="World" <?php if($problema -> nombreBaseDatos == "World") echo "selected" ?>>World</option>
                         </select>
                         <div class="invalid-feedback">
                             Por favor seleccione una base de datos.
@@ -117,13 +125,12 @@ if (isset($_SESSION['tipo'])) {
                     <div class="col-md-5">
                         <label for="inputTema" class="form-label">Categoría</label>
                         <select id="temaID" name="tema" class="form-select" required>
-                            <option>Elije...</option>
-                            <option>Consultas básicas</option>
-                            <option>Consultas de varias tablas</option>
-                            <option selected>Agrupaciones</option>
-                            <option>Subconsultas anidadas</option>
-                            <option>Subconsultas correlacionadas</option>
-                            <option>Funciones(text, date, numéricas...)</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 1) echo "selected" ?>>Consultas básicas</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 2) echo "selected" ?>>Consultas de varias tablas</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 3) echo "selected" ?>>Agrupaciones</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 4) echo "selected" ?>>Subconsultas anidadas</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 5) echo "selected" ?>>Subconsultas correlacionadas</option>
+                            <option <?php if($problema -> CATEGORIA_idCATEGORIA == 6) echo "selected" ?>>Funciones(text, date, numéricas...)</option>
                         </select>
                         <div class="invalid-feedback">
                             Por favor seleccione una categoría.
@@ -132,10 +139,9 @@ if (isset($_SESSION['tipo'])) {
                     <div class="col-md-5">
                         <label for="inputDificultad" class="form-label">Dificultad</label>
                         <select id="dificultadID" name="dificultad" class="form-select" required>
-                            <option>Elije...</option>
-                            <option selected>Básico</option>
-                            <option>Intermedio</option>
-                            <option>Avanzado</option>
+                            <option <?php if($problema -> dificultad == "Basico") echo "selected" ?>>Básico</option>
+                            <option <?php if($problema -> dificultad == "Intermedio") echo "selected" ?>>Intermedio</option>
+                            <option <?php if($problema -> dificultad == "Avanzado") echo "selected" ?>>Avanzado</option>
                         </select>
                         <div class="invalid-feedback">
                             Por favor seleccione una dificultad.
@@ -147,13 +153,13 @@ if (isset($_SESSION['tipo'])) {
                     </div>
                     <div class="col-md-6 g-3">
                         <label for="inputDescripcion" class="form-label">Descripción del problema</label>
-                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15" onkeyup="run()" required>Escribe tu ejemplo aquí</textarea>
+                        <textarea class="form-control  mb-3" name="description" id="inputDescripcion" rows="15" onkeyup="run()" required><?php  echo $problema->Descripcion  ?></textarea>
                         <div class="invalid-feedback">
                             Por favor añada una descripción.
                         </div>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
                         <div>
-                            <textarea class="form-control" name="consulta" id="" rows="15" required></textarea>
+                            <textarea class="form-control" name="consulta" id="" rows="15" required><?php    echo $problema->solucion    ?></textarea>
                             <div class="invalid-feedback">
                                 Por favor añada la consulta de solución.
                             </div>
@@ -166,8 +172,12 @@ if (isset($_SESSION['tipo'])) {
 
                         <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> -->
                     </div>
+                    <div class="form-check form-switch d-flex align-items-center justify-content-center mt-4">
+                        <input class="form-check-input" type="checkbox" id="switchRevision" name="revisionOrden">
+                        <label class="form-check-label px-2" for="flexSwitchCheckDefault">Evaluar orden de filas</label>
+                    </div>
                     <div class="d-flex align-items-center justify-content-center">
-                        <button type="submit" class="btn btn-SQL mb-3">Editar problema</button>
+                        <button type="submit" value="<?php echo $id ?>" name="idProblema" class="btn btn-SQL mb-3">Editar problema</button>
                     </div>
                 </form>
             </div>
