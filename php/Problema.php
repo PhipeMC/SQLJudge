@@ -137,7 +137,18 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                 </h4>
                             </div>
                             <div class="col-6">
-                                <button type="button" class="btn btn-primary btn-sm w-100">Descargar Base de Datos</button>
+                                <a href="
+                                <?php 
+                                    if ($problema -> nombreBaseDatos == "Nwind") {
+                                        echo "https://drive.google.com/file/d/19b2PN6cxEZ1Bk7mKG2YIK4ftCKj4GtGb/view?usp=sharing";
+                                    }elseif($problema -> nombreBaseDatos == "World"){
+                                        echo "https://drive.google.com/file/d/1xlqdrsxdCfWRrxzcuuPqf4zkZbKW26GC/view?usp=sharing";
+                                    }elseif($problema -> nombreBaseDatos == "Sakila"){
+                                        echo "https://drive.google.com/file/d/1Ue25PY9QvD8meCA8kxOaSB3PQF7oFMGx/view?usp=sharing";
+                                    }
+                                ?>
+                                " class="btn btn-primary btn-sm w-100">Descargar Base de datos</a>
+                                <!-- <button type="button" class="btn btn-primary btn-sm w-100">Descargar Base de Datos</button> -->
                             </div>
                         </div>
                         <div class="col-12">
