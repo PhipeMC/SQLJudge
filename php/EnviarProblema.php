@@ -14,28 +14,30 @@ session_start();
     echo $fecha;
  */
 
+if($conexion){
+	echo "Conexion exitosa";
+	$sentenciaDocente=mysqli_query($conexion,"SELECT Solucion, `NombreBaseDatos` FROM problema where idPROBLEMA = '$idProblema'");
 
-    if($conexion){
-		//echo "Conexion exitosa <br>";
-		$sentenciaDocente=mysqli_query($conexion,"SELECT Solucion FROM `sql_judge`.`problema` where idProblema = '$idProblema'");
-    
-    	$datosProblema=mysqli_fetch_array($sentenciaDocente);
+	$datosProblema=mysqli_fetch_array($sentenciaDocente);
 
-    	if($datosProblema != null){
-        	$solucionDocente=$datosProblema['Solucion'];
-			$estadoProblema=ejecutar($solucion,$solucionDocente,true, 0,$conexion);
-			var_dump($estadoProblema);
-		}
+	if($datosProblema != null){
+		$solucionDocente=$datosProblema['Solucion'];
+		$nombreDB= $datosProblema['NombreBaseDatos'];
+		$conexionn= conectarPorBD($nombreDB);
+		$estadoProblema=ejecutar($solucion,$solucionDocente,true, 0,$conexionn);
 		$sentencia = "INSERT INTO envio (Estado, CodigoAlumno, ALUMNO_idAlumno, PROBLEMA_idPROBLEMA, fechaEnvio) values ('{$estadoProblema}','{$solucion}','{$idAlumno}','{$idProblema}','{$fecha}');";
-
+        $_SESSION['statusProblem']= $estadoProblema;
 		if(mysqli_query($conexion, $sentencia)){
-			//echo "Elemento editado";
+			mysqli_close($conexion);
+			mysqli_close($conexionn);
 			header('Location:' . getenv('HTTP_REFERER'));
 		}else{
-			echo mysqli_error($conexion);
+			echo mysqli_error($conexionn);
 		}
-
-	}else{
-		echo "Conexión Fallida";
 	}
+	
+
+}else{
+	echo "Conexión Fallida";
+}
 ?>
