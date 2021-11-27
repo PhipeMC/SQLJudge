@@ -165,7 +165,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                         <div class="invalid-feedback">
                                             Por favor añada la consulta de solución.
                                         </div>
-                                    <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $rows['idProblema']; ?>">Enviar solución</button>
+                                    <button type="submit" class="btn btn-primary btn-lg" name="idProblema" value="<?php echo $problema->idProblema; ?>">Enviar solución</button>
                                 </form>
                             </div>
                         </div>
