@@ -48,11 +48,12 @@ body {
 }
 
 .dropdown-item {
-  color: white !important;
+  color: white !important;;
 }
 
 .dropdown-item:hover {
-  color: #0247fe !important;
+  background-color: #0247fe!important;
+  color: white!important;
 }
 
 .footer-color {
