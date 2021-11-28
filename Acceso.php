@@ -31,7 +31,7 @@ if (isset($_SESSION['id'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!--  <li class="nav-item">
+                        <!--  <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Ayuda</a>
                         </li> -->
                     </ul>
@@ -42,7 +42,7 @@ if (isset($_SESSION['id'])) {
     <main class="container d-flex flex-row justify-content-center">
 
         <div class="dark-container-login">
-            <form action="data/login.php" class="py-4 px-4 d-flex align-items-center" method="POST">
+            <form action="data/login.php" class="py-4 px-4 d-flex align-items-center needs-validation" method="POST" novalidate>
                 <div class="row g-3 px-1">
                     <div class="col-12">
                         <h5 class="text-center text-white">¿Ya tienes una cuenta?</h5>
@@ -51,25 +51,39 @@ if (isset($_SESSION['id'])) {
                             <strong> Inicia sesión aquí</strong>
                         </h1>
                     </div>
+
                     <?php
-                    if (!isset($_GET['error'])) {
+                    if (!empty($_GET['error'])) {
                     ?>
-                        <div class="invalid-feedback">
-                            Usuario o contraseña no válidos, por favor intenta de nuevo.
-                        </div>
+                        <strong style="color: #dc3545;">Usuario o contraseña no válidos, por favor intenta de nuevo.</strong>
                     <?php } ?>
                     <div class="col-12">
                         <input type="email" class="form-control" id="txtUsuario" name="correo" placeholder="Correo" maxlength="80" required>
+                        <div class="valid-feedback">
+                            Luce bien!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, ingresa un correo válido.
+                        </div>
                     </div>
                     <div class="col-12">
                         <input type="password" class="form-control" id="txtContrasenia" name="contrasenia" placeholder="Contraseña" maxlength="20" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingresa tu contraseña.
+                        </div>
                     </div>
                     <div class="col-12">
                         <select id="selectUser" name="tipoUser" class="form-select" required>
-                            <option selected>¿Tipo de usuario?...</option>
+                            <option selected disabled value="">¿Tipo de usuario?...</option>
                             <option value="alumno">Alumno</option>
                             <option value="docente">Docente</option>
                         </select>
+                        <div class="valid-feedback">
+                            Luce bien!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, elige un tipo de usuario.
+                        </div>
                     </div>
                     <div class="col-12 text-center">
                         <a href="Recuperar.html" id="olvidasteContraseña">¿Olvidaste tu contraseña?</a>
@@ -136,6 +150,27 @@ if (isset($_SESSION['id'])) {
         </li>
     </ul>
 </footer>
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
 
 <script defer src="js/all.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

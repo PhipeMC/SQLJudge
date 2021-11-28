@@ -269,7 +269,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                     <th scope="row"><?php echo $listaEnvios['idEnvio']   ?></th>
                                     <td style="color: <?php echo $calor ?>"><strong><?php echo $listaEnvios['Estado'] ?></strong></td>
                                     <td><?php echo $listaEnvios['fechaEnvio']   ?></td>
-                                    <td><button type="button" class="btn btn-<?php echo $color ?> btn-sm rounded-3 w-100 text-white" value="<?php echo $listaEnvios['CodigoAlumno']?>" name="<?php echo $listaEnvios['idEnvio']?>" onclick="verCodigo(this)";><i class="fas fa-search"></i></button></td>
+                                    <td><button type="button" class="btn btn-<?php echo $color ?> btn-sm rounded-3 w-100 text-white" value="<?php echo $listaEnvios['CodigoAlumno'] ?>" name="<?php echo $listaEnvios['idEnvio'] ?>" onclick="verCodigo(this)" ;><i class="fas fa-search"></i></button></td>
                                 </tr>
                         <?php
                             }
