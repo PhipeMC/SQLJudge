@@ -327,16 +327,16 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 <script src="../js/Problemas.js"></script>
 <script>
     window.onload=function(){
-    var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
-        keyboard: false
-    });
-    modalAgregar.show();
+   
     var text = document.getElementById("inputDescripcion").value,
     target = document.getElementById("targetDiv"),
     converter = new showdown.Converter(),
     html = converter.makeHtml(text);
     target.innerHTML = html;
-    
+    var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
+        keyboard: false
+    });
+    modalAgregar.show();
     
     
 }
