@@ -134,7 +134,7 @@ if (isset($_SESSION['tipo'])) {
                                 <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="txtUsuario" class="form-label">Correo electrónico</label>
-                                        <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
+                                        <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" disabled required>
                                     </div>
                                     <div class="group-input">
                                         <label for="" class="form-label">Nombre</label>
@@ -166,20 +166,21 @@ if (isset($_SESSION['tipo'])) {
                         <div class="card">
                             <h5 class="card-header">Cambiar contraseña</h5>
                             <div class="card-body">
-                                <form method="post" action="../php/profile change.php">
+                                <form method="post" action="../php/editPassword.php">
                                     <div class="group-input">
                                         <label for="txtPasswordOld">Contraseña anterior</label>
-                                        <input type="password" name="" id="txtPasswordOld" class="form-control" required>
+                                        <input type="password" name="oldPass" id="txtPasswordOld" class="form-control" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="txtPassword" class="form-label">Contraseña nueva</label>
-                                        <input type="password" name="" id="txtPassword" class="form-control" required>
+                                        <input type="password" name="newPass" id="txtPassword" class="form-control" required>
                                     </div>
                                     <div class="group-input">
                                         <label for="txtPasswordRpt">Repite la contraseña</label>
-                                        <input type="password" name="" id="txtPasswordRpt" class="form-control" required>
+                                        <input type="password" name="repPass" id="txtPasswordRpt" class="form-control" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary disabled">Guardar cambios</button>
+                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    <input type="text" name="usern" value="<?php echo $_SESSION['user'] ?>" style="visibility: hidden; width: 0; height: 0;">
                                 </form>
                             </div>
                         </div>

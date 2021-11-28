@@ -13,6 +13,7 @@
         $_POST['school'], $_POST['gender'], $_POST['username']);
     }
 
+    $conexion = null;
     header("location: ../php/Profile.php");
     exit;
 ?>

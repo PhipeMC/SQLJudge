@@ -138,4 +138,17 @@ class usuarioDao
         return $row;
     }
 
+    public function obtainPass($user){
+        $data = mysqli_query($this -> mysqli, "SELECT Contrasena FROM alumno WHERE Usuario = '$user'");
+        $password = mysqli_fetch_array($data);
+
+        return $password[0];
+    }
+
+    public function editPassword($user, $pass){
+        $encrypt = password_hash($pass, PASSWORD_DEFAULT);
+        $data = mysqli_query($this -> mysqli, "UPDATE alumno SET Contrasena = '$encrypt' WHERE Usuario = '$user'");
+
+        return $data;
+    }
 }
