@@ -305,22 +305,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 
     
     
-    <script>
-        window.onload = function() {
-
-            var text = document.getElementById("inputDescripcion").value,
-        target = document.getElementById("targetDiv"),
-        converter = new showdown.Converter(),
-        html = converter.makeHtml(text);
-    target.innerHTML = html;
-    var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
-        keyboard: false
-    });
-    modalAgregar.show();
-                };
-    </script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
+    
 </body>
 <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
         <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
@@ -340,6 +325,22 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 
 <script defer src="../js/all.js"></script>
 <script src="../js/Problemas.js"></script>
+<script>
+    window.onload=function(){
+    var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
+        keyboard: false
+    });
+    modalAgregar.show();
+    var text = document.getElementById("inputDescripcion").value,
+    target = document.getElementById("targetDiv"),
+    converter = new showdown.Converter(),
+    html = converter.makeHtml(text);
+    target.innerHTML = html;
+    
+    
+    
+}
+</script>
 <!-- <script src="../js/problemaMarkDownImport.js"></script>  -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
