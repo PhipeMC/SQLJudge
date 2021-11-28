@@ -124,11 +124,7 @@ if (isset($_SESSION['id'])) {
                         <input type="password" class="form-control" id="txtConfirmarContraseniaR" name="confcontraseniaR" placeholder="Confirmar Contraseña" required>
                     </div>
                     <div class="col-12">
-                        <select id="selectUserR" name="tipoUserR" class="form-select" required>
-                            <option selected>¿Tipo de usuario?...</option>
-                            <option value="alumno">Alumno</option>
-                            <option value="docente">Docente</option>
-                        </select>
+                        <input type="text" class="form-control" id="txtCodigoR" name="codigoR" placeholder="Codigo Del Grupo" required>
                     </div>
                     <div class="col-12 pb-3">
                         <button class="button-access" id="btnRegistrar">Registrate</button>
