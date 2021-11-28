@@ -4,22 +4,27 @@
             $strCadenaOrderBy = " order by 1";
             $i = 0;
             for ($i = 2; $i <= $columnas; $i++) {
-                $strCadenaOrderBy = $strCadenaOrderBy + ", " + $i;
+                $strCadenaOrderBy = $strCadenaOrderBy . ", " . $i;
             }
             return $strCadenaOrderBy;
         }
 
-        function ejecutar($strSQL, $strSolucion, $EvaluaOrden, $NumeroColumnas, $con)
+        function ejecutar($strSQL, $strSolucion, $EvaluaOrden, $con)
         {
             $sql1 = "";
             $sql2 = "";
             $strSQL = str_replace(";", "", $strSQL);
             $strSQL = strtoupper($strSQL);
+            $sql2 = $strSolucion;
+            $resultadosDocente = mysqli_query($con, $sql2);
+            $clm_cnt2 = mysqli_num_fields($resultadosDocente);
             if ($EvaluaOrden == false) {
-                $strSQL = "select * from ( " + $strSQL + ") as Consulta " + CadenaOrderBy($NumeroColumnas);
-            }
+                $strSQL = "select * from ( " . $strSQL . ") as Consulta " . CadenaOrderBy($clm_cnt2);
 
+            }
+                
             $sql1 = $strSQL;
+            
             $resultadosAlumno = mysqli_query($con, $sql1);
 
             if ($resultadosAlumno == false) {
@@ -32,8 +37,7 @@
                     return "RE";
                 }
             }
-            $sql2 = $strSolucion;
-            $resultadosDocente = mysqli_query($con, $sql2);
+            
             $row_cnt1 = mysqli_num_rows($resultadosAlumno);
             $row_cnt2 = mysqli_num_rows($resultadosDocente);
             // echo $row_cnt1;
@@ -41,7 +45,6 @@
             // echo $row_cnt2;
             // echo "<br>";
             $clm_cnt1 = mysqli_num_fields($resultadosAlumno);
-            $clm_cnt2 = mysqli_num_fields($resultadosDocente);
             // echo $clm_cnt1;
             // echo "<br>";
             // echo $clm_cnt2;
