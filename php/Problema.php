@@ -333,11 +333,16 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     converter = new showdown.Converter(),
     html = converter.makeHtml(text);
     target.innerHTML = html;
+    <?php
+    if(isset($_SESSION['statusProblem'])){
+    ?>
     var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
         keyboard: false
     });
     modalAgregar.show();
-    
+    <?php
+    }
+    ?>
     
 }
 </script>
