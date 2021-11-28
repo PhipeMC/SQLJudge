@@ -1,24 +1,36 @@
-/*var text = document.getElementById("inputDescripcion").value,
-    target = document.getElementById("targetDiv"),
-    converter = new showdown.Converter(),
-    html = converter.makeHtml(text);
-    target.innerHTML = html; 
-
-*/
-function verCodigo(x, y) {
-    debugger;
-    var titulo =  document.getElementById("tituloEnvio");
-    titulo.innerText = "Envio #"+x ;
+function verCodigo(y) {
+    var titulo = document.getElementById("tituloEnvio");
+    titulo.innerHTML= "Envio #"+textToHTML(y.name);
 
     var cuerpo = document.getElementById("problemo");
-    //cuerpo.value = y;
-    alert(cuerpo.value);
+    cuerpo.innerHTML = textToHTML(y.value);
 
     var modalCode = new bootstrap.Modal(document.getElementById("exampleModal"), {
         keyboard: false,
     });
     modalCode.show();
-
 }
 
+var support = (function () {
+    if (!window.DOMParser) return false;
+    var parser = new DOMParser();
+    try {
+        parser.parseFromString("x", "text/html");
+    } catch (err) {
+        return false;
+    }
+    return true;
+})();
+
+var textToHTML = function (str) {
+    if (support) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(str, "text/html");
+        return doc.body.innerHTML;
+    }
+
+    var dom = document.createElement("div");
+    dom.innerHTML = str;
+    return dom;
+};
 
