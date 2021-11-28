@@ -33,15 +33,15 @@ include_once("../data/conexion.php");
 	if($conexion){
 		//echo "Conexion exitosa <br>";
 
-		$sentencia = "UPDATE problema SET Titulo='$nombre', Descripcion='$descripcion', DOCENTE_idUsuario='1', Solucion='$consulta', CATEGORIA_idCATEGORIA='$categoria[0]', dificultad='$dificultad', NombreBaseDatos='$db' WHERE idPROBLEMA='$id';";
+		$sentencia = "UPDATE problema SET Titulo='$nombre', Descripcion=\"$descripcion\", DOCENTE_idUsuario='1', Solucion=\"$consulta\", CATEGORIA_idCATEGORIA='$categoria[0]', dificultad='$dificultad', NombreBaseDatos='$db' WHERE idPROBLEMA='$id';";
 		//$sql = sprintf($sentencia, $nombre, $descripcion, $consulta, $categoria[0] , $dificultad, $db);
-
+		echo $sentencia;
 		if(mysqli_query($conexion, $sentencia)){
 			//echo "Elemento editado";
 			$conexion -> close();
 			header('Location:../index.php');
 		}else{
-			echo "Algo salió mal";
+			echo $conexion->error;
 			$conexion -> close();
 		}
 
