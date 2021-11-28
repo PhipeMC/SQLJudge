@@ -35,17 +35,19 @@ include_once("../data/conexion.php");
 
 	if($conexion){
 		//echo "Conexion exitosa <br>";
-
-		$sentencia = "INSERT into problema (Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos, OrdenFilas) VALUES ('%s', '%s', %d, '%s', %d, '%s', '%s', '$juanpice');";
-		$sql = sprintf($sentencia, $nombre, $descripcion, $idProfesor,$consulta, $categoria[0] , $dificultad, $db);
-
+		$sql = "INSERT into problema 
+		(Titulo, Descripcion, DOCENTE_idUsuario, Solucion, CATEGORIA_idCATEGORIA, dificultad, NombreBaseDatos, OrdenFilas)
+		values ('$nombre', \"$descripcion\", $idProfesor, \"$consulta\", $categoria[0], '$dificultad', '$db', $juanpice);";
+		echo $sql;
 		if(mysqli_query($conexion, $sql)){
 			//echo "Elemento agregado";
 			$conexion->close();
 			header('Location:' . getenv('HTTP_REFERER'));
 		}else{
+			
+			echo $conexion->error;
 			$conexion->close();
-			echo "Algo salió mal";
+			
 		}
 
 	}else{
