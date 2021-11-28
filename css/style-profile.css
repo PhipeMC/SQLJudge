@@ -50,7 +50,7 @@
 
 .col-profile{
     width: 300px !important;
-    margin-right: 10em;
+    margin-right: 6em;
     height: auto;
 }
 
@@ -59,9 +59,9 @@
     padding: 1em;
 }
 
-#myChart{
+/* #myChart{
     height: auto !important;
-}
+} */
 
 .card h5{
     font-size: x-large;

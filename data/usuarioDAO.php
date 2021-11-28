@@ -127,4 +127,17 @@ class usuarioDao
 
         return $data;
     }
+
+    public function obtainCountProb($id){
+        $data = mysqli_query($this -> mysqli, "select (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'AC') as AC, (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'CD') as CD, (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'RE') as RE, (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'NR') as NR, (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'NC') as NC, (
+            select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'WA') as WA;");
+        $arraydata = mysqli_fetch_array($data);
+
+        return $arraydata;
+    }
 }

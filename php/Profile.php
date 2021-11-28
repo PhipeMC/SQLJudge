@@ -12,6 +12,7 @@ if (isset($_SESSION['tipo'])) {
     include("../data/conexion.php");
     $conexion = conectar();
     $dao = new usuarioDao($conexion);
+    $arraydata = $dao -> obtainCountProb($_SESSION['id']);
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +58,6 @@ if (isset($_SESSION['tipo'])) {
                                 <li><a class="dropdown-item" href="../CrearProblema.php">Crear problema</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="">Ayuda</a>
-                        </li>
                     </ul>
                     <ul class="navbar-nav  mb-2 mb-lg-0">
                         <li class="nav-item dropdown mx-5">
@@ -94,7 +92,7 @@ if (isset($_SESSION['tipo'])) {
                             <h5><strong><?php echo $_SESSION['nombres'] . " " . $_SESSION['apellidos'] ?></strong></h5>
                         </div>
                         <div class="group-container overflow-hidden">
-                            <p>Problemas resueltos</p>
+                            <p>Envios realizados</p>
                             <h5><strong>
                             <?php 
                                 echo $dao -> proResueltosUser($_SESSION['id']);
@@ -102,8 +100,12 @@ if (isset($_SESSION['tipo'])) {
                             </strong></h5>
                         </div>
                         <div class="group-container">
+                            <p>Género</p>
+                            <h5><strong><?php if(is_null($_SESSION['genero'])){echo("NA");}else{echo($_SESSION['genero']);} ?></strong></h5>
+                        </div>
+                        <div class="group-container">
                             <p>Institución educativa</p>
-                            <h5><strong><?php echo $_SESSION['escuela'] ?></strong></h5>
+                            <h5><strong><?php if(is_null($_SESSION['escuela'])){echo("NA");}else{echo($_SESSION['escuela']);} ?></strong></h5>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -114,7 +116,44 @@ if (isset($_SESSION['tipo'])) {
                 <div class="card col bg-dark text-center card-stats">
                     <h1>Estadisticas</h1>
                     <canvas id="myChart"></canvas>
-                    <script src="../js/charts.js"></script>
+                    <!-- <script src="../js/charts.js"></script> -->
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'polarArea',
+                            data: {
+                                labels: ['Answer Correct', 'Duplicated Columns', 'Runtime Error', 'Incorrect Rows', 'Incorrect Columns', 'Wrong Answer'],
+                                datasets: [{
+                                    label: 'Problemas',
+                                    data: <?php echo("[".$arraydata[0].",".$arraydata[1].",".$arraydata[2].",".$arraydata[3].",".$arraydata[4].",".$arraydata[5]."],"); ?>
+                                    backgroundColor: [
+                                        'rgba(0, 255, 7, 0.2)',
+                                        'rgba(248, 255, 0, 0.2)',
+                                        'rgba(0, 126, 255, 0.2)',
+                                        'rgba(108, 0, 255, 0.2)',
+                                        'rgba(255, 97, 0, 0.2)',
+                                        'rgba(255, 0, 0, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 255, 7, 0.9)',
+                                        'rgba(248, 255, 0, 0.9)',
+                                        'rgba(0, 126, 255, 0.9)',
+                                        'rgba(108, 0, 255, 0.9)',
+                                        'rgba(255, 97, 0, 0.9)',
+                                        'rgba(255, 0, 0, 0.9)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </div>
@@ -134,7 +173,7 @@ if (isset($_SESSION['tipo'])) {
                                 <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="txtUsuario" class="form-label">Correo electrónico</label>
-                                        <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
+                                        <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" disabled required>
                                     </div>
                                     <div class="group-input">
                                         <label for="" class="form-label">Nombre</label>
@@ -202,12 +241,13 @@ if (isset($_SESSION['tipo'])) {
             </div>
         </div>
     </div>
+    <?php $conexion = null;?>
 </body>
 
 <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
     <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
 
-    <a href="../index.html" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <a href="../index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
     </a>
 
