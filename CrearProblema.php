@@ -24,8 +24,6 @@ if (isset($_SESSION['tipo'])) {
     <link rel="stylesheet" href="../SQLJudge/pluggin/codemirror/lib/codemirror.css">
     <script src="../SQLJudge/pluggin/codemirror/lib/codemirror.js"></script>
     <script src="../SQLJudge/pluggin/codemirror/mode/sql/sql.js"></script>
-
-
 </head>
 
 <body>
@@ -170,29 +168,23 @@ if (isset($_SESSION['tipo'])) {
             </div>
         </div>
     </main>
-
-
 </body>
 
 <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
     <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
 
-    <a href="index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <a href="../index.html" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
     </a>
 
     <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
-        <li class="nav-item">
-            <a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
+        <li class="nav-item"><a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
                 <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
         </li>
     </ul>
 </footer>
-
-
-
 
 
 <script defer src="js/all.js"></script>
