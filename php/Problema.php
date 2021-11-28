@@ -105,7 +105,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
     </header>
 
     
-    <!-- <div class="modal fade " id="error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade " id="error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header bg-danger">
@@ -123,8 +123,8 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <!-- <div class="modal fade " id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                </div>
+                <div class="modal fade " id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-success">
@@ -135,11 +135,11 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                                         Tu envío ha sido aceptado <strong> ¡Felicidades!</strong>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
         <div class="container mt-5 rounded">
             <div class="dark-container row align-items-start">
 
@@ -305,17 +305,22 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 
     
     
-    <!-- <script>
+    <script>
         window.onload = function() {
 
-                    var modalAgregar = new bootstrap.Modal(document.getElementById('error'), {
-                        keyboard: false
-                    });
-                    modalAgregar.show();
+            var text = document.getElementById("inputDescripcion").value,
+        target = document.getElementById("targetDiv"),
+        converter = new showdown.Converter(),
+        html = converter.makeHtml(text);
+    target.innerHTML = html;
+    var modalAgregar = new bootstrap.Modal(document.getElementById('<?php if($_SESSION['statusProblem']=='AC'){echo 'modalEliminar'; $_SESSION['statusProblem']=null;} if($_SESSION['statusProblem']!='AC' && $_SESSION['statusProblem']!=null){echo 'error'; $_SESSION['statusProblem']=null;}?>'), {
+        keyboard: false
+    });
+    modalAgregar.show();
                 };
-    </script>
+    </script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
- -->
+
 </body>
 <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
         <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
@@ -335,7 +340,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 
 <script defer src="../js/all.js"></script>
 <script src="../js/Problemas.js"></script>
-<script src="../js/problemaMarkDownImport.js"></script>
+<!-- <script src="../js/problemaMarkDownImport.js"></script>  -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 

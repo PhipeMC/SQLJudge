@@ -15,17 +15,20 @@ session_start();
  */
 
 if($conexion){
-	echo "Conexion exitosa";
 	$sentenciaDocente=mysqli_query($conexion,"SELECT Solucion, `NombreBaseDatos` FROM problema where idPROBLEMA = '$idProblema'");
 
 	$datosProblema=mysqli_fetch_array($sentenciaDocente);
 
 	if($datosProblema != null){
 		$solucionDocente=$datosProblema['Solucion'];
+		//echo $solucionDocente;
 		$nombreDB= $datosProblema['NombreBaseDatos'];
+		//echo $nombreDB;
 		$conexionn= conectarPorBD($nombreDB);
-		$estadoProblema=ejecutar($solucion,$solucionDocente,true, 0,$conexionn);
-		$sentencia = "INSERT INTO envio (Estado, CodigoAlumno, ALUMNO_idAlumno, PROBLEMA_idPROBLEMA, fechaEnvio) values ('{$estadoProblema}','{$solucion}','{$idAlumno}','{$idProblema}','{$fecha}');";
+		$estadoProblema=ejecutar($solucion,$solucionDocente,true, $conexionn);
+		//echo $estadoProblema;
+		$sentencia = "INSERT INTO envio (Estado, CodigoAlumno, ALUMNO_idAlumno, PROBLEMA_idPROBLEMA, fechaEnvio) values ('{$estadoProblema}', \"$solucion\",'{$idAlumno}','{$idProblema}','{$fecha}');";
+		//echo $sentencia;
         $_SESSION['statusProblem']= $estadoProblema;
 		if(mysqli_query($conexion, $sentencia)){
 			mysqli_close($conexion);
