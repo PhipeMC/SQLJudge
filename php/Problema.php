@@ -50,7 +50,7 @@ $problema = $operaciones->obtenerProblemaPorID($id);
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item " href="listaProblemas.php">Lista de problemas</a></li>
-                                <li><a class="dropdown-item" href="#">Ranking</a></li>
+                                
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -307,19 +307,20 @@ $problema = $operaciones->obtenerProblemaPorID($id);
 
 </body>
 <footer class="footer-color d-flex flex-wrap justify-content-between align-items-center py-3 mt-5">
-    <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
+        <p class="col-md-4 mb-0 text-light">&copy; 2021 Máquina del Mal, Inc</p>
 
-    <a href="../index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
-    </a>
+        <a href="../index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <h4><i class="fas fa-terminal" style="color: #0247fe;"></i></h4>
+        </a>
 
-    <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
-        <li class="nav-item"><a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
-                <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
-        </li>
-    </ul>
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="../index.php" class="nav-link px-2 text-muted">Inicio</a></li>
+            <li class="nav-item"><a href="http://www.itsur.edu.mx/ing_sistemas.php" class="nav-link px-2 text-muted">Acerca de</a></li>
+            <li class="nav-item">
+                <a href="https://www.facebook.com/ITSURGTO" class="nav-link px-2 text-muted">
+                    <i class="h4 fab fa-facebook-square" style="color: rgb(255, 255, 255);"></i></a>
+            </li>
+        </ul>
 </footer>
 
 <script defer src="../js/all.js"></script>
