@@ -126,6 +126,31 @@ if (isset($_SESSION['id'])) {
                     <div class="col-12">
                         <input type="text" class="form-control" id="txtCodigoR" name="codigoR" placeholder="Codigo Del Grupo" required>
                     </div>
+                    <?php
+                    if (!empty($_SESSION['errorCodigo'])) {
+                        echo $_SESSION['errorCodigo'];
+                    }
+                    ?>
+                    <?php
+                    if (!empty($_SESSION['errorContra'])) {
+                        echo $_SESSION['errorContra'];
+                    }
+                    ?>
+                    <?php
+                    if (!empty($_SESSION['errorUsuario'])) {
+                        echo $_SESSION['errorUsuario'];
+                    }
+                    ?>
+                    <?php
+                    if (!empty($_SESSION['errorRegistroErroneo'])) {
+                        echo $_SESSION['errorRegistroErroneo'];
+                    }
+                    ?>
+                    <?php
+                    if (!empty($_SESSION['errorRegistroCorrecto'])) {
+                        echo $_SESSION['errorRegistroCorrecto'];
+                    }
+                    ?>
                     <div class="col-12 pb-3">
                         <button class="button-access" id="btnRegistrar">Registrate</button>
                     </div>
