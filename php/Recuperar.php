@@ -8,10 +8,21 @@ include_once("../data/conexion.php");
     $Header = "From: SQL Judge";
     $Mensaje = "Esta es tu contraseña: ";
 
-    $resultado = mysqli_query($conexion, sprintf("SELECT ContrasenaA from '%S' where Correo='%S';",$Sesion,$Destinatario));
+    //echo $Sesion;
+    //echo "<br>";
+    //echo $Destinatario;
+    //echo "<br>";
+    //echo $Asunto;
+    //echo "<br>";
+    //echo $Header;
+    //echo "<br>";
+    
+
+    $resultado = mysqli_query($conexion, "SELECT Contrasena from $Sesion where email='$Destinatario'");
 	$categoria = mysqli_fetch_array($resultado);
 
-    $Mensaje = $Mensaje + $categoria[0];
+    $Mensaje = $Mensaje.$categoria[0];
+    //echo $Mensaje;
 
     @mail($Destinatario, $Asunto, $Mensaje, $Header);
 
