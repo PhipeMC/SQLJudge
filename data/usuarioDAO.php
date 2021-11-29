@@ -30,18 +30,15 @@ class usuarioDao
         $validarArr = mysqli_fetch_array($validarLogin);
         mysqli_free_result($validarLogin);
 
-        // var_dump($validarLogin);
-        //var_dump($validarArr);
-
-        //password_verify("$pass", "$validarArr[3]");
-        //mysqli_num_rows($validarLogin) > 0
-
         if (password_verify(strval($pass), strval($validarArr[3]))) {
-            //$result->free();
             return true;
         } else {
-            //$result->free();
-            return false;
+            //Acceso usuarios de prueba
+            if (strval($validarArr[3]) === strval($pass) and strval($id) == strval($validarArr[2])) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
@@ -128,8 +125,9 @@ class usuarioDao
         return $data;
     }
 
-    public function obtainCountProb($id){
-        $data = mysqli_query($this -> mysqli, "select (
+    public function obtainCountProb($id)
+    {
+        $data = mysqli_query($this->mysqli, "select (
             select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'AC') as AC, (
             select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'CD') as CD, (
             select count(idEnvio) from envio where ALUMNO_idAlumno = '$id' and Estado = 'RE') as RE, (
