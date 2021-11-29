@@ -96,8 +96,17 @@ body {
   margin-top: 5%;
 }
 
-#txtUsuario {
+#txtUsuario,#txtCorreoR {
   background-image: url(../img/envelope-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
+
+
+#selectUser, #txtNombreR,#txtApellidoR,#txtUsuarioR {
+  background-image: url(../img/user-solid.svg);
   background-repeat: no-repeat;
   background-size: 1.4em;
   padding: 0.5em 0.5em 0.5em 2.5em;
@@ -105,15 +114,7 @@ body {
 }
 
 #txtUsuarioR {
-  background-image: url(../img/envelope-solid.svg);
-  background-repeat: no-repeat;
-  background-size: 1.4em;
-  padding: 0.5em 0.5em 0.5em 2.5em;
-  background-position: 0.5em;
-}
-
-#selectUser {
-  background-image: url(../img/user-solid.svg);
+  background-image: url(../img/id-card-solid.svg);
   background-repeat: no-repeat;
   background-size: 1.4em;
   padding: 0.5em 0.5em 0.5em 2.5em;
@@ -127,8 +128,15 @@ body {
   padding: 0.5em 0.5em 0.5em 2.5em;
   background-position: 0.5em;
 }
+#txtCodigoR{
+  background-image: url(../img/qrcode-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  padding: 0.5em 0.5em 0.5em 2.5em;
+  background-position: 0.5em;
+}
 #txtContraseniaR,
-#txtConfirmarContrasenia {
+#txtConfirmarContrasenia, #txtConfirmarContraseniaR{
   background-image: url(../img/lock-solid.svg);
   background-repeat: no-repeat;
   background-size: 1.4em;
