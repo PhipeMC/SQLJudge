@@ -6,10 +6,10 @@
     $dao = new usuarioDao($conexion);
 
     if($gender == "Prefiero no responder"){
-        $result = $dao -> editarUsuario(0, $_POST['email'], $_POST['name'], $_POST['lastName'], 
+        $result = $dao -> editarUsuario(0, $_POST['name'], $_POST['lastName'], 
         $_POST['school'], null, $_POST['username']);
     }else{
-        $result = $dao -> editarUsuario(1, $_POST['email'], $_POST['name'], $_POST['lastName'], 
+        $result = $dao -> editarUsuario(1, $_POST['name'], $_POST['lastName'], 
         $_POST['school'], $_POST['gender'], $_POST['username']);
     }
 

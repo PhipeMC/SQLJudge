@@ -170,11 +170,11 @@ if (isset($_SESSION['tipo'])) {
                         <div class="card">
                             <h5 class="card-header">Edita tu perfil</h5>
                             <div class="card-body">
-                                <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="txtUsuario" class="form-label">Correo electrónico</label>
                                         <input type="email" name="email" id="txtEmail" class="form-control" value="<?php echo $_SESSION['email'] ?>" disabled required>
                                     </div>
+                                <form method="post" action="../php/profile change.php">
                                     <div class="group-input">
                                         <label for="" class="form-label">Nombre</label>
                                         <input type="text" name="name" id="txtName" class="form-control" value="<?php echo $_SESSION['nombres'] ?>" required>
@@ -196,6 +196,7 @@ if (isset($_SESSION['tipo'])) {
                                             <option value="Otro">Otro</option>
                                         </select>
                                     </div>
+                                    <label for="">Recuerda volver a iniciar sesion para mostrar los cambios</label>
                                     <button type="submit" class="btn btn-primary">Guardar cambios</button> 
                                     <input type="text" name="username" value="<?php echo $_SESSION['user'] ?>" style="visibility: hidden; width: 0; height: 0;">
                                 </form>
