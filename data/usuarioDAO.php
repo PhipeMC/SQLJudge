@@ -71,12 +71,12 @@ class usuarioDao
     }
 
 
-    public function editarUsuario($action, $email, $name, $lastname, $school, $gender, $username)
+    public function editarUsuario($action, $name, $lastname, $school, $gender, $username)
     {
         if ($action == 0) {
-            $update = mysqli_query($this->mysqli, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school' WHERE Usuario = '$username'");
+            $update = mysqli_query($this->mysqli, "UPDATE alumno SET Nombre = '$name', Apellidos = '$lastname', Escuela = '$school' WHERE Usuario = '$username'");
         } else {
-            $update = mysqli_query($this->mysqli, "UPDATE alumno SET Email = '$email', Nombre = '$name', Apellidos = '$lastname', Escuela = '$school', Genero = '$gender' WHERE Usuario = '$username'");
+            $update = mysqli_query($this->mysqli, "UPDATE alumno SET Nombre = '$name', Apellidos = '$lastname', Escuela = '$school', Genero = '$gender' WHERE Usuario = '$username'");
         }
 
         return $update;
