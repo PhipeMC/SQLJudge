@@ -88,15 +88,18 @@ if (isset($_SESSION['tipo'])) {
                 <form class="form row g-3 needs-validation" novalidate name="formulario" method="post" action="php/InsertarProblema.php">
                     <div class="col-md-6">
                         <label for="inputTitulo" class="form-label">Título</label>
-                        <input type="text" name="nombre" class="form-control" id="inputTitulo" minlength="4" maxlength="45" required>
+                        <input type="text" name="nombre" class="form-control" id="inputTitulo" minlength="4" maxlength="45" placeholder="Título" required>
                         <div class="valid-feedback">
                             Luce bien!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor ingresa un título para tu problema.
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Base de datos</label>
                         <select id="inputState" name="database" class="form-select" required>
-                            <option selected>Elije...</option>
+                            <option selected disabled value="">Elije...</option>
                             <option>Sakila</option>
                             <option>Nwind</option>
                             <option>World</option>
@@ -108,7 +111,7 @@ if (isset($_SESSION['tipo'])) {
                     <div class="col-md-5">
                         <label for="inputTema" class="form-label">Categoría</label>
                         <select id="inputTema" name="tema" class="form-select" required>
-                            <option selected>Elije...</option>
+                            <option selected disabled value="">Elije...</option>
                             <option>Consultas básicas</option>
                             <option>Consultas de varias tablas</option>
                             <option>Agrupaciones</option>
@@ -123,7 +126,7 @@ if (isset($_SESSION['tipo'])) {
                     <div class="col-md-5">
                         <label for="inputDificultad" class="form-label">Dificultad</label>
                         <select id="inputDificultad" name="dificultad" class="form-select" required>
-                            <option selected>Elije...</option>
+                            <option selected disabled value="">Elije...</option>
                             <option>Básico</option>
                             <option>Intermedio</option>
                             <option>Avanzado</option>
@@ -143,7 +146,7 @@ if (isset($_SESSION['tipo'])) {
                             Por favor añada una descripción.
                         </div>
                         <label for="inputSolucion" class="form-label">Consulta de solución</label>
-                        <div class="form-control" id="solution">
+                        <div  id="solution">
                             <textarea class="form-control" name="consulta" id="inputSolucion" rows="15" required></textarea>
                             <div class="invalid-feedback">
                                 Por favor añada la consulta de solución.
@@ -154,8 +157,6 @@ if (isset($_SESSION['tipo'])) {
                         <label for="inputPrevia" class="form-label">Vista previa del texto</label>
                         <div class="dark-div px-3 py-3" id="targetDiv" style="height: 96.3%;">Escribe tu ejemplo aquí
                         </div>
-
-                        <!-- <textarea class="form-control" id="targetDiv" rows="10" disabled="true"></textarea> -->
                     </div>
                     <div class="form-check form-switch d-flex align-items-center justify-content-center mt-4">
                         <input class="form-check-input" type="checkbox" id="switchRevision" name="revisionOrden">

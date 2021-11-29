@@ -45,14 +45,3 @@ function autosize() {
     el.style.cssText = "height:" + el.scrollHeight + "px";
   }, 0);
 }
-
-/////CODE MIRROR
-
-/*CodeMirror.fromTextArea(document.querySelector('#inputSolucion'),{
-  lineNumbers: true,
-  tabSize: 16,
-  value: 'SELECT * FROM WORLD;',
-  mode: 'sql',
-  theme: "material",
-  lineWrapping: true
-});*/
